@@ -17,10 +17,14 @@
   "license": "MIT",
   "dependencies": {
     "angular": "^1.4.8",
+    "angular-ui-bootstrap": "^0.14.3",
     "angular-ui-router": "^0.2.15",
     "body-parser": "^1.14.2",
     "express": "^4.13.3",
+    "font-awesome": "^4.5.0",
     "install": "^0.4.1",
+    "method-override": "^2.3.5",
+    "morgan": "^1.6.1",
     "npm": "^3.5.2"
   },
   "devDependencies": {

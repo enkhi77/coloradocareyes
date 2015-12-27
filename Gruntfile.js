@@ -82,50 +82,14 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: 'client/src/assets/scripts/',
-                        src: 'angular-aria.js',
-                        dest: 'client/dist/scripts/1/'
-                    },
-                    {
-                        expand: true,
                         cwd: 'client/src/assets/generated/',
-                        src: 'stofti-assets.js',
+                        src: 'app-assets.js',
                         dest: 'client/dist/scripts/1/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'client/src/assets/scripts/',
-                        src: 'angular-animate.js',
-                        dest: 'client/dist/scripts/1/2/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'client/src/assets/scripts/',
-                        src: 'angular-material.js',
-                        dest: 'client/dist/scripts/1/2/'
                     },
                     {
                         expand: true,
                         cwd: 'client/src/assets/scripts/',
                         src: 'angular-ui-router.js',
-                        dest: 'client/dist/scripts/1/2/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'client/src/assets/scripts/',
-                        src: 'textAngular-rangy.min.js',
-                        dest: 'client/dist/scripts/1/2/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'client/src/assets/scripts/',
-                        src: 'textAngular-sanitize.min.js',
-                        dest: 'client/dist/scripts/1/2/'
-                    },
-                    {
-                        expand: true,
-                        cwd: 'client/src/assets/scripts/',
-                        src: 'textAngular.min.js',
                         dest: 'client/dist/scripts/1/2/'
                     }
                 ]
@@ -171,17 +135,11 @@ module.exports = function (grunt) {
             dist: {
                 src: [
                     'client/src/assets/scripts/angular.js',
-                    'client/src/assets/scripts/angular-aria.js',
-                    'client/src/assets/scripts/angular-animate.js',
-                    'client/src/assets/scripts/angular-material.js',
                     'client/src/assets/scripts/angular-ui-router.js',
-                    'client/src/assets/scripts/textAngular-rangy.min.js',
-                    'client/src/assets/scripts/textAngular-sanitize.min.js',
-                    'client/src/assets/scripts/textAngular.min.js',
-                    'client/src/assets/generated/stofti-angular.js',
-                    'client/src/assets/generated/stofti-assets.js'
+                    'client/src/assets/generated/app-angular.js',
+                    'client/src/assets/generated/app-assets.js'
                 ],
-                dest: 'client/src/assets/generated/stofti-lib.js'
+                dest: 'client/src/assets/generated/app-lib.js'
             }
         },
         /*---------------------------------( HTML2JS )---------------------------------*/
@@ -191,7 +149,7 @@ module.exports = function (grunt) {
             },
             main: {
                 src: ['client/src/app/**/*.html'],
-                dest: 'client/src/assets/generated/stofti-assets.js'
+                dest: 'client/src/assets/generated/app-assets.js'
             }
         },
         /*---------------------------------( Include )---------------------------------*/
