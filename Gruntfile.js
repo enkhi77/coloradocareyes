@@ -54,7 +54,9 @@ module.exports = function (grunt) {
                     {
                         expand: true, flatten: true, cwd: 'node_modules/',
                         src: [
-                            'font-awesome/css/font-awesome.css'
+                            'font-awesome/css/font-awesome.css',
+                            'bootstrap/dist/css/bootstrap.min.css',
+                            'bootstrap/dist/css/bootstrap.min.css.map'
                         ],
                         dest: 'client/dist/css/'
                     },
@@ -67,7 +69,8 @@ module.exports = function (grunt) {
                         expand: true, flatten: true, cwd: 'node_modules/',
                         src: [
                             'angular/angular.js',
-                            'angular-ui-router/release/angular-ui-router.js'
+                            'angular-ui-router/release/angular-ui-router.js',
+                            'angular-ui-bootstrap/ui-bootstrap-tpls.js'
                         ],
                         dest: 'client/src/assets/scripts'
                     }
@@ -90,6 +93,12 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'client/src/assets/scripts/',
                         src: 'angular-ui-router.js',
+                        dest: 'client/dist/scripts/1/2/'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'client/src/assets/scripts/',
+                        src: 'ui-bootstrap-tpls.js',
                         dest: 'client/dist/scripts/1/2/'
                     }
                 ]
@@ -167,7 +176,7 @@ module.exports = function (grunt) {
                     basePath: 'client/dist'
                 },
                 files: {
-                    'client/dist/index.html': 'client/src/index.tpl.html'
+                    'client/dist/index.html': 'client/src/assets/index.tpl.html'
                 }
             }
         },
@@ -197,9 +206,6 @@ module.exports = function (grunt) {
 //----------------------------------
 
     grunt.registerTask ('init', []);
-
     grunt.registerTask ('default', ['clean', 'copy:lib', 'html2js', 'copy:dev', 'copy:dist', 'includeSource', 'angularFileLoader']);
-
-    grunt.registerTask ('prod', ['clean', 'copy:lib', 'concat:angular', 'html2js', 'concat:dist', 'uglify', 'copy:dist', 'includeSource'])
-
+    grunt.registerTask ('prod', ['clean', 'copy:lib', 'concat:angular', 'html2js', 'concat:dist', 'uglify', 'copy:dist', 'includeSource']);
 };
