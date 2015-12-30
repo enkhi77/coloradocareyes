@@ -207,5 +207,4 @@ module.exports = function (grunt) {
 
     grunt.registerTask ('init', []);
     grunt.registerTask ('default', ['clean', 'copy:lib', 'html2js', 'copy:dev', 'copy:dist', 'includeSource', 'angularFileLoader']);
-    grunt.registerTask ('prod', ['clean', 'copy:lib', 'concat:angular', 'html2js', 'concat:dist', 'uglify', 'copy:dist', 'includeSource']);
 };

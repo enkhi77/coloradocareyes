@@ -8,17 +8,12 @@
 
     function indexConfig($stateProvider, $locationProvider, $urlRouterProvider){
         $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('index', {
                 url: '/',
                 templateUrl: 'app/index/templates/index.tpl.html',
                 controller: 'indexController as vm'
-            })
-            .state('index.home', {
-                url: 'home',
-                templateUrl: 'app/index/templates/home.tpl.html',
-                controller: 'indexController as vm'
             });
     }
-});
+})();

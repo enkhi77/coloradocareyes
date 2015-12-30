@@ -1,7 +1,7 @@
 {
-  "name": "mean-template",
+  "name": "coloradocareyes",
   "version": "1.0.0",
-  "description": "template for all of my MEAN Stack builds",
+  "description": "test site for colorado care yes form",
   "main": "server/server.js",
   "scripts": {
     "test": "npm test",
