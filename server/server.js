@@ -10,6 +10,8 @@ var path = require('path');
 //create express app
 var app = express();
 
+app.set('port', (process.env.PORT || 3000));
+
 //middleware
 app.use('/',express.static(path.join(__dirname, '..', 'client'),{ redirect: false }));
 app.use(morgan('dev'));
@@ -26,5 +28,6 @@ app.get('/', function(req, res, next){
 });
 
 //listen up
-app.listen(3000);
-console.log('App listening on port 3000');
+app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+});
