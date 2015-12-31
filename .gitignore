@@ -31,5 +31,5 @@ node_modules
 
 # Generated files
 client/dist
-client/src/assets/generated
-client/src/assets/scripts
+client/assets/generated
+client/assets/scripts

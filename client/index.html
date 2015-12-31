@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <base href="/">
+    <title>Care Test Site</title>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="styles/app.css">
+</head>
+<body ng-app="app">
+<ui-view>
+</ui-view>
+
+<script src="lib/angular.js"></script>
+<script src="lib/angular-ui-router.js"></script>
+<script src="lib/ui-bootstrap-tpls.js"></script>
+<script src="app/index/indexModule.js"></script>
+<script src="app/index/config/indexRouterConfig.js"></script>
+<script src="app/index/controllers/indexController.js"></script>
+<script src="app/nav/navModule.js"></script>
+<script src="app/nav/controllers/navController.js"></script>
+<script src="app/nav/directives/navDirective.js"></script>
+</body>
+</html>

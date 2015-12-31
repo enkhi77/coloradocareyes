@@ -11,8 +11,7 @@ var path = require('path');
 var app = express();
 
 //middleware
-app.use('/',express.static(path.join(__dirname, '..', 'client/dist'),{ redirect: false }));
-//app.use('/css', express.static(path.join(__dirname, 'client/dist/css')));
+app.use('/',express.static(path.join(__dirname, '..', 'client'),{ redirect: false }));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,7 +22,7 @@ app.use(methodOverride());
 
 //routes
 app.get('/', function(req, res, next){
-    res.sendFile('index.html', {root: 'client/dist'});
+    res.sendFile('index.html', {root: 'client'});
 });
 
 //listen up
