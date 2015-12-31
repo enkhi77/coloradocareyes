@@ -1,7 +1,12 @@
 body {
-    background-color: lightgray;
+    background-color: #dddddd;
 }
 
 .main-body {
     background-color: white;
+}
+
+.main-buttons {
+    padding-top: 25px;
+    height: 800px;
 }

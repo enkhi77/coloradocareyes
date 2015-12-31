@@ -6,8 +6,7 @@
     navController.$inject = [];
 
     function navController(){
+        console.log('load navController');
         var vm = this;
-
-        vm.test = 'test nav'
     }
 })();

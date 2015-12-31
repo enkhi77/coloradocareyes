@@ -14,6 +14,16 @@
                 url: '/',
                 templateUrl: 'app/index/templates/index.tpl.html',
                 controller: 'indexController as vm'
+            })
+            .state('index.business', {
+                url: 'business',
+                templateUrl: 'app/form/templates/business.tpl.html',
+                controller: 'busFormController as vm'
+            })
+            .state('index.individual', {
+                url: 'individual',
+                templateUrl: 'app/form/templates/individual.tpl.html',
+                controller: 'indFormController as vm'
             });
     }
 })();

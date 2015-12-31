@@ -1,14 +1,14 @@
 (function(){
     'use strict';
-
     angular
         .module('app.nav')
-        .directive('navbar', navbar);
-    function navbar(){
+        .directive('footer', footer);
+
+    function footer(){
         var directive = {
-            templateUrl: '/app/nav/templates/nav.tpl.html',
+            templateUrl: 'app/nav/templates/footer.tpl.html',
             restrict: 'EA',
-            controller: 'navController',
+            controller: 'footerController',
             controllerAs: 'vm'
         };
         return directive;

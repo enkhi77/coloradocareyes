@@ -23,7 +23,7 @@ app.use(methodOverride());
 //console.log('Check directory', express.static);
 
 //routes
-app.get('/', function(req, res, next){
+app.get('/*', function(req, res, next){
     res.sendFile('index.html', {root: 'client'});
 });
 

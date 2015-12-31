@@ -1,5 +1,19 @@
-<div class="col-sm-offset-1 col-sm-10 main-body">
+<div class="col-sm-offset-2 col-sm-8 main-body">
     <div class="container-fluid">
-        <
+        <navbar></navbar>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="main-buttons">
+                    <button class="btn btn-default" ui-sref="index.business">Business Form</button>
+                    <button class="btn btn-default" ui-sref="index.individual">Individual Form</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <ui-view></ui-view>
+            </div>
+        </div>
+        <footer></footer>
     </div>
 </div>
