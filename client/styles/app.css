@@ -6,7 +6,19 @@ body {
     background-color: white;
 }
 
+.nav-header {
+    margin: auto;
+    width: 100%;
+}
+
 .main-buttons {
     padding-top: 25px;
-    height: 800px;
+}
+
+.subheading {
+    text-align: center;
+}
+
+.test {
+    display: inline-block;
 }

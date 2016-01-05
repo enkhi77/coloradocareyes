@@ -7,5 +7,7 @@
     function indFormController(){
         console.log('load indFormController');
         var vm = this;
+
+        vm.form1 = true;
     }
 })();
