@@ -8,7 +8,7 @@
                 expense</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                        ng-model="vm.form.premium">
                 <span class="input-group-addon">.00</span>
             </div>
@@ -19,7 +19,7 @@
                 proprietor)</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                        ng-model="vm.form.sole">
                 <span class="input-group-addon">.00</span>
             </div>
@@ -28,7 +28,7 @@
             <label class="col-sm-8 control-label">Annual workers’ compensation insurance</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                        ng-model="vm.form.worker">
                 <span class="input-group-addon">.00</span>
             </div>
@@ -37,7 +37,7 @@
             <label class="col-sm-8 control-label">Annual vehicle medical coverage</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                        ng-model="vm.form.vehicle">
                 <span class="input-group-addon">.00</span>
             </div>
@@ -47,12 +47,12 @@
                 and the medical part of the workers’ compensation system</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                        ng-model="vm.form.admin">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
-        <button ng-click="vm.form1 = !vm.form1">Next</button>
+        <button ng-click="vm.next()">Next</button>
     </div>
 
     <div ng-show="!vm.form1 && !vm.form2">
@@ -61,7 +61,7 @@
             <label class="col-sm-8 control-label">Total Annual Payroll</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                        ng-model="vm.form.payroll">
                 <span class="input-group-addon">.00</span>
             </div>
@@ -72,30 +72,33 @@
                 premium)</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                        ng-mode="vm.form.employee">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
-        <button ng-click="vm.form2 = !vm.form2">Next</button>
+        <button ng-click="vm.finish()">Next</button>
     </div>
 
     <div ng-show="vm.form2 && !vm.form1">
         <div class="form-group">
             <label class="col-sm-8 control-label">Total current health coverage expense</label>
             <div class="input-group col-sm-4">
+                {{vm.healthexpense}}
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-8 control-label">Total ColoradoCare health coverage expense</label>
             <div class="input-group col-sm-4">
+                {{vm.ccexpense}}
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-8 control-label">Difference in Employer expenses: Current vs. ColoradoCare</label>
             <div class="input-group col-sm-4">
+                {{vm.difference}}
             </div>
         </div>
     </div>
