@@ -1,110 +1,107 @@
 <h1>Individual Form</h1>
 <h3 class="subheading">Worksheet for comparing your current health care coverage to ColoradoCare</h3>
 
-<div ng-show="form1">
-
-</div>
-
 <form class="form-horizontal">
-    <h4>Your current health care plan</h4>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Monthly insurance premium</label>
-        <div class="input-group col-sm-4">
-            <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-addon">.00</span>
+    <div ng-show="vm.form1 && !vm.form2">
+        <h4>Your current health care plan</h4>
+        <div class="form-group">
+            <label class="col-sm-8 control-label">Monthly insurance premium</label>
+            <div class="input-group col-sm-4">
+                <span class="input-group-addon">$</span>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.premium">
+                <span class="input-group-addon">.00</span>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Deductible on your current plan</label>
-        <div class="input-group col-sm-4">
-            <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-addon">.00</span>
+        <div class="form-group">
+            <label class="col-sm-8 control-label">Deductible on your current plan</label>
+            <div class="input-group col-sm-4">
+                <span class="input-group-addon">$</span>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.deductible">
+                <span class="input-group-addon">.00</span>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Any amount covered by copayments, lab visits, etc</label>
-        <div class="input-group col-sm-4">
-            <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-addon">.00</span>
+        <div class="form-group">
+            <label class="col-sm-8 control-label">Any amount covered by copayments, lab visits, etc</label>
+            <div class="input-group col-sm-4">
+                <span class="input-group-addon">$</span>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.copay">
+                <span class="input-group-addon">.00</span>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Yearly amount paid in copays</label>
-        <div class="input-group col-sm-4">
-            <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-addon">.00</span>
+        <div class="form-group">
+            <label class="col-sm-8 control-label">Yearly amount paid in copays</label>
+            <div class="input-group col-sm-4">
+                <span class="input-group-addon">$</span>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.yearly">
+                <span class="input-group-addon">.00</span>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Other out of pocket healthcare expenses</label>
-        <div class="input-group col-sm-4">
-            <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-addon">.00</span>
+        <div class="form-group">
+            <label class="col-sm-8 control-label">Other out of pocket healthcare expenses</label>
+            <div class="input-group col-sm-4">
+                <span class="input-group-addon">$</span>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.expenses">
+                <span class="input-group-addon">.00</span>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Estimated total expenses</label>
-        <div class="input-group col-sm-4">
-            <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-addon">.00</span>
+
+        <h4>ColoradoCare</h4>
+        <div class="form-group">
+            <label class="col-sm-8 control-label">Your annual income</label>
+            <div class="input-group col-sm-4">
+                <span class="input-group-addon">$</span>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.income">
+                <span class="input-group-addon">.00</span>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Total current health coverage expense</label>
+        <div class="form-group">
+            <label class="col-sm-8 control-label">Do you have income besides wages?</label>
+            <div class="input-group col-sm-4">
+                <input type="checkbox" class="form-control" ng-model="vm.other">
+            </div>
+        </div>
+        <button ng-click="vm.next()">Next</button>
     </div>
 
-    <h3>ColoradoCare</h3>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Payroll premium expense (Annual wages x 3.33%) </label>
-        <div class="input-group col-sm-4">
-            <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-addon">.00</span>
+    <div ng-show="!vm.form1 && vm.form2">
+        <div class="form-group">
+            <label class="col-sm-8 control-label">Other income 1</label>
+            <div class="input-group col-sm-4">
+                <span class="input-group-addon">$</span>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.second.one">
+                <span class="input-group-addon">.00</span>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Non-payroll premium expense (All income that is not on a W-2— this premium can be calculated on the worksheet on the back of this page)</label>
-        <div class="input-group col-sm-4">
-            <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-addon">.00</span>
+        <div class="form-group">
+            <label class="col-sm-8 control-label">Other income 2</label>
+            <div class="input-group col-sm-4">
+                <span class="input-group-addon">$</span>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.second.two">
+                <span class="input-group-addon">.00</span>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Deductible expense </label>
-        <div class="input-group col-sm-4">
-            <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-addon">.00</span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Comprehensive benefits with very few services not covered. (See attached list of benefits)</label>
-        <div class="input-group col-sm-4">
-            <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-addon">.00</span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">No copayments for most primary care or prevention services, and if any, are waived for those with financial need </label>
-        <div class="input-group col-sm-4">
-            <span class="input-group-addon">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-addon">.00</span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Total ColoradoCare health coverage expense</label>
+        <button ng-click="vm.next()">Next</button>
     </div>
 
-    <div class="form-group">
-        <label class="col-sm-8 control-label">Difference in Employer expenses: Current vs. ColoradoCare</label>
+    <div ng-show="!vm.form1 && !vm.form2">
+        <div class="form-group">
+            <label class="col-sm-8 control-label">Total healthcare cost</label>
+            <div class="col-sm-4">
+                {{vm.result1}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-8 control-label">Total Colorado Care cost</label>
+            <div class="col-sm-4">
+                {{vm.result2}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-8 control-label">These totals are an estimate.  Copays often shift year to year based on usage.  Colorado Care has no copays for preventative care or most other services.</label>
+            <div class="col-sm-4">
+                {{vm.difference}}
+            </div>
+        </div>
     </div>
+
 </form>
