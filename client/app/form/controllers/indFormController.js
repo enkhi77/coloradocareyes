@@ -33,10 +33,11 @@
                 vm.other = null;
             }
             else{
+                console.log('check form', vm.form);
                 vm.form1 = false;
                 vm.form2 = false;
-                vm.result1 = vm.form.premium + vm.form.deductible + vm.form.copy + vm.form.yearly + vm.form.expenses;
-                vm.result2 = vm.form.income * 0.33;
+                vm.result1 = vm.form.premium + vm.form.deductible + vm.form.copay + vm.form.yearly + vm.form.expenses;
+                vm.result2 = vm.form.income * 0.0333;
                 vm.difference = vm.result1 - vm.result2;
             }
         };

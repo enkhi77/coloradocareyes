@@ -32,7 +32,7 @@
             console.log('healthexpense total', vm.healthexpense);
             vm.ccexpense = vm.form.payroll + vm.form.employee*0.0333;
             console.log('ccexpense total', vm.ccexpense);
-            vm.difference = vm.form.healthexpense - vm.form.ccexpense;
+            vm.difference = vm.healthexpense - vm.ccexpense;
             console.log('difference', vm.difference);
         };
     }
