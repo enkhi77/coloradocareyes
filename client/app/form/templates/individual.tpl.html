@@ -59,19 +59,134 @@
                 <input type="checkbox" class="form-control" ng-model="vm.social">
             </div>
         </div>
-        <div class="form-group" ng-show="vm.other">
-            <label class="col-sm-5 control-label">Other income 1</label>
+        <div class="form-group" ng-show="vm.social">
+            <label class="col-sm-5 control-label">Check one box:</label>
+            <div class="input-group col-sm-2">
+                <input type="radio" ng-model="vm.filing" value="joint">Joint
+                <input type="radio" ng-model="vm.filing" value="single">Single
+            </div>
+        </div>
+        <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
+            <label class="col-sm-5 control-label">Your Monthly Social Security Income</label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.second.one">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.SS">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
-        <div class="form-group" ng-show="vm.other">
-            <label class="col-sm-5 control-label">Other income 2</label>
+        <div class="form-group" ng-show="vm.other && vm.filing === 'single' && vm.age1 === true">
+            <label class="col-sm-5 control-label">Annual retirement income from annuity, pension, IRA, etc.</label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.second.two">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.retirement">
+                <span class="input-group-addon">.00</span>
+            </div>
+        </div>
+        <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
+            <label class="col-sm-5 control-label">Are you over age 55</label>
+            <div class="input-group col-sm-2">
+                <input type="radio" ng-model="vm.age1" value=true>Yes
+                <input type="radio" ng-model="vm.age1" value=false>No
+            </div>
+        </div>
+        <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
+            <label class="col-sm-5 control-label">Are you over age 65</label>
+            <div class="input-group col-sm-2">
+                <input type="radio" ng-model="vm.age2" value=true>Yes
+                <input type="radio" ng-model="vm.age2" value=false>No
+            </div>
+        </div>
+        <div ng-show="vm.other && vm.filing === 'joint'">
+            <h4>For you</h4>
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Do you receive Social Security</label>
+                <div class="input-group col-sm-2">
+                    <input type="radio" ng-model="vm.you.receiveSS" value=true>Yes
+                    <input type="radio" ng-model="vm.you.receiveSS" value=false>No
+                </div>
+            </div>
+            <div ng-show="vm.you.receiveSS">
+                <div class="form-group">
+                    <label class="col-sm-5 control-label">Your monthly Social Security Income</label>
+                    <div class="input-group col-sm-2">
+                        <span class="input-group-addon">$</span>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.you.monthlySS">
+                        <span class="input-group-addon">.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Your annual retirement income from annuity, pension, IRA, etc.</label>
+                <div class="input-group col-sm-2">
+                    <span class="input-group-addon">$</span>
+                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.you.retirement">
+                    <span class="input-group-addon">.00</span>
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label class="col-sm-5 control-label">Are you over age 55?</label>
+                    <div class="input-group col-sm-2">
+                        <input type="radio" ng-model="vm.you.receiveSS" value=true>Yes
+                        <input type="radio" ng-model="vm.you.receiveSS" value=false>No
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-5 control-label">Are you over age 65?</label>
+                    <div class="input-group col-sm-2">
+                        <input type="radio" ng-model="vm.you.receiveSS" value=true>Yes
+                        <input type="radio" ng-model="vm.you.receiveSS" value=false>No
+                    </div>
+                </div>
+            </div>
+            <h4>For your spouse</h4>
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Does your spouse receive Social Security</label>
+                <div class="input-group col-sm-2">
+                    <input type="radio" ng-model="vm.spouse.receiveSS" value=true>Yes
+                    <input type="radio" ng-model="vm.spouse.receiveSS" value=false>No
+                </div>
+            </div>
+            <div ng-show="vm.spouse.receiveSS">
+                <div class="form-group">
+                    <label class="col-sm-5 control-label">Your monthly Social Security Income</label>
+                    <div class="input-group col-sm-2">
+                        <span class="input-group-addon">$</span>
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.spouse.monthlySS">
+                        <span class="input-group-addon">.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-5 control-label">Your annual retirement income from annuity, pension, IRA, etc.</label>
+                <div class="input-group col-sm-2">
+                    <span class="input-group-addon">$</span>
+                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.spouse.retirement">
+                    <span class="input-group-addon">.00</span>
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label class="col-sm-5 control-label">Is your spouse over age 55?</label>
+                    <div class="input-group col-sm-2">
+                        <input type="radio" ng-model="vm.spouse.age1" value=true>Yes
+                        <input type="radio" ng-model="vm.spouse.age1" value=false>No
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-5 control-label">Is your spouse over age 65?</label>
+                    <div class="input-group col-sm-2">
+                        <input type="radio" ng-model="vm.spouse.age2" value=true>Yes
+                        <input type="radio" ng-model="vm.spouse.age2" value=false>No
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-show="vm.other">
+            <label class="col-sm-5 control-label">Gross income reported before line 22 on Form 1040 excluding payroll, Social Security and retirement</label>
+            <div class="input-group col-sm-2">
+                <span class="input-group-addon">$</span>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.gross">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
