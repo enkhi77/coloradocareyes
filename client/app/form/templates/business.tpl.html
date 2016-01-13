@@ -10,7 +10,7 @@
 <form class="form-horizontal">
     <div ng-show="vm.form1">
         <div class="form-group">
-            <label class="col-sm-3 control-label">Employer’s annual medical benefits expense</label>
+            <label class="col-sm-5 control-label">Employer’s annual medical benefits expense</label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -21,7 +21,7 @@
 
 
         <div class="form-group">
-            <label class="col-sm-3 control-label">Annual workers’ compensation insurance</label>
+            <label class="col-sm-5 control-label">Annual workers’ compensation insurance</label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">Estimate annual expense for administering employee health care plans
+            <label class="col-sm-5 control-label">Estimate annual expense for administering employee health care plans
                 and the medical part of the workers’ compensation system</label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">Total annual payroll for Colorado residents</label>
+            <label class="col-sm-5 control-label">Total annual payroll for Colorado residents</label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -53,21 +53,21 @@
 
     <div ng-show="!vm.form1">
         <div class="form-group">
-            <label class="col-sm-3 control-label">Total current health coverage expense</label>
+            <label class="col-sm-5 control-label">Total current health coverage expense</label>
             <div class="input-group col-sm-2">
                 {{vm.healthexpense}}
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-sm-3 control-label">Total ColoradoCare health coverage expense</label>
+            <label class="col-sm-5 control-label">Total ColoradoCare health coverage expense</label>
             <div class="input-group col-sm-2">
                 {{vm.ccexpense}}
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-sm-3 control-label">Difference in Employer expenses: Current vs. ColoradoCare</label>
+            <label class="col-sm-5 control-label">Difference in Employer expenses: Current vs. ColoradoCare</label>
             <div class="input-group col-sm-2">
                 {{vm.difference}}
             </div>
