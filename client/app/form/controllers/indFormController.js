@@ -15,7 +15,6 @@
             premium: 0,
             deductible: 0,
             copay: 0,
-            yearly: 0,
             expenses: 0,
             income: 0
         };
@@ -36,7 +35,7 @@
                 console.log('check form', vm.form);
                 vm.form1 = false;
                 vm.form2 = false;
-                vm.result1 = vm.form.premium + vm.form.deductible + vm.form.copay + vm.form.yearly + vm.form.expenses;
+                vm.result1 = vm.form.premium * 12 + vm.form.deductible + vm.form.copay + vm.form.expenses;
                 vm.result2 = vm.form.income * 0.0333;
                 vm.difference = vm.result1 - vm.result2;
             }

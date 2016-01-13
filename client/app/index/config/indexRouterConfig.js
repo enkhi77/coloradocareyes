@@ -12,6 +12,7 @@
         $stateProvider
             .state('index', {
                 url: '/',
+                abstract: true,
                 templateUrl: 'app/index/templates/index.tpl.html',
                 controller: 'indexController as vm'
             })

@@ -1,4 +1,4 @@
-<h1>Individual Form</h1>
+<h2>Individual and/or Family Form</h2>
 <h3 class="subheading">Worksheet for comparing your current health care coverage to ColoradoCare</h3>
 
 <form class="form-horizontal">
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-8 control-label">Deductible on your current plan</label>
+            <label class="col-sm-8 control-label">Annual deductible</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.deductible">
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-8 control-label">Any amount covered by copayments, lab visits, etc</label>
+            <label class="col-sm-8 control-label">Estimated Annual Co-payments</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.copay">
@@ -29,15 +29,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-8 control-label">Yearly amount paid in copays</label>
-            <div class="input-group col-sm-4">
-                <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.yearly">
-                <span class="input-group-addon">.00</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-8 control-label">Other out of pocket healthcare expenses</label>
+            <label class="col-sm-8 control-label">Expenses for health care services not covered by your plan</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.expenses">
@@ -47,7 +39,7 @@
 
         <h4>ColoradoCare</h4>
         <div class="form-group">
-            <label class="col-sm-8 control-label">Your annual income</label>
+            <label class="col-sm-8 control-label">Your annual payroll (W-2) Income</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.income">
