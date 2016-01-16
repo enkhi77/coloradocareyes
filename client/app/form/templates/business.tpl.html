@@ -10,7 +10,7 @@
 <form class="form-horizontal">
     <div ng-show="vm.form1">
         <div class="form-group">
-            <label class="col-sm-5 control-label">Employer’s annual medical benefits expense</label>
+            <label class="col-sm-5 control-label">Employer’s annual medical benefits expense <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -20,7 +20,7 @@
         </div>
 
         <div class="form-group">
-            <label class="col-sm-5 control-label">Annual workers’ compensation insurance</label>
+            <label class="col-sm-5 control-label">Annual workers’ compensation insurance <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 control-label">Estimate annual expense for administering employee health care plans and the medical part of the workers’ compensation system</label>
+            <label class="col-sm-5 control-label">Estimate annual expense for administering employee health care plans and the medical part of the workers’ compensation system <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 control-label">Total annual payroll for Colorado residents</label>
+            <label class="col-sm-5 control-label">Total annual payroll for Colorado residents <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -52,21 +52,21 @@
 
     <div ng-show="!vm.form1">
         <div class="form-group">
-            <label class="col-sm-5 control-label">Total current health coverage expense</label>
+            <label class="col-sm-5 control-label">Total current health coverage expense <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <p class="form-control-static">${{vm.healthexpense}}</p>
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-sm-5 control-label">Total ColoradoCare health coverage expense</label>
+            <label class="col-sm-5 control-label">Total ColoradoCare health coverage expense <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <p class="form-control-static">${{vm.ccexpense}}</p>
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-sm-5 control-label">Difference in Employer expenses: Current vs. ColoradoCare</label>
+            <label class="col-sm-5 control-label">Difference in Employer expenses: Current vs. ColoradoCare <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <p class="form-control-static">${{vm.difference}}</p>
             </div>

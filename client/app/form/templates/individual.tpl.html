@@ -5,7 +5,7 @@
     <div ng-show="vm.form1">
         <p><b>Your current health care plan</b></p>
         <div class="form-group">
-            <label class="col-sm-5 control-label">Monthly insurance premium</label>
+            <label class="col-sm-5 control-label">Monthly insurance premium <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 control-label">Annual deductible</label>
+            <label class="col-sm-5 control-label">Annual deductible <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 control-label">Estimated Annual Co-payments</label>
+            <label class="col-sm-5 control-label">Estimated Annual Co-payments <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 control-label">Expenses for health care services not covered by your plan</label>
+            <label class="col-sm-5 control-label">Expenses for health care services not covered by your plan <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -43,7 +43,7 @@
 
         <p><b>ColoradoCare</b></p>
         <div class="form-group">
-            <label class="col-sm-5 control-label">Your annual payroll (W-2) Income</label>
+            <label class="col-sm-5 control-label">Your annual payroll (W-2) Income <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 control-label">If you have significant income besides payroll, check here:</label>
+            <label class="col-sm-5 control-label">If you have significant income besides payroll, check here: <i class="fa fa-question-circle" uib-tooltip="Help Text" ng-show="vm.nohelp"></i></label>
             <div class="input-group col-sm-2">
                 <input type="checkbox" class="form-control" ng-model="vm.other">
                 <p class="form-control-static" ng-show="vm.other">This section is under construction</p>

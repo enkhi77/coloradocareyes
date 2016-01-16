@@ -18,6 +18,7 @@
             income: null
         };
         vm.other = null;
+        vm.nohelp = false;
 
         vm.next = function next() {
             console.log('check form', vm.form);

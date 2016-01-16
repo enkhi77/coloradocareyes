@@ -9,6 +9,7 @@
         var vm = this;
 
         vm.form1 = true;
+        vm.nohelp = false;
 
         vm.form = {
             premium: null,
