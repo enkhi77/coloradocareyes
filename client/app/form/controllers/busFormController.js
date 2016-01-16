@@ -20,10 +20,6 @@
         vm.next = function next(){
             console.log('next!');
             vm.form1 = false;
-        };
-        vm.finish = function finish(){
-            console.log('finish!');
-            vm.form1 = false;
             var sum1 = vm.form.premium + vm.form.worker*0.59 + vm.form.admin;
             vm.healthexpense = sum1.toFixed(2);
             var sum2 = vm.form.payroll*0.067;
