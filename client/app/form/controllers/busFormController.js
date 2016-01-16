@@ -25,7 +25,7 @@
                 vm.form.worker * 0.59 +
                 vm.form.admin;
             vm.healthexpense.toFixed(2);
-            vm.ccexpense = vm.form.payroll*0.0333;
+            vm.ccexpense = vm.form.payroll*0.067;
             vm.ccexpense.toFixed(2);
             vm.difference = vm.healthexpense - vm.ccexpense;
             vm.difference.toFixed(2);
