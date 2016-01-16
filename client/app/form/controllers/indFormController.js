@@ -52,12 +52,19 @@
                     return ssAnnual - 9000;
                 }
             };
-            vm.result1 = vm.form.premium * 12 +
+            var sum1 = vm.form.premium * 12 +
                 vm.form.deductible +
                 vm.form.copay +
                 vm.form.expenses;
-            vm.result2 = vm.form.income * 0.0333;
-            vm.difference = vm.result1 - vm.result2;
+            vm.result1 = sum1.toFixed(2);
+            var sum2 = vm.form.income * 0.0333;
+            vm.result2 = sum2.toFixed(2);
+            var sum3 = vm.result1 - vm.result2;
+            vm.difference = sum3.toFixed(2)
+        };
+
+        vm.back = function back() {
+            vm.form1 = true;
         };
     }
 })();
