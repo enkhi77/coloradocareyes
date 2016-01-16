@@ -2,11 +2,9 @@
 <h2>Business Form</h2>
 <h4 class="subheading">Current employer’s annual medical benefits expense</h4>
 <p>
-    Note:  Calculations are for all employees who are residents of Colorado income tax withholding.
+    Note:  Calculations are for all employees who are subject to Colorado income tax withholding.
 </p>
-<p>
-    Note:  If your employer pays more than the required share, your amount will be less.
-</p>
+
 
 <form class="form-horizontal">
     <div ng-show="vm.form1">
@@ -53,6 +51,9 @@
     </div>
 
     <div ng-show="!vm.form1">
+        <p>
+            Note:  If your employer pays more than the required share, your amount will be less.
+        </p>
         <div class="form-group">
             <label class="col-sm-5 control-label">Total current health coverage expense</label>
             <div class="input-group col-sm-2">

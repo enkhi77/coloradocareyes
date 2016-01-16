@@ -1,15 +1,3 @@
 body {
     background-color: white;
 }
-
-h4.subheading {
-    text-align: center;
-}
-
-p.sectionheading {
-    text-align: center;
-}
-
-label.col-sm-5.control-label {
-    text-align: left; !important
-}
