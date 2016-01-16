@@ -11,7 +11,7 @@
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.premium" ng-change="vm.calculate()">
+                           ng-model="vm.form.premium" ng-blur="vm.calculate()">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.deductible" ng-change="vm.calculate()">
+                           ng-model="vm.form.deductible" ng-blur="vm.calculate()">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.copay" ng-change="vm.calculate()">
+                           ng-model="vm.form.copay" ng-blur="vm.calculate()">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.expenses" ng-change="vm.calculate()">
+                           ng-model="vm.form.expenses" ng-blur="vm.calculate()">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.income" ng-change="vm.calculate()">
+                           ng-model="vm.form.income" ng-blur="vm.calculate()">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.gross" ng-change="vm.calculate()">
+                           ng-model="vm.gross" ng-blur="vm.calculate()">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.you.monthlySS" ng-change="vm.calculate()">
+                           ng-model="vm.form.you.monthlySS" ng-blur="vm.calculate()">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.you.retirement" ng-change="vm.calculate()">
+                           ng-model="vm.form.you.retirement" ng-blur="vm.calculate()">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -136,7 +136,7 @@
                     <div class="input-group col-sm-4">
                         <span class="input-group-addon">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                               ng-model="vm.you.retirement" ng-change="vm.calculate()">
+                               ng-model="vm.you.retirement" ng-blur="vm.calculate()">
                         <span class="input-group-addon">.00</span>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                         <div class="input-group col-sm-4">
                             <span class="input-group-addon">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.you.monthlySS" ng-change="vm.calculate()">
+                                   ng-model="vm.you.monthlySS" ng-blur="vm.calculate()">
                             <span class="input-group-addon">.00</span>
                         </div>
                     </div>
@@ -192,7 +192,7 @@
                         <div class="input-group col-sm-4">
                             <span class="input-group-addon">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.spouse.monthlySS" ng-change="vm.calculate()">
+                                   ng-model="vm.spouse.monthlySS" ng-blur="vm.calculate()">
                             <span class="input-group-addon">.00</span>
                         </div>
                     </div>
@@ -203,7 +203,7 @@
                     <div class="input-group col-sm-4">
                         <span class="input-group-addon">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                               ng-model="vm.spouse.retirement" ng-change="vm.calculate()">
+                               ng-model="vm.spouse.retirement" ng-blur="vm.calculate()">
                         <span class="input-group-addon">.00</span>
                     </div>
                 </div>
@@ -238,9 +238,9 @@
 
     <div class="col-sm-6 resultside">
         <div>
-            <h4>“Disclaimer: There may be some small copayments required.”<br/>
-                “Note: If your employer pays more than the required share, your amount will be less.”
-            </h4>
+            <p>Disclaimer: There may be some small copayments required.<br/>
+                Note: If your employer pays more than the required share, your amount will be less.
+            </p>
             <div class="form-group">
                 <label class="col-sm-5 control-label">Total healthcare cost</label>
                 <div class="col-sm-4 ">
@@ -254,11 +254,12 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-5 control-label">Amount Saved <p>Note: These totals are an estimate. Copays often shift year to year based on usage. Colorado Care has no copays for preventative care or most other services.</p></label>
+                <label class="col-sm-5 control-label">Amount Saved </label>
                 <div class="col-sm-4 ">
                     <p class="form-control-static">${{vm.difference}}</p>
                 </div>
             </div>
+            <p>Note: These totals are an estimate. Copays often shift year to year based on usage. Colorado Care has no copays for preventative care or most other services.</p>
         </div>
     </div>
 

@@ -13,7 +13,7 @@
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                       ng-model="vm.form.premium" ng-change="vm.calculate()">
+                       ng-model="vm.form.premium" ng-blur="vm.calculate()">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                       ng-model="vm.form.worker" ng-change="vm.calculate()">
+                       ng-model="vm.form.worker" ng-blur="vm.calculate()">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -34,7 +34,7 @@
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                       ng-model="vm.form.admin" ng-change="vm.calculate()">
+                       ng-model="vm.form.admin" ng-blur="vm.calculate()">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -43,7 +43,7 @@
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                       ng-model="vm.form.payroll" ng-change="vm.calculate()">
+                       ng-model="vm.form.payroll" ng-blur="vm.calculate()">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
