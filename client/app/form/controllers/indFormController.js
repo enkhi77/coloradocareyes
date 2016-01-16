@@ -15,30 +15,9 @@
             deductible: null,
             copay: null,
             expenses: null,
-            income: null,
-            SS: null,
-            gross: null,
-            you:{
-                receiveSS: null,
-                monthlySS: null,
-                retirement: null,
-                age1: null,
-                age2: null
-            },
-            spouse: {
-                receiveSS: null,
-                monthlySS: null,
-                retirement: null,
-                age1: null,
-                age2: null
-            }
+            income: null
         };
         vm.other = null;
-        vm.social = null;
-        vm.medicaid = null;
-        vm.medicare = null;
-        vm.filing = null;
-        vm.age1 = null;
 
         vm.next = function next() {
             console.log('check form', vm.form);
@@ -56,8 +35,15 @@
                 vm.form.deductible +
                 vm.form.copay +
                 vm.form.expenses;
+            vm.result1.toFixed(2);
             vm.result2 = vm.form.income * 0.0333;
+            vm.result2.toFixed(2);
             vm.difference = vm.result1 - vm.result2;
+            vm.difference.toFixed(2);
         };
+
+        vm.back = function back() {
+            vm.form1 = true;
+        }
     }
 })();

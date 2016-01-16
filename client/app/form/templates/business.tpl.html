@@ -1,10 +1,10 @@
 <h2>Business Form</h2>
 <h4 class="subheading">Current employer’s annual medical benefits expense</h4>
 <p>
-    Note:  Calculations are for all employees who are residents of Colorado income tax withholding.
+    Note: Calculations are for all employees who are residents of Colorado income tax withholding.
 </p>
 <p>
-    Note:  If your employer pays more than the required share, your amount will be less.
+    Note: If your employer pays more than the required share, your amount will be less.
 </p>
 
 <form class="form-horizontal">
@@ -19,7 +19,6 @@
             </div>
         </div>
 
-
         <div class="form-group">
             <label class="col-sm-5 control-label">Annual workers’ compensation insurance</label>
             <div class="input-group col-sm-2">
@@ -30,8 +29,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-5 control-label">Estimate annual expense for administering employee health care plans
-                and the medical part of the workers’ compensation system</label>
+            <label class="col-sm-5 control-label">Estimate annual expense for administering employee health care plans and the medical part of the workers’ compensation system</label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
@@ -48,29 +46,30 @@
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
-        <button ng-click="vm.next()">Next</button>
+        <button class="btn btn-default" ng-click="vm.next()">Next</button>
     </div>
 
     <div ng-show="!vm.form1">
         <div class="form-group">
             <label class="col-sm-5 control-label">Total current health coverage expense</label>
             <div class="input-group col-sm-2">
-                {{vm.healthexpense}}
+                <p class="form-control-static">{{vm.healthexpense}}</p>
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-5 control-label">Total ColoradoCare health coverage expense</label>
             <div class="input-group col-sm-2">
-                {{vm.ccexpense}}
+                <p class="form-control-static">{{vm.ccexpense}}</p>
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-5 control-label">Difference in Employer expenses: Current vs. ColoradoCare</label>
             <div class="input-group col-sm-2">
-                {{vm.difference}}
+                <p class="form-control-static">{{vm.difference}}</p>
             </div>
         </div>
+        <button class="btn btn-default" ng-click="vm.back()">Back</button>
     </div>
 </form>

@@ -8,7 +8,8 @@
             <label class="col-sm-5 control-label">Monthly insurance premium</label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.premium">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                       ng-model="vm.form.premium">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -16,7 +17,8 @@
             <label class="col-sm-5 control-label">Annual deductible</label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.deductible">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                       ng-model="vm.form.deductible">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -24,7 +26,8 @@
             <label class="col-sm-5 control-label">Estimated Annual Co-payments</label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.copay">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                       ng-model="vm.form.copay">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -32,7 +35,8 @@
             <label class="col-sm-5 control-label">Expenses for health care services not covered by your plan</label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.expenses">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                       ng-model="vm.form.expenses">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -42,7 +46,8 @@
             <label class="col-sm-5 control-label">Your annual payroll (W-2) Income</label>
             <div class="input-group col-sm-2">
                 <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.income">
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                       ng-model="vm.form.income">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -50,176 +55,35 @@
             <label class="col-sm-5 control-label">If you have significant income besides payroll, check here:</label>
             <div class="input-group col-sm-2">
                 <input type="checkbox" class="form-control" ng-model="vm.other">
+                <p class="form-control-static" ng-show="vm.other">This section is under construction</p>
             </div>
         </div>
-        
-        <div class="form-group" ng-show="vm.other">
-            <label class="col-sm-5 control-label">If you have Social Security and/or retirement income, check here</label>
-            <div class="input-group col-sm-2">
-                <input type="checkbox" class="form-control" ng-model="vm.social">
-            </div>
-        </div>
-        <div class="form-group" ng-show="vm.social">
-            <label class="col-sm-5 control-label">Check one box:</label>
-            <div class="input-group col-sm-2">
-                <input type="radio" ng-model="vm.filing" value="joint">Joint
-                <input type="radio" ng-model="vm.filing" value="single">Single
-            </div>
-        </div>
-        <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
-            <label class="col-sm-5 control-label">Your Monthly Social Security Income</label>
-            <div class="input-group col-sm-2">
-                <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.SS">
-                <span class="input-group-addon">.00</span>
-            </div>
-        </div>
-        <div class="form-group" ng-show="vm.other && vm.filing === 'single' && vm.age1 === true">
-            <label class="col-sm-5 control-label">Annual retirement income from annuity, pension, IRA, etc.</label>
-            <div class="input-group col-sm-2">
-                <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.form.retirement">
-                <span class="input-group-addon">.00</span>
-            </div>
-        </div>
-        <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
-            <label class="col-sm-5 control-label">Are you over age 55</label>
-            <div class="input-group col-sm-2">
-                <input type="radio" ng-model="vm.age1" value=true>Yes
-                <input type="radio" ng-model="vm.age1" value=false>No
-            </div>
-        </div>
-        <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
-            <label class="col-sm-5 control-label">Are you over age 65</label>
-            <div class="input-group col-sm-2">
-                <input type="radio" ng-model="vm.age2" value=true>Yes
-                <input type="radio" ng-model="vm.age2" value=false>No
-            </div>
-        </div>
-        <div ng-show="vm.other && vm.filing === 'joint'">
-            <h4>For you</h4>
+        <button class="btn btn-default" ng-click="vm.next()" ng-show="vm.form1">Next</button>
+
+        <div ng-show="!vm.form1">
+            <h4>“Disclaimer: There may be some small copayments required.”<br/>
+                “Note: If your employer pays more than the required share, your amount will be less.”
+            </h4>
             <div class="form-group">
-                <label class="col-sm-5 control-label">Do you receive Social Security</label>
-                <div class="input-group col-sm-2">
-                    <input type="radio" ng-model="vm.you.receiveSS" value=true>Yes
-                    <input type="radio" ng-model="vm.you.receiveSS" value=false>No
-                </div>
-            </div>
-            <div ng-show="vm.you.receiveSS">
-                <div class="form-group">
-                    <label class="col-sm-5 control-label">Your monthly Social Security Income</label>
-                    <div class="input-group col-sm-2">
-                        <span class="input-group-addon">$</span>
-                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.you.monthlySS">
-                        <span class="input-group-addon">.00</span>
-                    </div>
+                <label class="col-sm-5 control-label">Total healthcare cost</label>
+                <div class="col-sm-2 ">
+                    <p class="form-control-static">${{vm.result1}}</p>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-5 control-label">Your annual retirement income from annuity, pension, IRA, etc.</label>
-                <div class="input-group col-sm-2">
-                    <span class="input-group-addon">$</span>
-                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.you.retirement">
-                    <span class="input-group-addon">.00</span>
-                </div>
-            </div>
-            <div>
-                <div class="form-group">
-                    <label class="col-sm-5 control-label">Are you over age 55?</label>
-                    <div class="input-group col-sm-2">
-                        <input type="radio" ng-model="vm.you.receiveSS" value=true>Yes
-                        <input type="radio" ng-model="vm.you.receiveSS" value=false>No
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-5 control-label">Are you over age 65?</label>
-                    <div class="input-group col-sm-2">
-                        <input type="radio" ng-model="vm.you.receiveSS" value=true>Yes
-                        <input type="radio" ng-model="vm.you.receiveSS" value=false>No
-                    </div>
-                </div>
-            </div>
-            <h4>For your spouse</h4>
-            <div class="form-group">
-                <label class="col-sm-5 control-label">Does your spouse receive Social Security</label>
-                <div class="input-group col-sm-2">
-                    <input type="radio" ng-model="vm.spouse.receiveSS" value=true>Yes
-                    <input type="radio" ng-model="vm.spouse.receiveSS" value=false>No
-                </div>
-            </div>
-            <div ng-show="vm.spouse.receiveSS">
-                <div class="form-group">
-                    <label class="col-sm-5 control-label">Your monthly Social Security Income</label>
-                    <div class="input-group col-sm-2">
-                        <span class="input-group-addon">$</span>
-                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.spouse.monthlySS">
-                        <span class="input-group-addon">.00</span>
-                    </div>
+                <label class="col-sm-5 control-label">Total Colorado Care cost</label>
+                <div class="col-sm-2 ">
+                    <p class="form-control-static">${{vm.result2}}</p>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-5 control-label">Your annual retirement income from annuity, pension, IRA, etc.</label>
-                <div class="input-group col-sm-2">
-                    <span class="input-group-addon">$</span>
-                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.spouse.retirement">
-                    <span class="input-group-addon">.00</span>
-                </div>
-            </div>
-            <div>
-                <div class="form-group">
-                    <label class="col-sm-5 control-label">Is your spouse over age 55?</label>
-                    <div class="input-group col-sm-2">
-                        <input type="radio" ng-model="vm.spouse.age1" value=true>Yes
-                        <input type="radio" ng-model="vm.spouse.age1" value=false>No
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-5 control-label">Is your spouse over age 65?</label>
-                    <div class="input-group col-sm-2">
-                        <input type="radio" ng-model="vm.spouse.age2" value=true>Yes
-                        <input type="radio" ng-model="vm.spouse.age2" value=false>No
-                    </div>
+                <label class="col-sm-5 control-label">These totals are an estimate. Copays often shift year to year
+                    based on usage. Colorado Care has no copays for preventative care or most other services.</label>
+                <div class="col-sm-2 ">
+                    <p class="form-control-static">${{vm.difference}}</p>
                 </div>
             </div>
         </div>
-        <div class="form-group" ng-show="vm.other">
-            <label class="col-sm-5 control-label">Gross income reported before line 22 on Form 1040 excluding payroll, Social Security and retirement</label>
-            <div class="input-group col-sm-2">
-                <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="vm.gross">
-                <span class="input-group-addon">.00</span>
-            </div>
-        </div>
-    </div>
-
-    <div ng-show="vm.other">
-
-
-    </div>
-    <button ng-click="vm.next()" ng-show="vm.form1">Finish</button>
-
-    <div ng-show="!vm.form1">
-        <h4>“Disclaimer:  There may be some small copayments required.”<br />
-            “Note:  If your employer pays more than the required share, your amount will be less.”
-        </h4>
-        <div class="form-group">
-            <label class="col-sm-5 control-label">Total healthcare cost</label>
-            <div class="col-sm-2 ">
-                {{vm.result1}}
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-5 control-label">Total Colorado Care cost</label>
-            <div class="col-sm-2 ">
-                {{vm.result2}}
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-5 control-label">These totals are an estimate.  Copays often shift year to year based on usage.  Colorado Care has no copays for preventative care or most other services.</label>
-            <div class="col-sm-2 ">
-                {{vm.difference}}
-            </div>
-        </div>
-    </div>
+        <button class="btn btn-default" ng-click="vm.back()" ng-show="!vm.form1">Back</button>
 
 </form>
