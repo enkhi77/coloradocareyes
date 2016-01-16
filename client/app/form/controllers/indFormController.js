@@ -22,15 +22,6 @@
         vm.next = function next() {
             console.log('check form', vm.form);
             vm.form1 = false;
-            var ssAnnual = vm.SS * 12;
-            var ssFinal = function(){
-                if(ssAnnual - 9000 < 0){
-                    return 0;
-                }
-                else{
-                    return ssAnnual - 9000;
-                }
-            };
             vm.result1 = vm.form.premium * 12 +
                 vm.form.deductible +
                 vm.form.copay +
@@ -44,6 +35,17 @@
 
         vm.back = function back() {
             vm.form1 = true;
-        }
+        };
+
+        vm.clear = function clear() {
+            vm.form = {
+                premium: null,
+                deductible: null,
+                copay: null,
+                expenses: null,
+                income: null
+            };
+            vm.other = null;
+        };
     }
 })();
