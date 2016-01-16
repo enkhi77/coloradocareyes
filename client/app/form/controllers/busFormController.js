@@ -21,14 +21,14 @@
         vm.next = function next() {
             console.log('next!');
             vm.form1 = false;
-            vm.healthexpense = vm.form.premium +
+            var sum1 = vm.form.premium +
                 vm.form.worker * 0.59 +
                 vm.form.admin;
-            vm.healthexpense.toFixed(2);
-            vm.ccexpense = vm.form.payroll*0.067;
-            vm.ccexpense.toFixed(2);
-            vm.difference = vm.healthexpense - vm.ccexpense;
-            vm.difference.toFixed(2);
+            vm.healthexpense = sum1.toFixed(2);
+            var sum2 = vm.form.payroll*0.067;
+            vm.ccexpense = sum2.toFixed(2);
+            var sum3 = vm.healthexpense - vm.ccexpense;
+            vm.difference = sum3.toFixed(2);
         };
 
         vm.back = function back() {
