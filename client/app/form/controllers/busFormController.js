@@ -43,5 +43,15 @@
                 payroll: null
             };
         };
+
+        vm.startover = function startover(){
+            vm.form1 = true;
+            vm.form = {
+                premium: null,
+                worker: null,
+                admin: null,
+                payroll: null
+            };
+        };
     }
 })();

@@ -48,5 +48,17 @@
             };
             vm.other = null;
         };
+
+        vm.startover = function startover(){
+            vm.form1 = true;
+            vm.form = {
+                premium: null,
+                deductible: null,
+                copay: null,
+                expenses: null,
+                income: null
+            };
+            vm.other = null;
+        }
     }
 })();
