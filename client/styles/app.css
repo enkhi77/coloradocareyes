@@ -10,7 +10,7 @@ body {
     /*text-align: center;*/
 /*}*/
 
-label.col-sm-5.control-label {
+label.col-sm-6.control-label {
     text-align: left; !important
 }
 label.col-sm-7.control-label {
