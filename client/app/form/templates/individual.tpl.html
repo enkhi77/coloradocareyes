@@ -105,12 +105,6 @@
                 </div>
             </div>
             <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
-                <label class="col-sm-6 col-sm-offset-1 control-label">Are you over age 55</label>
-                <div class="input-group col-sm-4">
-                    <input type="checkbox" class="form-control" ng-model="vm.you.age1">
-                </div>
-            </div>
-            <div class="form-group" ng-show="vm.other && vm.filing === 'single' && vm.you.age1">
                 <label class="col-sm-6 col-sm-offset-1 control-label">Annual retirement income from annuity, pension, IRA, etc.</label>
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
@@ -120,11 +114,24 @@
                 </div>
             </div>
             <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
-                <label class="col-sm-6 col-sm-offset-1 control-label">Are you over age 65</label>
+                <label class="col-sm-6 col-sm-offset-1 control-label">Check if you are you over age 55</label>
                 <div class="input-group col-sm-4">
-                    <input type="checkbox" class="form-control" ng-model="vm.you.age2">
+                    <input type="checkbox" class="form-control" ng-model="vm.form.you.age1" ng-change="vm.calculate()">
                 </div>
             </div>
+            <div class="form-group" ng-show="vm.other && vm.filing === 'single' && vm.form.you.age1">
+                <label class="col-sm-6 col-sm-offset-1 control-label">Check if you are you over age 65</label>
+                <div class="input-group col-sm-4">
+                    <input type="checkbox" class="form-control" ng-model="vm.form.you.age2" ng-change="vm.calculate()">
+                </div>
+            </div>
+            <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
+                <label class="col-sm-6 col-sm-offset-1 control-label">Retirement Cost</label>
+                <div class="col-sm-4 ">
+                    <p class="form-control-static">${{vm.results.calcRetirement}}</p>
+                </div>
+            </div>
+
 
             <!-- for joint filing -->
             <div ng-show="vm.other && vm.filing === 'joint'">

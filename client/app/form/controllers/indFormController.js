@@ -38,21 +38,44 @@
             vm.medicare = null;
             vm.filing = null;
             vm.age1 = null;
+            vm.results = {
+                annualSS: null,
+                applicableRet: null,
+                postApplicableRet: null,
+                SSRetirementIncome: null,
+                calcRetirement: null,
+                healthcareCost: null,
+                CCCost: null,
+                savings: null
+            };
         }
         setIndividualForm();
 
-
         vm.calculate = function calculate() {
             console.log('check form', vm.form);
-            var ssAnnual = vm.SS * 12;
-            var ssFinal = function(){
-                if(ssAnnual - 9000 < 0){
-                    return 0;
+            vm.results.annualSS = 12 * vm.form.you.monthlySS;
+            vm.results.applicableSS = vm.results.annualSS - 9000;
+            if(vm.filing === 'single'){
+                if(vm.form.you.age1){
+                    console.log('age check over 55');
+                    vm.results.applicableRet = vm.results.applicableSS + vm.form.you.retirement - 20000;
+                    if(vm.form.you.age2){
+                        console.log('age check over 65');
+                        vm.results.postApplicableRet = vm.results.applicableRet - 4000;
+                        vm.results.SSRetirementIncome = vm.results.applicableSS + vm.postApplicableRet;
+                        vm.results.calcRetirement = vm.results.SSRetirementIncome;
+                    }
+                    else{
+                        console.log('age check not over 65');
+                        vm.results.calcRetirement = vm.results.applicableRet + vm.results.applicableSS;
+                    }
                 }
                 else{
-                    return ssAnnual - 9000;
+                    console.log('age check not over 55');
+                    vm.results.calcRetirement = vm.results.applicableSS + vm.form.you.retirement;
                 }
-            };
+            }
+            console.log('check results', vm.results);
             var sum1 = vm.form.premium * 12 +
                 vm.form.deductible +
                 vm.form.copay +
