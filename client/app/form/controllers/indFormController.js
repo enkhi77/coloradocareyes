@@ -93,5 +93,7 @@
             setIndividualForm();
             vm.calculate();
         };
+
+
     }
 })();

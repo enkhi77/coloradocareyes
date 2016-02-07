@@ -16,3 +16,21 @@ label.col-sm-6.control-label {
 label.col-sm-7.control-label {
     text-align: left; !important
 }
+
+.results-margin {
+    margin-right: 50px !important;
+}
+
+#individualResult {
+    border: groove 2px black;
+    background-color: gold;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#businessResult {
+    border: groove 2px black;
+    background-color: gold;
+    font-size: larger;
+    font-weight: bolder;
+}
