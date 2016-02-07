@@ -1,10 +1,6 @@
 <!--Complex version -->
 <h2>Business Form</h2>
 <h4 class="subheading">Current employer’s annual medical benefits expense</h4>
-<p>
-    Note:  Calculations are for all employees who are subject to Colorado income tax withholding.
-</p>
-
 
 <form class="form-horizontal">
     <div class="col-sm-6 calcside">
@@ -13,7 +9,7 @@
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                       ng-model="vm.form.premium" ng-blur="vm.calculate()">
+                       ng-model="vm.form.premium" >
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -24,7 +20,7 @@
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                       ng-model="vm.form.worker" ng-blur="vm.calculate()">
+                       ng-model="vm.form.worker" >
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -34,26 +30,24 @@
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                       ng-model="vm.form.admin" ng-blur="vm.calculate()">
+                       ng-model="vm.form.admin" >
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-7 control-label">Total annual payroll for Colorado residents</label>
+            <label class="col-sm-7 control-label">Total annual payroll for employees subject to Colorado income tax witholding</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
                 <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                       ng-model="vm.form.payroll" ng-blur="vm.calculate()">
+                       ng-model="vm.form.payroll" >
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
         <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
+        <button class="btn btn-default" ng-click="vm.calculate()">Calculate</button>
     </div>
 
     <div class="col-sm-6 resultside">
-        <p>
-            Note:  If your employer pays more than the required share, your amount will be less.
-        </p>
         <div class="form-group results-margin">
             <label class="col-sm-7 control-label">Current health coverage expense</label>
             <div class="input-group col-sm-4">
@@ -69,7 +63,7 @@
         </div>
 
         <div class="form-group results-margin" id="businessResult">
-            <label class="col-sm-7 control-label">Difference in Employer expenses: Current vs. ColoradoCare</label>
+            <label class="col-sm-7 control-label">Employer Savings by ColoradoCare vs. Current</label>
             <div class="input-group col-sm-4">
                 <p class="form-control-static">${{vm.difference}}</p>
             </div>

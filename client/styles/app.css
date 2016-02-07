@@ -17,6 +17,10 @@ label.col-sm-7.control-label {
     text-align: left; !important
 }
 
+input radio {
+
+}
+
 .results-margin {
     margin-right: 50px !important;
 }
