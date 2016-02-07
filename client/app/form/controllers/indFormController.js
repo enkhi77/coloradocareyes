@@ -62,6 +62,10 @@
                 }
 
             };
+            vm.result1 = null;
+            vm.result2 = null;
+            vm.result3 = null;
+            vm.resultFiling = null;
         }
         setIndividualForm();
 
@@ -130,11 +134,19 @@
                 vm.form.copay +
                 vm.form.expenses;
             vm.result1 = sum1.toFixed(2);
+            if(vm.filing === 'single'){
+                var sumFilingSingle = sum1 + vm.results.you.calcRetirement;
+                vm.resultFiling = sumFilingSingle.toFixed(2);
+            }
+            else if(vm.filing === 'joint'){
+                var sumFilingJoint = sum1 + vm.results.you.calcRetirement + vm.results.spouse.calcRetirement;
+                vm.resultFiling = sumFilingJoint.toFixed(2);
+            }
 
             var sum2 = vm.form.income * 0.0333;
             vm.result2 = sum2.toFixed(2);
 
-            var sum3 = vm.result1 - vm.result2;
+            var sum3 = vm.result1 + vm.resultFiling - vm.result2;
             vm.difference = sum3.toFixed(2);
         };
 

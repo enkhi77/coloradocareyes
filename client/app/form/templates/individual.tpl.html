@@ -108,28 +108,28 @@
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.you.retirement" >
+                           ng-model="vm.form.you.retirement">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
             <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
                 <label class="col-sm-6 col-sm-offset-1 control-label">Check if you are you over age 55</label>
                 <div class="input-group col-sm-4">
-                    <input type="checkbox" class="form-control" ng-model="vm.form.you.age1" ng-change="vm.calculate()">
+                    <input type="checkbox" class="form-control" ng-model="vm.form.you.age1">
                 </div>
             </div>
             <div class="form-group" ng-show="vm.other && vm.filing === 'single' && vm.form.you.age1">
                 <label class="col-sm-6 col-sm-offset-1 control-label">Check if you are you over age 65</label>
                 <div class="input-group col-sm-4">
-                    <input type="checkbox" class="form-control" ng-model="vm.form.you.age2" ng-change="vm.calculate()">
+                    <input type="checkbox" class="form-control" ng-model="vm.form.you.age2">
                 </div>
             </div>
-            <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
-                <label class="col-sm-6 col-sm-offset-1 control-label">Retirement Cost</label>
-                <div class="col-sm-4 ">
-                    <p class="form-control-static">${{vm.results.calcRetirement}}</p>
-                </div>
-            </div>
+            <!--<div class="form-group" ng-show="vm.other && vm.filing === 'single'">-->
+                <!--<label class="col-sm-6 col-sm-offset-1 control-label">Retirement Cost</label>-->
+                <!--<div class="col-sm-4 ">-->
+                    <!--<p class="form-control-static">${{vm.results.calcRetirement}}</p>-->
+                <!--</div>-->
+            <!--</div>-->
 
 
             <!-- for joint filing -->
@@ -142,23 +142,23 @@
                     <div class="input-group col-sm-4">
                         <span class="input-group-addon">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                               ng-model="vm.you.retirement" >
+                               ng-model="vm.form.you.retirement" >
                         <span class="input-group-addon">.00</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-6 col-sm-offset-1 control-label">If you receive Social Security check here:</label>
                     <div class="input-group col-sm-4">
-                        <input type="checkbox" class="form-control" ng-model="vm.you.receiveSS">
+                        <input type="checkbox" class="form-control" ng-model="vm.form.you.receiveSS">
                     </div>
                 </div>
-                <div ng-if="vm.you.receiveSS">
+                <div ng-if="vm.form.you.receiveSS">
                     <div class="form-group">
                         <label class="col-sm-6 col-sm-offset-1 control-label">Your monthly Social Security Income</label>
                         <div class="input-group col-sm-4">
                             <span class="input-group-addon">$</span>
                             <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.you.monthlySS" >
+                                   ng-model="vm.form.you.monthlySS">
                             <span class="input-group-addon">.00</span>
                         </div>
                     </div>
@@ -168,13 +168,13 @@
                     <div class="form-group">
                         <label class="col-sm-6 col-sm-offset-1 control-label">If you are over age 55, check here:</label>
                         <div class="input-group col-sm-4">
-                            <input type="checkbox" class="form-control" ng-model="vm.you.age1">
+                            <input type="checkbox" class="form-control" ng-model="vm.form.you.age1">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-show="!vm.form.you.age1">
                         <label class="col-sm-6 col-sm-offset-1 control-label">If you over age 65, check here:</label>
                         <div class="input-group col-sm-4">
-                            <input type="checkbox" class="form-control" ng-model="vm.you.age2">
+                            <input type="checkbox" class="form-control" ng-model="vm.form.you.age2">
                         </div>
                     </div>
                 </div>
@@ -182,58 +182,43 @@
                 <!-- questions for spouse -->
                 <h4>For your spouse</h4>
                 <div class="form-group">
-                    <label class="col-sm-6 col-sm-offset-1 control-label">Does your spouse receive Social Security</label>
-                    <div class="input-group col-sm-4">
-                        <label class="checkbox-inline">
-                            <input type="radio" ng-model="vm.spouse.receiveSS" value=true> Yes
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" ng-model="vm.spouse.receiveSS" value=false> No
-                        </label>
-                    </div>
-                </div>
-                <div ng-show="vm.spouse.receiveSS">
-                    <div class="form-group">
-                        <label class="col-sm-6 col-sm-offset-1 control-label">Your monthly Social Security Income</label>
-                        <div class="input-group col-sm-4">
-                            <span class="input-group-addon">$</span>
-                            <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.spouse.monthlySS" >
-                            <span class="input-group-addon">.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="col-sm-6 col-sm-offset-1 control-label">Your annual retirement income from annuity, pension, IRA,
                         etc.</label>
                     <div class="input-group col-sm-4">
                         <span class="input-group-addon">$</span>
                         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                               ng-model="vm.spouse.retirement" >
+                               ng-model="vm.form.spouse.retirement">
                         <span class="input-group-addon">.00</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-6 col-sm-offset-1 control-label">Does your spouse receive Social Security</label>
+                    <div class="input-group col-sm-4">
+                        <input type="checkbox" class="form-control" ng-model="vm.form.spouse.receiveSS">
+                    </div>
+                </div>
+                <div ng-show="vm.form.spouse.receiveSS">
+                    <div class="form-group">
+                        <label class="col-sm-6 col-sm-offset-1 control-label">Your monthly Social Security Income</label>
+                        <div class="input-group col-sm-4">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                                   ng-model="vm.form.spouse.monthlySS" >
+                            <span class="input-group-addon">.00</span>
+                        </div>
                     </div>
                 </div>
                 <div>
                     <div class="form-group">
                         <label class="col-sm-6 col-sm-offset-1 control-label">Is your spouse over age 55?</label>
                         <div class="input-group col-sm-4">
-                            <label class="checkbox-inline">
-                                <input type="radio" ng-model="vm.spouse.age1" value=true> Yes
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="radio" ng-model="vm.spouse.age1" value=false> No
-                            </label>
+                            <input type="checkbox" class="form-control" ng-model="vm.form.spouse.age1">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-show="fm.form.spouse.age1">
                         <label class="col-sm-6 col-sm-offset-1 control-label">Is your spouse over age 65?</label>
                         <div class="input-group col-sm-4">
-                            <label class="checkbox-inline">
-                                <input type="radio" ng-model="vm.spouse.age2" value=true> Yes
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="radio" ng-model="vm.spouse.age2" value=false> No
-                            </label>
+                            <input type="checkbox" class="form-control" ng-model="vm.form.spouse.age2">
                         </div>
                     </div>
                 </div>
@@ -252,6 +237,12 @@
                 <label class="col-sm-7 control-label">Healthcare cost</label>
                 <div class="col-sm-4 ">
                     <p class="form-control-static">${{vm.result1}}</p>
+                </div>
+            </div>
+            <div class="form-group results-margin">
+                <label class="col-sm-7 control-label">Social Security and Retirement income that applies:</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">${{vm.resultFiling}}</p>
                 </div>
             </div>
             <div class="form-group results-margin">
