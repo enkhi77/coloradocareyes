@@ -8,8 +8,6 @@
         console.log('load indFormController');
         var vm = this;
 
-        vm.form1 = true;
-
         vm.form = {
             premium: null,
             deductible: null,
@@ -20,7 +18,7 @@
         vm.other = null;
         vm.nohelp = false;
 
-        vm.next = function next() {
+        vm.calculate = function calculate() {
             console.log('check form', vm.form);
             vm.form1 = false;
             var sum1 = vm.form.premium * 12 +
@@ -34,10 +32,6 @@
             vm.difference = sum3.toFixed(2);
         };
 
-        vm.back = function back() {
-            vm.form1 = true;
-        };
-
         vm.clear = function clear() {
             vm.form = {
                 premium: null,
@@ -48,17 +42,5 @@
             };
             vm.other = null;
         };
-
-        vm.startover = function startover(){
-            vm.form1 = true;
-            vm.form = {
-                premium: null,
-                deductible: null,
-                copay: null,
-                expenses: null,
-                income: null
-            };
-            vm.other = null;
-        }
     }
 })();

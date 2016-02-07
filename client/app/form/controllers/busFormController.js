@@ -8,17 +8,15 @@
         console.log('load busFormController');
         var vm = this;
 
-        vm.form1 = true;
-        vm.nohelp = false;
-
         vm.form = {
             premium: null,
             worker: null,
             admin: null,
             payroll: null
         };
+        vm.nohelp = false;
 
-        vm.next = function next() {
+        vm.calculate = function calculate() {
             console.log('next!');
             vm.form1 = false;
             var sum1 = vm.form.premium +
@@ -31,21 +29,7 @@
             vm.difference = sum3.toFixed(2);
         };
 
-        vm.back = function back() {
-            vm.form1 = true;
-        };
-
         vm.clear = function clear() {
-            vm.form = {
-                premium: null,
-                worker: null,
-                admin: null,
-                payroll: null
-            };
-        };
-
-        vm.startover = function startover(){
-            vm.form1 = true;
             vm.form = {
                 premium: null,
                 worker: null,
