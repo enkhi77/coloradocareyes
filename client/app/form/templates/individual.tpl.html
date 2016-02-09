@@ -124,16 +124,10 @@
                     <input type="checkbox" class="form-control" ng-model="vm.form.you.age2" id="vmFormSingleAge2">
                 </div>
             </div>
-            <!--<div class="form-group" ng-show="vm.other && vm.filing === 'single'">-->
-                <!--<label class="col-sm-6 col-sm-offset-1 control-label">Retirement Cost</label>-->
-                <!--<div class="col-sm-4 ">-->
-                    <!--<p class="form-control-static">${{vm.results.calcRetirement}}</p>-->
-                <!--</div>-->
-            <!--</div>-->
-
 
             <!-- for joint filing -->
             <div ng-show="vm.other && vm.filing === 'joint'">
+
                 <!-- questions for you -->
                 <h4>For you</h4>
                 <div class="form-group">
@@ -163,7 +157,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div>
                     <div class="form-group">
                         <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointYouAge1">If you are over age 55, check here:</label>
@@ -171,7 +164,7 @@
                             <input type="checkbox" class="form-control" ng-model="vm.form.you.age1" id="vmFormJointYouAge1">
                         </div>
                     </div>
-                    <div class="form-group" ng-show="!vm.form.you.age1">
+                    <div class="form-group" ng-show="vm.form.you.age1">
                         <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointYouAge2">If you over age 65, check here:</label>
                         <div class="input-group col-sm-4">
                             <input type="checkbox" class="form-control" ng-model="vm.form.you.age2" id="vmFormJointYouAge2">
@@ -236,7 +229,7 @@
                 Note: If your employer pays more than the required share, your amount will be less.
             </p>
             <div class="form-group results-margin">
-                <label class="col-sm-7 control-label">Current healthcare cost</label>
+                <label class="col-sm-7 control-label">Current health care cost</label>
                 <div class="col-sm-4 ">
                     <p class="form-control-static">${{vm.result1}}</p>
                 </div>
