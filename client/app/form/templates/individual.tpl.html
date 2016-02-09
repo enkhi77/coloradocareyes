@@ -223,8 +223,10 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
-            <button class="btn btn-default" ng-click="vm.calculate()">Calculate</button>
+            <div class="col-xs-6 col-xs-offset-6 centered">
+                <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
+                <button class="btn btn-default" ng-click="vm.calculate()">Calculate</button>
+            </div>
         </div>
     </div>
 
@@ -234,19 +236,19 @@
                 Note: If your employer pays more than the required share, your amount will be less.
             </p>
             <div class="form-group results-margin">
-                <label class="col-sm-7 control-label">Healthcare cost</label>
+                <label class="col-sm-7 control-label">Current healthcare cost</label>
                 <div class="col-sm-4 ">
                     <p class="form-control-static">${{vm.result1}}</p>
                 </div>
             </div>
             <div class="form-group results-margin">
-                <label class="col-sm-7 control-label">Social Security and Retirement income that applies:</label>
+                <label class="col-sm-7 control-label">Social Security and retirement income that applies:</label>
                 <div class="col-sm-4">
                     <p class="form-control-static">${{vm.resultFiling}}</p>
                 </div>
             </div>
             <div class="form-group results-margin">
-                <label class="col-sm-7 control-label">Colorado Care cost</label>
+                <label class="col-sm-7 control-label">ColoradoCare cost</label>
                 <div class="col-sm-4 ">
                     <p class="form-control-static">${{vm.result2}}</p>
                 </div>
@@ -261,8 +263,4 @@
         </div>
         <button class="btn btn-default" ng-click="vm.clear()">Back</button>
     </div>
-
-
-
-
 </form>

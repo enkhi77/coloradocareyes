@@ -38,3 +38,7 @@ input radio {
     font-size: larger;
     font-weight: bolder;
 }
+
+.centered {
+    text-align: center;
+}
