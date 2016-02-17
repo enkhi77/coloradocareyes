@@ -162,6 +162,9 @@
 
             if(vm.form.you.age2){
                 vm.results.you.postApplicableRet = vm.results.you.applicableRet - 4000;
+                if(vm.results.you.postApplicableRet < 0){
+                    vm.results.you.postApplicableRet = 0;
+                }
                 vm.results.you.SSRetirementIncome = vm.results.joint.applicableSS + vm.results.you.postApplicableRet;
             }
             else{
@@ -190,6 +193,9 @@
 
             if(vm.form.spouse.age2){
                 vm.results.spouse.postApplicableRet = vm.results.spouse.applicableRet - 4000;
+                if(vm.results.spouse.postApplicableRet < 0){
+                    vm.results.spouse.postApplicableRet = 0;
+                }
                 vm.results.spouse.SSRetirementIncome = vm.results.joint.applicableSS + vm.results.spouse.postApplicableRet;
             }
             else{
@@ -197,6 +203,7 @@
             }
 
             vm.results.joint.SSRetirementIncome = vm.results.you.SSRetirementIncome + vm.results.spouse.SSRetirementIncome;
+            console.log('jointCalculation final result', vm.results.joint.SSRetirementIncome);
             return vm.results.joint.SSRetirementIncome;
         };
 
