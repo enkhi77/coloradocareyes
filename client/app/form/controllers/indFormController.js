@@ -238,7 +238,5 @@
         vm.clear = function clear() {
             setIndividualForm();
         };
-
-
     }
 })();
