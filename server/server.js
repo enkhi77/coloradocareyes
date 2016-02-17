@@ -10,7 +10,7 @@ var path = require('path');
 //create express app
 var app = express();
 
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 5000));
 
 //middleware
 app.use('/',express.static(path.join(__dirname, '..', 'client'),{ redirect: false }));

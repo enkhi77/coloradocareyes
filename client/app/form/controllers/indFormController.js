@@ -41,6 +41,7 @@
             vm.results = {
                 you: {
                     annualSS: null,
+                    applicableSS: null,
                     applicableRet: null,
                     postApplicableRet: null,
                     SSRetirementIncome: null,
@@ -51,6 +52,7 @@
                 },
                 spouse: {
                     annualSS: null,
+                    applicableSS: null,
                     applicableRet: null,
                     postApplicableRet: null,
                     SSRetirementIncome: null,
@@ -69,82 +71,166 @@
         setIndividualForm();
 
         var baseCalculation = function baseCalculation(){
-            var sum1 = vm.form.premium * 12 +
-                vm.form.deductible +
-                vm.form.copay +
-                vm.form.expenses;
-            vm.result1 = sum1.toFixed(2);
+            var results = vm.form.premium * 12 + vm.form.deductible + vm.form.copay + vm.form.expenses;
+            console.log('baseCalculation return', results);
+            return results;
         };
         var singleCalculation = function singleCalculation(){
+            vm.results.you.annualSS = vm.form.you.monthlySS * 12;
+            console.log('singleCalculation annualSS', vm.results.you.annualSS);
+            vm.results.you.applicableSS = vm.results.you.annualSS - 9000;
+            if(vm.results.you.applicableSS < 0){
+                vm.results.you.applicableSS = 0;
+            }
+            console.log('singleCalculation applicableSS', vm.results.you.applicableSS);
             if(vm.form.you.age1){
-                console.log('age check over 55');
                 vm.results.you.applicableRet = vm.results.you.applicableSS + vm.form.you.retirement - 20000;
-                if(vm.form.you.age2){
-                    console.log('age check over 65');
-                    vm.results.you.postApplicableRet = vm.results.you.applicableRet - 4000;
-                    vm.results.you.SSRetirementIncome = vm.results.you.applicableSS + vm.results.you.postApplicableRet;
-                    vm.results.you.calcRetirement = vm.results.you.SSRetirementIncome;
+                if(vm.results.you.applicableRet < 0){
+                    vm.results.you.applicableRet = 0;
                 }
-                else{
-                    console.log('age check not over 65');
-                    vm.results.you.calcRetirement = vm.results.you.applicableRet + vm.results.you.applicableSS;
-                }
+                console.log('singleCalculation over 55 applicableRet', vm.results.you.applicableRet);
             }
             else{
-                console.log('age check not over 55');
-                vm.results.you.calcRetirement = vm.results.you.applicableSS + vm.form.you.retirement;
+                vm.results.you.applicableRet = vm.results.you.applicableSS + vm.form.you.retirement;
+                console.log('singleCalculation under 55 applicableRet', vm.results.you.applicableRet);
+                return vm.results.you.applicableRet;
+            }
+            if(vm.form.you.age2){
+                console.log('age check over 65');
+                vm.results.you.postApplicableRet = vm.results.you.applicableRet - 4000;
+                if(vm.results.you.postApplicableRet < 0){
+                    vm.results.you.postApplicableRet = 0;
+                }
+                vm.results.you.SSRetirementIncome = vm.results.you.applicableSS + vm.results.you.postApplicableRet;
+                vm.results.you.calcRetirement = vm.results.you.SSRetirementIncome;
+                console.log('over 65 returning', vm.results.you.calcRetirement);
+                return vm.results.you.calcRetirement;
+            }
+            else{
+                console.log('age check not over 65');
+                vm.results.you.calcRetirement = vm.results.you.applicableRet + vm.results.you.applicableSS;
+                console.log('over 55 under 65 returning', vm.results.you.calcRetirement);
+                return vm.results.you.calcRetirement;
             }
         };
         var jointCalculation = function jointCalculation(){
+            // first calculation for you
+            vm.results.you.annualSS = vm.form.you.monthlySS * 12;
+            console.log('jointCalculation you annualSS', vm.results.you.annualSS);
+            vm.results.you.applicableSS = vm.results.you.annualSS - 9000;
+            if(vm.results.you.applicableSS < 0){
+                vm.results.you.applicableSS = 0;
+            }
+            console.log('jointCalculation you applicableSS', vm.results.you.applicableSS);
             if(vm.form.you.age1){
-                if(vm.form.you.age2){
-                    console.log('joint you age check over 55');
-                    vm.results.you.applicableRet = vm.results.you.applicableSS + vm.form.you.retirement - 20000;
+                vm.results.you.applicableRet = vm.results.you.applicableSS + vm.form.you.retirement - 20000;
+                if(vm.results.you.applicableRet < 0){
+                    vm.results.you.applicableRet = 0;
                 }
-                else{
-                    console.log('age check not over 65');
-                    vm.results.you.calcRetirement = vm.results.you.applicableRet + vm.results.you.applicableSS;
-                }
+                console.log('jointCalculation you over 55 applicableRet', vm.results.you.applicableRet);
             }
             else{
-                console.log('age check not over 55');
-                vm.results.you.calcRetirement = vm.results.you.applicableSS + vm.form.you.retirement;
+                vm.results.you.applicableRet = vm.results.you.applicableSS + vm.form.you.retirement;
+                if(!vm.form.you.age2){
+                    vm.results.you.calcRetirement = vm.results.you.applicableRet;
+                }
+                console.log('jointCalculation you under 55 applicableRet', vm.results.you.applicableRet);
+                return vm.results.you.applicableRet;
             }
+            if(vm.form.you.age2){
+                console.log('age check you over 65');
+                vm.results.you.postApplicableRet = vm.results.you.applicableRet - 4000;
+                if(vm.results.you.postApplicableRet < 0){
+                    vm.results.you.postApplicableRet = 0;
+                }
+                vm.results.you.SSRetirementIncome = vm.results.you.applicableSS + vm.results.you.postApplicableRet;
+                vm.results.you.calcRetirement = vm.results.you.SSRetirementIncome;
+                console.log('you over 65 returning', vm.results.you.calcRetirement);
+                //return vm.results.you.calcRetirement;
+            }
+            else{
+                console.log('age check not over 65');
+                vm.results.you.calcRetirement = vm.results.you.applicableRet + vm.results.you.applicableSS;
+                console.log('you over 55 under 65 returning', vm.results.you.calcRetirement);
+                //return vm.results.you.calcRetirement;
+            }
+
+            // second calculation for spouse
+            vm.results.spouse.annualSS = vm.form.spouse.monthlySS * 12;
+            console.log('singleCalculation annualSS', vm.results.spouse.annualSS);
+            vm.results.spouse.applicableSS = vm.results.spouse.annualSS - 9000;
+            if(vm.results.spouse.applicableSS < 0){
+                vm.results.spouse.applicableSS = 0;
+            }
+            console.log('singleCalculation applicableSS', vm.results.spouse.applicableSS);
             if(vm.form.spouse.age1){
-                console.log('joint spouse age check over 55');
-                vm.results.spouse.applicableRet = vm.results.spouse.applicableSS + vm.form.you.retirement - 20000;
-                if(vm.form.spouse.age2){
-                    console.log('age check over 65');
-                    vm.results.spouse.postApplicableRet = vm.results.spouse.applicableRet - 4000;
-                    vm.results.spouse.SSRetirementIncome = vm.results.spouse.applicableSS + vm.results.spouse.postApplicableRet;
-                    vm.results.spouse.calcRetirement = vm.results.spouse.SSRetirementIncome;
+                vm.results.spouse.applicableRet = vm.results.spouse.applicableSS + vm.form.spouse.retirement - 20000;
+                if(vm.results.spouse.applicableRet < 0){
+                    vm.results.spouse.applicableRet = 0;
                 }
-                else{
-                    console.log('age check not over 65');
-                    vm.results.spouse.calcRetirement = vm.results.spouse.applicableRet + vm.results.spouse.applicableSS;
-                }
+                console.log('singleCalculation over 55 applicableRet', vm.results.spouse.applicableRet);
             }
             else{
-                console.log('age check not over 55');
-                vm.results.spouse.calcRetirement = vm.results.spouse.applicableSS + vm.form.spouse.retirement;
+                vm.results.spouse.applicableRet = vm.results.spouse.applicableSS + vm.form.spouse.retirement;
+                if(!vm.form.spouse.age2){
+                    vm.results.spouse.calcRetirement = vm.results.spouse.applicableRet;
+                }
+                console.log('singleCalculation under 55 applicableRet', vm.results.spouse.applicableRet);
+                //return vm.results.you.applicableRet;
             }
+            if(vm.form.spouse.age2){
+                console.log('age check over 65');
+                vm.results.spouse.postApplicableRet = vm.results.spouse.applicableRet - 4000;
+                if(vm.results.spouse.postApplicableRet < 0){
+                    vm.results.spouse.postApplicableRet = 0;
+                }
+                vm.results.spouse.SSRetirementIncome = vm.results.spouse.applicableSS + vm.results.spouse.postApplicableRet;
+                vm.results.spouse.calcRetirement = vm.results.spouse.SSRetirementIncome;
+                console.log('over 65 returning', vm.results.spouse.calcRetirement);
+                //return vm.results.you.calcRetirement;
+            }
+            else{
+                console.log('age check not over 65');
+                vm.results.spouse.calcRetirement = vm.results.spouse.applicableRet + vm.results.spouse.applicableSS;
+                console.log('over 55 under 65 returning', vm.results.spouse.calcRetirement);
+                //return vm.results.you.calcRetirement;
+            }
+            var jointResults = vm.results.you.calcRetirement + vm.results.spouse.calcRetirement;
+            console.log('Joint results', jointResults);
+            return jointResults;
         };
-        var over55Calculation = function over55Calculation(applicableSS, retirement){
 
-        };
-        var over65Calculation = function over65Calculation(){
-
-        };
 
         vm.calculate = function calculate() {
+            console.log('Running individual calculation');
+            var sum1 = null;
             vm.resultsShown = true;
-            var sum1 = baseCalculation();
-            vm.result1 = sum1.toFixed(2);
+            if(!vm.other){
+                sum1 = baseCalculation();
+                console.log('!vm.other baseCalculation', sum1);
+                console.log('!vm.other baseCalculation', baseCalculation());
+                vm.result1 = sum1.toFixed(2);
+            }
+            else if(vm.other && !vm.social){
+                sum1 = baseCalculation() + vm.form.gross;
+                console.log('vm.other && !vm.social baseCalculation', sum1);
+                vm.result1 = sum1.toFixed(2);
+            }
+            else if(vm.other && vm.social && vm.filing === 'single'){
+                sum1 = baseCalculation() + vm.form.gross + singleCalculation();
+                console.log('vm.other && vm.social &&vm.filing single baseCalculation', sum1);
+                vm.result1 = sum1.toFixed(2);
+            }
+            else if(vm.other && vm.social && vm.filing === 'joint'){
+                sum1 = baseCalculation() + vm.form.gross + jointCalculation();
+                console.log('vm.other && vm.social &&vm.filing joint baseCalculation', sum1);
+                vm.result1 = sum1.toFixed(2);
+            }
 
             var sum2 = vm.form.income * 0.0333;
             vm.result2 = sum2.toFixed(2);
 
-            var sum3 = vm.result1 + vm.resultFiling - vm.result2;
+            var sum3 = vm.result1 - vm.result2;
             vm.difference = sum3.toFixed(2);
         };
 
