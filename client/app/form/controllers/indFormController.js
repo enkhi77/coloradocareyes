@@ -135,7 +135,6 @@
                     vm.results.you.calcRetirement = vm.results.you.applicableRet;
                 }
                 console.log('jointCalculation you under 55 applicableRet', vm.results.you.applicableRet);
-                return vm.results.you.applicableRet;
             }
             if(vm.form.you.age2){
                 console.log('age check you over 65');
@@ -146,13 +145,11 @@
                 vm.results.you.SSRetirementIncome = vm.results.you.applicableSS + vm.results.you.postApplicableRet;
                 vm.results.you.calcRetirement = vm.results.you.SSRetirementIncome;
                 console.log('you over 65 returning', vm.results.you.calcRetirement);
-                //return vm.results.you.calcRetirement;
             }
             else{
                 console.log('age check not over 65');
                 vm.results.you.calcRetirement = vm.results.you.applicableRet + vm.results.you.applicableSS;
                 console.log('you over 55 under 65 returning', vm.results.you.calcRetirement);
-                //return vm.results.you.calcRetirement;
             }
 
             // second calculation for spouse
@@ -176,7 +173,6 @@
                     vm.results.spouse.calcRetirement = vm.results.spouse.applicableRet;
                 }
                 console.log('singleCalculation under 55 applicableRet', vm.results.spouse.applicableRet);
-                //return vm.results.you.applicableRet;
             }
             if(vm.form.spouse.age2){
                 console.log('age check over 65');
@@ -187,13 +183,11 @@
                 vm.results.spouse.SSRetirementIncome = vm.results.spouse.applicableSS + vm.results.spouse.postApplicableRet;
                 vm.results.spouse.calcRetirement = vm.results.spouse.SSRetirementIncome;
                 console.log('over 65 returning', vm.results.spouse.calcRetirement);
-                //return vm.results.you.calcRetirement;
             }
             else{
                 console.log('age check not over 65');
                 vm.results.spouse.calcRetirement = vm.results.spouse.applicableRet + vm.results.spouse.applicableSS;
                 console.log('over 55 under 65 returning', vm.results.spouse.calcRetirement);
-                //return vm.results.you.calcRetirement;
             }
             var jointResults = vm.results.you.calcRetirement + vm.results.spouse.calcRetirement;
             console.log('Joint results', jointResults);
@@ -203,32 +197,26 @@
 
         vm.calculate = function calculate() {
             console.log('Running individual calculation');
-            var sum1 = null;
             vm.resultsShown = true;
-            if(!vm.other){
-                sum1 = baseCalculation();
-                console.log('!vm.other baseCalculation', sum1);
-                console.log('!vm.other baseCalculation', baseCalculation());
-                vm.result1 = sum1.toFixed(2);
-            }
-            else if(vm.other && !vm.social){
-                sum1 = baseCalculation() + vm.form.gross;
+            var sum1 = baseCalculation();
+            vm.result1 = sum1.toFixed(2);
+
+            var sum2 = null;
+            if(vm.other && !vm.social){
+                sum2 = (vm.form.income * 0.0333) + (0.10 * vm.form.gross);
                 console.log('vm.other && !vm.social baseCalculation', sum1);
-                vm.result1 = sum1.toFixed(2);
+                vm.result2 = sum2.toFixed(2);
             }
             else if(vm.other && vm.social && vm.filing === 'single'){
-                sum1 = baseCalculation() + vm.form.gross + singleCalculation();
+                sum2 = (vm.form.income * 0.0333) + (0.10 * vm.form.gross) + singleCalculation();
                 console.log('vm.other && vm.social &&vm.filing single baseCalculation', sum1);
-                vm.result1 = sum1.toFixed(2);
+                vm.result2 = sum2.toFixed(2);
             }
             else if(vm.other && vm.social && vm.filing === 'joint'){
-                sum1 = baseCalculation() + vm.form.gross + jointCalculation();
+                sum2 = (vm.form.income * 0.0333) + (0.10 * vm.form.gross) + jointCalculation();
                 console.log('vm.other && vm.social &&vm.filing joint baseCalculation', sum1);
-                vm.result1 = sum1.toFixed(2);
+                vm.result2 = sum2.toFixed(2);
             }
-
-            var sum2 = vm.form.income * 0.0333;
-            vm.result2 = sum2.toFixed(2);
 
             var sum3 = vm.result1 - vm.result2;
             vm.difference = sum3.toFixed(2);
