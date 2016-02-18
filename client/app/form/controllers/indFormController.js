@@ -165,10 +165,10 @@
                 if(vm.results.you.postApplicableRet < 0){
                     vm.results.you.postApplicableRet = 0;
                 }
-                vm.results.you.SSRetirementIncome = vm.results.joint.applicableSS + vm.results.you.postApplicableRet;
+                vm.results.you.SSRetirementIncome = vm.results.you.postApplicableRet;
             }
             else{
-                vm.results.you.SSRetirementIncome = vm.results.you.applicableSS + vm.results.you.applicableRet;
+                vm.results.you.SSRetirementIncome = vm.results.you.applicableRet;
             }
 
             if(vm.form.spouse.age1){
@@ -196,10 +196,10 @@
                 if(vm.results.spouse.postApplicableRet < 0){
                     vm.results.spouse.postApplicableRet = 0;
                 }
-                vm.results.spouse.SSRetirementIncome = vm.results.joint.applicableSS + vm.results.spouse.postApplicableRet;
+                vm.results.spouse.SSRetirementIncome = vm.results.spouse.postApplicableRet;
             }
             else{
-                vm.results.spouse.SSRetirementIncome = vm.results.spouse.applicableSS + vm.results.spouse.applicableRet;
+                vm.results.spouse.SSRetirementIncome = vm.results.spouse.applicableRet;
             }
 
             vm.results.joint.SSRetirementIncome = vm.results.you.SSRetirementIncome + vm.results.spouse.SSRetirementIncome;
