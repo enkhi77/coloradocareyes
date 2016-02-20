@@ -3,7 +3,7 @@
 <h4 class="subheading">Worksheet for comparing your current health care coverage to ColoradoCare</h4>
 
 <form class="form-horizontal">
-    <div class="col-sm-12 calcside" ng-hide="vm.resultsShown">
+    <div class="col-sm-6 calcside">
         <div>
             <p class="sectionheading"><b>Your current health care plan</b></p>
             <div class="form-group">
@@ -123,17 +123,17 @@
                 </div>
             </div>
             <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
-                <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormSingleAge1">
-                    Check if you are you over age 55</label>
+                <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointYourAge">
+                    Age:
+                </label>
                 <div class="input-group col-sm-4">
-                    <input type="checkbox" class="form-control" ng-model="vm.form.you.age1" id="vmFormSingleAge1">
-                </div>
-            </div>
-            <div class="form-group" ng-show="vm.other && vm.filing === 'single' && vm.form.you.age1">
-                <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormSingleAge2">
-                    Check if you are you over age 65</label>
-                <div class="input-group col-sm-4">
-                    <input type="checkbox" class="form-control" ng-model="vm.form.you.age2" id="vmFormSingleAge2">
+                    <label class="checkbox-inline" for="vmFilingSingle">
+                        <input type="radio" ng-model="vm.form.you.age" value="under65" id="vmFilingSingle"> Between 55
+                        and 65
+                    </label>
+                    <label class="checkbox-inline" for="vmFilingJoint">
+                        <input type="radio" ng-model="vm.form.you.age" value="over65" id="vmFilingJoint"> Over 65
+                    </label>
                 </div>
             </div>
 
@@ -157,7 +157,8 @@
                     <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointYouReceiveSS">
                         If you receive Social Security check here:</label>
                     <div class="input-group col-sm-4">
-                        <input type="checkbox" class="form-control" ng-model="vm.form.you.receiveSS" id="vmFormJointYouReceiveSS">
+                        <input type="checkbox" class="form-control" ng-model="vm.form.you.receiveSS"
+                               id="vmFormJointYouReceiveSS">
                     </div>
                 </div>
                 <div ng-if="vm.form.you.receiveSS">
@@ -173,18 +174,19 @@
                     </div>
                 </div>
                 <div>
-                    <div class="form-group">
-                        <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointYouAge1">
-                            If you are over age 55, check here:</label>
+                    <div class="form-group" ng-show="vm.form.you.receiveSS">
+                        <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointYourAge">
+                            Age:
+                        </label>
                         <div class="input-group col-sm-4">
-                            <input type="checkbox" class="form-control" ng-model="vm.form.you.age1" id="vmFormJointYouAge1">
-                        </div>
-                    </div>
-                    <div class="form-group" ng-show="vm.form.you.age1">
-                        <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointYouAge2">
-                            If you over age 65, check here:</label>
-                        <div class="input-group col-sm-4">
-                            <input type="checkbox" class="form-control" ng-model="vm.form.you.age2" id="vmFormJointYouAge2">
+                            <label class="checkbox-inline" for="vmFilingSingle">
+                                <input type="radio" ng-model="vm.form.you.age" value="under65" id="vmFilingSingle">
+                                Between 55 and 65
+                            </label>
+                            <label class="checkbox-inline" for="vmFilingJoint">
+                                <input type="radio" ng-model="vm.form.you.age" value="over65" id="vmFilingJoint"> Over
+                                65
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -206,7 +208,8 @@
                     <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointSpouseReceiveSS">
                         Does your spouse receive Social Security</label>
                     <div class="input-group col-sm-4">
-                        <input type="checkbox" class="form-control" ng-model="vm.form.spouse.receiveSS" id="vmFormJointSpouseReceiveSS">
+                        <input type="checkbox" class="form-control" ng-model="vm.form.spouse.receiveSS"
+                               id="vmFormJointSpouseReceiveSS">
                     </div>
                 </div>
                 <div ng-show="vm.form.spouse.receiveSS">
@@ -221,20 +224,18 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="form-group">
-                        <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointSpouseAge1">
-                            Is your spouse over age 55?</label>
-                        <div class="input-group col-sm-4">
-                            <input type="checkbox" class="form-control" ng-model="vm.form.spouse.age1" id="vmFormJointSpouseAge1">
-                        </div>
-                    </div>
-                    <div class="form-group" ng-show="vm.form.spouse.age1">
-                        <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointSpouseAge2">
-                            Is your spouse over age 65?</label>
-                        <div class="input-group col-sm-4">
-                            <input type="checkbox" class="form-control" ng-model="vm.form.spouse.age2" id="vmFormJointSpouseAge2">
-                        </div>
+                <div class="form-group" ng-show="vm.form.spouse.receiveSS">
+                    <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointSpouseAge">
+                        Age:
+                    </label>
+                    <div class="input-group col-sm-4">
+                        <label class="checkbox-inline" for="vmFilingSingle">
+                            <input type="radio" ng-model="vm.form.spouse.age" value="under65" id="vmFilingSingle">
+                            Between 55 and 65
+                        </label>
+                        <label class="checkbox-inline" for="vmFilingJoint">
+                            <input type="radio" ng-model="vm.form.spouse.age" value="over65" id="vmFilingJoint"> Over 65
+                        </label>
                     </div>
                 </div>
             </div>
@@ -245,7 +246,7 @@
         </div>
     </div>
 
-    <div class="col-sm-12 resultside" ng-show="vm.resultsShown">
+    <div class="col-sm-6 resultside">
         <div>
             <p>Disclaimer: There may be some small copayments required.<br/>
                 Note: If your employer pays more than the required share, your amount will be less.
@@ -268,8 +269,9 @@
                     <p class="form-control-static">${{vm.difference}}</p>
                 </div>
             </div>
-            <p>Note: These totals are an estimate. Copays often shift year to year based on usage. ColoradoCare has no copays for preventative or primary care.</p>
+            <p>Note: These totals are an estimate. Copays often shift year to year based on usage. ColoradoCare has no
+                copays for preventative or primary care.</p>
         </div>
-        <button class="btn btn-default" ng-click="vm.clear()">Back</button>
+        <!--<button class="btn btn-default" ng-click="vm.clear()">Back</button>-->
     </div>
 </form>
