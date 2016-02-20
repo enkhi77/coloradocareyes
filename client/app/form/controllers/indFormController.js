@@ -8,7 +8,7 @@
         console.log('load indFormController');
         var vm = this;
 
-        function setIndividualForm(){
+        function setIndividualForm() {
             vm.resultsShown = null;
             vm.form = {
                 premium: null,
@@ -18,7 +18,7 @@
                 income: null,
                 SS: null,
                 gross: null,
-                you:{
+                you: {
                     receiveSS: null,
                     monthlySS: null,
                     retirement: null,
@@ -72,55 +72,54 @@
             vm.result3 = null;
             vm.resultFiling = null;
         }
+
         setIndividualForm();
 
-        var baseCalculation = function baseCalculation(){
+        var baseCalculation = function baseCalculation() {
             var results = vm.form.premium * 12 + vm.form.deductible + vm.form.copay + vm.form.expenses;
             console.log('baseCalculation return', results);
             return results;
         };
-        var over55Calculation = function over55Calculation(a, b, c){
-            var sum = (0.10 * (a - ((12 * b) - 9000 + c) + ((12 * b) - 9000 + c) - 20000));
-            if(sum < 0){
-                sum = 0;
-            }
-            console.log('check over55 calculation', sum);
-            return sum;
+
+        var indDeduction = function indDeduction(a, b) {
+            return (12 * a) - 9000 + b;
         };
-        var over65Calculation = function over65Calculation(a, b, c){
-            var sum = (0.10 * (a - ((12 * b) - 9000 + c) + ((12 * b) - 9000 + c) - 24000));
-            if(sum < 0){
-                sum = 0;
-            }
-            console.log('check over65 calculation', sum);
-            return sum;
+
+        var jointDeduction = function jointDeduction(a, b, c) {
+            return (12 * a) - a / (c + a)(12000) + b;
         };
-        var singleCalculation = function singleCalculation(){
-            if(vm.other && vm.social && vm.form.you.age1 && !vm.form.you.age2){
-                return (vm.form.income * 0.0333) + over55Calculation(vm.form.gross, vm.form.you.monthlySS, vm.form.you.retirement);
+
+        var singleCalculation = function singleCalculation() {
+            var individualDeductionFinal = indDeduction(vm.form.you.monthlySS, vm.form.you.retirement);
+            if (vm.other && vm.social && vm.form.you.age1 && !vm.form.you.age2) {
+                if (individualDeductionFinal > 20000) {
+                    individualDeductionFinal = 20000;
+                }
+                return (vm.form.income * 0.0333) + (0.10 * (f - individualDeductionFinal));
             }
-            else if(vm.other && vm.social && vm.form.you.age1 && vm.form.you.age2){
-                return (vm.form.income * 0.0333) + over65Calculation(vm.form.gross, vm.form.you.monthlySS, vm.form.you.retirement);
+            else if (vm.other && vm.social && vm.form.you.age1 && vm.form.you.age2) {
+                if (individualDeductionFinal > 24000) {
+                    individualDeductionFinal = 24000;
+                }
+                return (vm.form.income * 0.0333) + (0.10 * (f - individualDeductionFinal));
             }
         };
-        var jointCalculation = function jointCalculation(){
-            var sumYou = null;
-            var sumSpouse = null;
-            var sumAll = null;
-            if(vm.other && vm.social && vm.form.you.age1 && !vm.form.you.age2){
-                sumYou = (vm.form.income * 0.0333) + over55Calculation(vm.form.gross, vm.form.you.monthlySS, vm.form.you.retirement);
+        var jointCalculation = function jointCalculation() {
+            var jointDeductionFinalYou = jointDeduction(vm.form.you.monthlySS, vm.form.you.retirement, vm.form.spouse.monthlySS);
+            var jointDeductionFinalSpouse = jointDeduction(vm.form.spouse.monthlySS, vm.form.spouse.retirement, vm.form.you.monthlySS);
+            if (vm.other && vm.social && vm.form.you.age1 && !vm.form.you.age2 && jointDeductionFinalYou > 20000) {
+                jointDeductionFinalYou = 20000;
             }
-            else if(vm.other && vm.social && vm.form.you.age1 && vm.form.you.age2){
-                sumYou =  (vm.form.income * 0.0333) + over65Calculation(vm.form.gross, vm.form.you.monthlySS, vm.form.you.retirement);
+            else if (vm.other && vm.social && vm.form.you.age1 && vm.form.you.age2 && jointDeductionFinalYou > 24000) {
+                jointDeductionFinalYou = 24000;
             }
-            if(vm.other && vm.social && vm.form.spouse.age1 && !vm.form.spouse.age2){
-                sumSpouse = (vm.form.income * 0.0333) + over55Calculation(vm.form.gross, vm.form.you.monthlySS, vm.form.you.retirement);
+            if (vm.other && vm.social && vm.form.spouse.age1 && !vm.form.spouse.age2 && jointDeductionFinalSpouse > 20000) {
+                jointDeductionFinalSpouse = 20000;
             }
-            else if(vm.other && vm.social && vm.form.spouse.age1 && vm.form.spouse.age2){
-                sumSpouse = (vm.form.income * 0.0333) + over65Calculation(vm.form.gross, vm.form.you.monthlySS, vm.form.you.retirement);
+            else if (vm.other && vm.social && vm.form.spouse.age1 && vm.form.spouse.age2 && jointDeductionFinalSpouse > 24000) {
+                jointDeductionFinalSpouse = 24000;
             }
-            sumAll = sumYou + sumSpouse;
-            return sumAll;
+            return (vm.form.income * 0.0333) + (0.10 * (f - jointDeductionFinalYou - jointDeductionFinalSpouse));
         };
 
 
@@ -131,22 +130,22 @@
             vm.result1 = sum1.toFixed(2);
 
             var sum2 = null;
-            if(!vm.other && !vm.social){
+            if (!vm.other && !vm.social) {
                 sum2 = vm.form.income * 0.0333;
                 console.log('!vm.other && !vm.social', sum2);
                 vm.result2 = sum2.toFixed(2);
             }
-            else if(vm.other && !vm.social){
+            else if (vm.other && !vm.social) {
                 sum2 = (vm.form.income * 0.0333) + (0.10 * vm.form.gross);
                 console.log('vm.other && !vm.social', sum2);
                 vm.result2 = sum2.toFixed(2);
             }
-            else if(vm.other && vm.social && vm.filing === 'single'){
+            else if (vm.other && vm.social && vm.filing === 'single') {
                 sum2 = singleCalculation();
                 console.log('vm.other && vm.social &&vm.filing single baseCalculation', sum2);
                 vm.result2 = sum2.toFixed(2);
             }
-            else if(vm.other && vm.social && vm.filing === 'joint'){
+            else if (vm.other && vm.social && vm.filing === 'joint') {
                 sum2 = jointCalculation();
                 console.log('vm.other && vm.social &&vm.filing joint baseCalculation', sum2);
                 vm.result2 = sum2.toFixed(2);
