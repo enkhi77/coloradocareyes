@@ -17,6 +17,24 @@ label.col-sm-7.control-label {
     text-align: left; !important
 }
 
+.calcside{
+    position:absolute;
+    top: 92px;
+    bottom: 0;
+    left: 0;
+    width: 65%;
+    overflow-y: scroll;
+}
+
+.resultside {
+    position: absolute;
+    top: 92px;
+    bottom: 0;
+    right: 0;
+    overflow-y: visible;
+    width: 35%;
+}
+
 .results-margin {
     margin-right: 50px !important;
 }
