@@ -84,7 +84,10 @@
         };
 
         var jointDeduction = function jointDeduction(a, b, c) {
-            return (12 * a) - a / (c + a)(12000) + b;
+            console.log('Check a', a);
+            console.log('check b', b);
+            console.log('check c', c);
+            return (12 * a) - a/(c + a) * 12000 + b;
         };
 
         var singleCalculation = function singleCalculation() {
@@ -110,17 +113,23 @@
             console.log('jointDeductionFinalSpouse', jointDeductionFinalSpouse);
             if (vm.other && vm.social && vm.form.you.age === 'under65' && jointDeductionFinalYou > 20000) {
                 jointDeductionFinalYou = 20000;
+                console.log('over 20000 for you', jointDeductionFinalYou);
             }
             else if (vm.other && vm.social && vm.form.you.age === 'over65' && jointDeductionFinalYou > 24000) {
                 jointDeductionFinalYou = 24000;
+                console.log('over 24000 for you', jointDeductionFinalYou);
             }
             if (vm.other && vm.social && vm.form.spouse.age === 'under65' && jointDeductionFinalSpouse > 20000) {
                 jointDeductionFinalSpouse = 20000;
+                console.log('over 20000 for spouse', jointDeductionFinalSpouse);
             }
             else if (vm.other && vm.social && vm.form.spouse.age === 'over65' && jointDeductionFinalSpouse > 24000) {
                 jointDeductionFinalSpouse = 24000;
+                console.log('over 24000 for spouse', jointDeductionFinalSpouse);
             }
-            return (vm.form.income * 0.0333) + (0.10 * (f - jointDeductionFinalYou - jointDeductionFinalSpouse));
+            console.log('Check you final', jointDeductionFinalYou);
+            console.log('Check spouse final', jointDeductionFinalSpouse);
+            return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse));
         };
 
 
