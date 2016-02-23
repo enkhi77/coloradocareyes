@@ -111,7 +111,10 @@
             var jointDeductionFinalSpouse = jointDeduction(vm.form.spouse.monthlySS, vm.form.spouse.retirement, vm.form.you.monthlySS);
             console.log('jointDeductionFinalYou', jointDeductionFinalYou);
             console.log('jointDeductionFinalSpouse', jointDeductionFinalSpouse);
-            if (vm.other && vm.social && vm.form.you.age === 'under65' && jointDeductionFinalYou > 20000) {
+            if(vm.other && vm.social && !vm.form.you.age){
+                jointDeductionFinalYou = 0;
+            }
+            else if (vm.other && vm.social && vm.form.you.age === 'under65' && jointDeductionFinalYou > 20000) {
                 jointDeductionFinalYou = 20000;
                 console.log('over 20000 for you', jointDeductionFinalYou);
             }
@@ -119,7 +122,11 @@
                 jointDeductionFinalYou = 24000;
                 console.log('over 24000 for you', jointDeductionFinalYou);
             }
-            if (vm.other && vm.social && vm.form.spouse.age === 'under65' && jointDeductionFinalSpouse > 20000) {
+
+            if(vm.other && vm.social && !vm.form.spouse.age){
+                jointDeductionFinalSpouse = 0;
+            }
+            else if (vm.other && vm.social && vm.form.spouse.age === 'under65' && jointDeductionFinalSpouse > 20000) {
                 jointDeductionFinalSpouse = 20000;
                 console.log('over 20000 for spouse', jointDeductionFinalSpouse);
             }
