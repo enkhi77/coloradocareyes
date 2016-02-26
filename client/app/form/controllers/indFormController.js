@@ -113,29 +113,36 @@
             console.log('jointDeductionFinalSpouse', jointDeductionFinalSpouse);
             if(vm.other && vm.social && !vm.form.you.age){
                 jointDeductionFinalYou = 0;
+                vm.resultJointYou = jointDeductionFinalYou;
             }
             else if (vm.other && vm.social && vm.form.you.age === 'under65' && jointDeductionFinalYou > 20000) {
                 jointDeductionFinalYou = 20000;
                 console.log('over 20000 for you', jointDeductionFinalYou);
+                vm.resultJointYou = jointDeductionFinalYou;
             }
             else if (vm.other && vm.social && vm.form.you.age === 'over65' && jointDeductionFinalYou > 24000) {
                 jointDeductionFinalYou = 24000;
                 console.log('over 24000 for you', jointDeductionFinalYou);
+                vm.resultJointYou = jointDeductionFinalYou;
             }
 
             if(vm.other && vm.social && !vm.form.spouse.age){
                 jointDeductionFinalSpouse = 0;
+                vm.resultJointSpouse = jointDeductionFinalSpouse;
             }
             else if (vm.other && vm.social && vm.form.spouse.age === 'under65' && jointDeductionFinalSpouse > 20000) {
                 jointDeductionFinalSpouse = 20000;
                 console.log('over 20000 for spouse', jointDeductionFinalSpouse);
+                vm.resultJointSpouse = jointDeductionFinalSpouse;
             }
             else if (vm.other && vm.social && vm.form.spouse.age === 'over65' && jointDeductionFinalSpouse > 24000) {
                 jointDeductionFinalSpouse = 24000;
                 console.log('over 24000 for spouse', jointDeductionFinalSpouse);
+                vm.resultJointSpouse = jointDeductionFinalSpouse;
             }
             console.log('Check you final', jointDeductionFinalYou);
             console.log('Check spouse final', jointDeductionFinalSpouse);
+            vm.resultJointFinal = (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse));
             return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse));
         };
 

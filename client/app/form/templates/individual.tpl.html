@@ -253,24 +253,66 @@
             </p>
             <div class="form-group results-margin">
                 <label class="col-sm-7 control-label">Current health care cost</label>
-                <div class="col-sm-4 ">
+                <div class="col-sm-4">
                     <p class="form-control-static">${{vm.result1}}</p>
                 </div>
             </div>
             <div class="form-group results-margin">
                 <label class="col-sm-7 control-label">ColoradoCare cost</label>
-                <div class="col-sm-4 ">
+                <div class="col-sm-4">
                     <p class="form-control-static">${{vm.result2}}</p>
                 </div>
             </div>
             <div class="form-group results-margin" id="individualResult">
                 <label class="col-sm-7 control-label">Annual Amount Saved </label>
-                <div class="col-sm-4 ">
+                <div class="col-sm-4">
                     <p class="form-control-static">${{vm.difference}}</p>
                 </div>
             </div>
             <p>Note: These totals are an estimate. Copays often shift year to year based on usage. ColoradoCare has no
                 copays for preventative or primary care.</p>
+            <div class="form-group results-margin">
+                <label class="col-sm-6 col-sm-offset-1 control-label">Joint amount you (c): </label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">${{vm.resultJointYou}}</p>
+                    <p class="form-control-static" ng-if="!vm.form.you.age">Under 55</p>
+                    <p class="form-control-static" ng-if="vm.form.you.age === 'under65'">Over 55, under 65</p>
+                    <p class="form-control-static" ng-if="vm.form.you.age === 'over65'">Over 65</p>
+                </div>
+            </div>
+            <div class="form-group results-margin">
+                <label class="col-sm-6 col-sm-offset-1 control-label">Joint amount spouse (d): </label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">${{vm.resultJointSpouse}}</p>
+                    <p class="form-control-static" ng-if="!vm.form.spouse.age">Under 55</p>
+                    <p class="form-control-static" ng-if="vm.form.spouse.age === 'under65'">Over 55, under 65</p>
+                    <p class="form-control-static" ng-if="vm.form.spouse.age === 'over65'">Over 65</p>
+                </div>
+            </div>
+            <div class="form-group results-margin">
+                <label class="col-sm-6 col-sm-offset-1 control-label">Result of joint calculation (a * 0.0333) + (0.10 * (b - c - d)): </label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">${{vm.resultJointFinal}}</p>
+                    <p class="form-control-static">a: {{vm.form.income}}</p>
+                    <p class="form-control-static">b: {{vm.form.gross}}</p>
+                </div>
+            </div>
+            <div class="form-group results-margin">
+                <label class="col-sm-6 col-sm-offset-1 control-label">You: (12 * a) - a/(c + a) * 12000 + b</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">A (you): {{vm.form.you.monthlySS}}</p>
+                    <p class="form-control-static">B (you): {{vm.form.you.retirement}}</p>
+                    <p class="form-control-static">C (spouse): {{vm.form.spouse.monthlySS}}</p>
+                </div>
+            </div>
+            <div class="form-group results-margin">
+                <label class="col-sm-6 col-sm-offset-1 control-label">Spouse: (12 * a) - a/(c + a) * 12000 + b</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">A (you): {{vm.form.spouse.monthlySS}}</p>
+                    <p class="form-control-static">B (you): {{vm.form.spouse.retirement}}</p>
+                    <p class="form-control-static">C (spouse): {{vm.form.you.monthlySS}}</p>
+                </div>
+            </div>
         </div>
         <!--<button class="btn btn-default" ng-click="vm.clear()">Back</button>-->
     </div>
