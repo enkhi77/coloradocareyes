@@ -7,8 +7,12 @@
             <label class="col-sm-7 control-label" for="vmFormPremium">Employer’s annual medical benefits expense</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                       ng-model="vm.form.premium" id="vmFormPremium">
+                <input type="number" ignore-mouse-wheel
+                       class="form-control"
+                       aria-label="Amount (to the nearest dollar)"
+                       ng-model="vm.form.premium"
+                       min="0"
+                       id="vmFormPremium">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -16,8 +20,12 @@
             <label class="col-sm-7 control-label" for="vmFormWorker">Annual workers’ compensation insurance</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                       ng-model="vm.form.worker" id="vmFormWorker">
+                <input type="number" ignore-mouse-wheel
+                       class="form-control"
+                       aria-label="Amount (to the nearest dollar)"
+                       ng-model="vm.form.worker"
+                       min="0"
+                       id="vmFormWorker">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -26,8 +34,12 @@
                 and the medical part of the workers’ compensation system</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                       ng-model="vm.form.admin" id="vmFormAdmin">
+                <input type="number" ignore-mouse-wheel
+                       class="form-control"
+                       aria-label="Amount (to the nearest dollar)"
+                       ng-model="vm.form.admin"
+                       min="0"
+                       id="vmFormAdmin">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>
@@ -35,8 +47,12 @@
             <label class="col-sm-7 control-label" for="vmFormPayroll">Total annual payroll for employees subject to Colorado income tax witholding</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon">$</span>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                       ng-model="vm.form.payroll" id="vmFormPayroll">
+                <input type="number" ignore-mouse-wheel
+                       class="form-control"
+                       aria-label="Amount (to the nearest dollar)"
+                       ng-model="vm.form.payroll"
+                       min=0
+                       id="vmFormPayroll">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>

@@ -56,3 +56,9 @@ label.col-sm-7.control-label {
 .centered {
     text-align: center;
 }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

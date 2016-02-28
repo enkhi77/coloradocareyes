@@ -11,8 +11,12 @@
                     Monthly insurance premium</label>
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
-                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.premium" id="vmFormPremium">
+                    <input type="number" ignore-mouse-wheel
+                           class="form-control"
+                           aria-label="Amount (to the nearest dollar)"
+                           ng-model="vm.form.premium"
+                           min="0"
+                           id="vmFormPremium">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -21,8 +25,12 @@
                     Annual deductible</label>
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
-                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.deductible" id="vmFormDeductible">
+                    <input type="number" ignore-mouse-wheel
+                           class="form-control"
+                           aria-label="Amount (to the nearest dollar)"
+                           ng-model="vm.form.deductible"
+                           min="0"
+                           id="vmFormDeductible">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -31,8 +39,12 @@
                     Estimated annual co-payments</label>
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
-                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.copay" id="vmFormCopay">
+                    <input type="number" ignore-mouse-wheel
+                           class="form-control"
+                           aria-label="Amount (to the nearest dollar)"
+                           ng-model="vm.form.copay"
+                           min="0"
+                           id="vmFormCopay">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -41,8 +53,12 @@
                     Expenses for health care services not covered by your plan</label>
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
-                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.expenses" id="vmFormExpenses">
+                    <input type="number" ignore-mouse-wheel
+                           class="form-control"
+                           aria-label="Amount (to the nearest dollar)"
+                           ng-model="vm.form.expenses"
+                           min="0"
+                           id="vmFormExpenses">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -53,8 +69,12 @@
                     Your annual payroll (W-2) income</label>
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
-                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.income" id="vmFormIncome">
+                    <input type="number" ignore-mouse-wheel
+                           class="form-control"
+                           aria-label="Amount (to the nearest dollar)"
+                           ng-model="vm.form.income"
+                           min="0"
+                           id="vmFormIncome">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -72,8 +92,12 @@
                     Non-payroll income (Income reported on IRS form 1040 lines 8a – 21)</label>
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
-                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.gross" id="vmGross">
+                    <input type="number" ignore-mouse-wheel
+                           class="form-control"
+                           aria-label="Amount (to the nearest dollar)"
+                           ng-model="vm.form.gross"
+                           min="0"
+                           id="vmGross">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -107,8 +131,12 @@
                     Your Monthly Social Security Income</label>
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
-                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.you.monthlySS" id="vmFormSingleMonthlySS">
+                    <input type="number" ignore-mouse-wheel
+                           class="form-control"
+                           aria-label="Amount (to the nearest dollar)"
+                           ng-model="vm.form.you.monthlySS"
+                           min="0"
+                           id="vmFormSingleMonthlySS">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -117,8 +145,12 @@
                     Annual retirement income from annuity, pension, IRA, etc.</label>
                 <div class="input-group col-sm-4">
                     <span class="input-group-addon">$</span>
-                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                           ng-model="vm.form.you.retirement" id="vmFormSingleRetirement">
+                    <input type="number" ignore-mouse-wheel
+                           class="form-control"
+                           aria-label="Amount (to the nearest dollar)"
+                           ng-model="vm.form.you.retirement"
+                           min="0"
+                           id="vmFormSingleRetirement">
                     <span class="input-group-addon">.00</span>
                 </div>
             </div>
@@ -156,8 +188,12 @@
                             Your monthly Social Security Income</label>
                         <div class="input-group col-sm-4">
                             <span class="input-group-addon">$</span>
-                            <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.form.you.monthlySS" id="vmFormJointYouMonthlySS">
+                            <input type="number" ignore-mouse-wheel
+                                   class="form-control"
+                                   aria-label="Amount (to the nearest dollar)"
+                                   ng-model="vm.form.you.monthlySS"
+                                   min="0"
+                                   id="vmFormJointYouMonthlySS">
                             <span class="input-group-addon">.00</span>
                         </div>
                     </div>
@@ -168,8 +204,12 @@
                         etc.</label>
                     <div class="input-group col-sm-4">
                         <span class="input-group-addon">$</span>
-                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                               ng-model="vm.form.you.retirement" id="vmFormJointYouRetirement">
+                        <input type="number" ignore-mouse-wheel
+                               class="form-control"
+                               aria-label="Amount (to the nearest dollar)"
+                               ng-model="vm.form.you.retirement"
+                               min="0"
+                               id="vmFormJointYouRetirement">
                         <span class="input-group-addon">.00</span>
                     </div>
                 </div>
@@ -179,13 +219,19 @@
                             Age:
                         </label>
                         <div class="input-group col-sm-4">
-                            <label class="checkbox-inline" for="vmFilingSingle">
-                                <input type="radio" ng-model="vm.form.you.age" value="under65" id="vmFilingSingle">
+                            <label class="checkbox-inline" for="vmFormJointYourAgeUnder65">
+                                <input type="radio"
+                                       ng-model="vm.form.you.age"
+                                       value="under65"
+                                       id="vmFormJointYourAgeUnder65">
                                 Between 55 and 65
                             </label>
-                            <label class="checkbox-inline" for="vmFilingJoint">
-                                <input type="radio" ng-model="vm.form.you.age" value="over65" id="vmFilingJoint"> Over
-                                65
+                            <label class="checkbox-inline" for="vmFormJointYourAgeOver65">
+                                <input type="radio"
+                                       ng-model="vm.form.you.age"
+                                       value="over65"
+                                       id="vmFormJointYourAgeOver65">
+                                Over 65
                             </label>
                         </div>
                     </div>
@@ -207,8 +253,12 @@
                             Your spouse's monthly Social Security Income</label>
                         <div class="input-group col-sm-4">
                             <span class="input-group-addon">$</span>
-                            <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.form.spouse.monthlySS" id="vmFormJointSpouseMonthlySS">
+                            <input type="number" ignore-mouse-wheel
+                                   class="form-control"
+                                   aria-label="Amount (to the nearest dollar)"
+                                   ng-model="vm.form.spouse.monthlySS"
+                                   min="0"
+                                   id="vmFormJointSpouseMonthlySS">
                             <span class="input-group-addon">.00</span>
                         </div>
                     </div>
@@ -219,22 +269,26 @@
                         etc.</label>
                     <div class="input-group col-sm-4">
                         <span class="input-group-addon">$</span>
-                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                               ng-model="vm.form.spouse.retirement" id="vmFormJointSpouseRetirement">
+                        <input type="number" ignore-mouse-wheel
+                               class="form-control"
+                               aria-label="Amount (to the nearest dollar)"
+                               ng-model="vm.form.spouse.retirement"
+                               min="0"
+                               id="vmFormJointSpouseRetirement">
                         <span class="input-group-addon">.00</span>
                     </div>
                 </div>
                 <div class="form-group" ng-show="vm.form.spouse.receiveSS">
-                    <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointSpouseAge">
+                    <label class="col-sm-6 col-sm-offset-1 control-label">
                         Age:
                     </label>
                     <div class="input-group col-sm-4">
-                        <label class="checkbox-inline" for="vmFilingSingle">
-                            <input type="radio" ng-model="vm.form.spouse.age" value="under65" id="vmFilingSingle">
+                        <label class="checkbox-inline" for="vmFormJointSpouseAgeUnder65">
+                            <input type="radio" ng-model="vm.form.spouse.age" value="under65" id="vmFormJointSpouseAge">
                             Between 55 and 65
                         </label>
-                        <label class="checkbox-inline" for="vmFilingJoint">
-                            <input type="radio" ng-model="vm.form.spouse.age" value="over65" id="vmFilingJoint"> Over 65
+                        <label class="checkbox-inline" for="vmFormJointSpouseAgeOver65">
+                            <input type="radio" ng-model="vm.form.spouse.age" value="over65" id="vmFormJointSpouseAge"> Over 65
                         </label>
                     </div>
                 </div>

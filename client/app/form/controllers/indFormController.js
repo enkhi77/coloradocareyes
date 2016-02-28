@@ -70,7 +70,6 @@
             vm.result3 = null;
             vm.resultFiling = null;
         }
-
         setIndividualForm();
 
         var baseCalculation = function baseCalculation() {
@@ -145,7 +144,6 @@
             vm.resultJointFinal = (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse));
             return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse));
         };
-
 
         vm.calculate = function calculate() {
             console.log('Running individual calculation');
