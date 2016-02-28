@@ -117,12 +117,12 @@
             }
             else if (vm.other && vm.social && vm.form.you.age === 'under65' && jointDeductionFinalYou > 20000) {
                 jointDeductionFinalYou = 20000;
-                console.log('over 20000 for you', jointDeductionFinalYou);
+                //console.log('over 20000 for you', jointDeductionFinalYou);
                 vm.resultJointYou = jointDeductionFinalYou;
             }
             else if (vm.other && vm.social && vm.form.you.age === 'over65' && jointDeductionFinalYou > 24000) {
                 jointDeductionFinalYou = 24000;
-                console.log('over 24000 for you', jointDeductionFinalYou);
+                //console.log('over 24000 for you', jointDeductionFinalYou);
                 vm.resultJointYou = jointDeductionFinalYou;
             }
 
@@ -132,16 +132,16 @@
             }
             else if (vm.other && vm.social && vm.form.spouse.age === 'under65' && jointDeductionFinalSpouse > 20000) {
                 jointDeductionFinalSpouse = 20000;
-                console.log('over 20000 for spouse', jointDeductionFinalSpouse);
+                //console.log('over 20000 for spouse', jointDeductionFinalSpouse);
                 vm.resultJointSpouse = jointDeductionFinalSpouse;
             }
             else if (vm.other && vm.social && vm.form.spouse.age === 'over65' && jointDeductionFinalSpouse > 24000) {
                 jointDeductionFinalSpouse = 24000;
-                console.log('over 24000 for spouse', jointDeductionFinalSpouse);
+                //console.log('over 24000 for spouse', jointDeductionFinalSpouse);
                 vm.resultJointSpouse = jointDeductionFinalSpouse;
             }
-            console.log('Check you final', jointDeductionFinalYou);
-            console.log('Check spouse final', jointDeductionFinalSpouse);
+            //console.log('Check you final', jointDeductionFinalYou);
+            //console.log('Check spouse final', jointDeductionFinalSpouse);
             vm.resultJointFinal = (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse));
             return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse));
         };
@@ -156,22 +156,21 @@
             var sum2 = null;
             if (!vm.other && !vm.social) {
                 sum2 = vm.form.income * 0.0333;
-                console.log('!vm.other && !vm.social', sum2);
                 vm.result2 = sum2.toFixed(2);
             }
             else if (vm.other && !vm.social) {
                 sum2 = (vm.form.income * 0.0333) + (0.10 * vm.form.gross);
-                console.log('vm.other && !vm.social', sum2);
                 vm.result2 = sum2.toFixed(2);
             }
             else if (vm.other && vm.social && vm.filing === 'single') {
                 sum2 = singleCalculation();
-                console.log('vm.other && vm.social &&vm.filing single baseCalculation', sum2);
                 vm.result2 = sum2.toFixed(2);
             }
             else if (vm.other && vm.social && vm.filing === 'joint') {
                 sum2 = jointCalculation();
-                console.log('vm.other && vm.social &&vm.filing joint baseCalculation', sum2);
+                if(sum2 < 0){
+                    sum2 = 0;
+                }
                 vm.result2 = sum2.toFixed(2);
             }
 
