@@ -10,56 +10,48 @@
                 <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormPremium">
                     Monthly insurance premium</label>
                 <div class="input-group col-sm-4">
-                    <span class="input-group-addon">$</span>
-                    <input type="number" ignore-mouse-wheel
+                    <input type="text" ng-currency
                            class="form-control"
                            aria-label="Amount (to the nearest dollar)"
                            ng-model="vm.form.premium"
                            min="0"
                            id="vmFormPremium">
-                    <span class="input-group-addon">.00</span>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormDeductible">
                     Annual deductible</label>
                 <div class="input-group col-sm-4">
-                    <span class="input-group-addon">$</span>
-                    <input type="number" ignore-mouse-wheel
+                    <input type="text" ng-currency
                            class="form-control"
                            aria-label="Amount (to the nearest dollar)"
                            ng-model="vm.form.deductible"
                            min="0"
                            id="vmFormDeductible">
-                    <span class="input-group-addon">.00</span>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormCopay">
                     Estimated annual co-payments</label>
                 <div class="input-group col-sm-4">
-                    <span class="input-group-addon">$</span>
-                    <input type="number" ignore-mouse-wheel
+                    <input type="text" ng-currency
                            class="form-control"
                            aria-label="Amount (to the nearest dollar)"
                            ng-model="vm.form.copay"
                            min="0"
                            id="vmFormCopay">
-                    <span class="input-group-addon">.00</span>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormExpenses">
                     Expenses for health care services not covered by your plan</label>
                 <div class="input-group col-sm-4">
-                    <span class="input-group-addon">$</span>
-                    <input type="number" ignore-mouse-wheel
+                    <input type="text" ng-currency
                            class="form-control"
                            aria-label="Amount (to the nearest dollar)"
                            ng-model="vm.form.expenses"
                            min="0"
                            id="vmFormExpenses">
-                    <span class="input-group-addon">.00</span>
                 </div>
             </div>
 
@@ -68,14 +60,12 @@
                 <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormIncome">
                     Your annual payroll (W-2) income</label>
                 <div class="input-group col-sm-4">
-                    <span class="input-group-addon">$</span>
-                    <input type="number" ignore-mouse-wheel
+                    <input type="text" ng-currency
                            class="form-control"
                            aria-label="Amount (to the nearest dollar)"
                            ng-model="vm.form.income"
                            min="0"
                            id="vmFormIncome">
-                    <span class="input-group-addon">.00</span>
                 </div>
             </div>
 
@@ -91,14 +81,12 @@
                 <label class="col-sm-6 col-sm-offset-1 control-label" for="vmGross">
                     Non-payroll income (Income reported on IRS form 1040 lines 8a – 21)</label>
                 <div class="input-group col-sm-4">
-                    <span class="input-group-addon">$</span>
-                    <input type="number" ignore-mouse-wheel
+                    <input type="text" ng-currency
                            class="form-control"
                            aria-label="Amount (to the nearest dollar)"
                            ng-model="vm.form.gross"
                            min="0"
                            id="vmGross">
-                    <span class="input-group-addon">.00</span>
                 </div>
             </div>
 
@@ -130,28 +118,24 @@
                 <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormSingleMonthlySS">
                     Your Monthly Social Security Income</label>
                 <div class="input-group col-sm-4">
-                    <span class="input-group-addon">$</span>
-                    <input type="number" ignore-mouse-wheel
+                    <input type="text" ng-currency
                            class="form-control"
                            aria-label="Amount (to the nearest dollar)"
                            ng-model="vm.form.you.monthlySS"
                            min="0"
                            id="vmFormSingleMonthlySS">
-                    <span class="input-group-addon">.00</span>
                 </div>
             </div>
             <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
                 <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormSingleRetirement">
                     Annual retirement income from annuity, pension, IRA, etc.</label>
                 <div class="input-group col-sm-4">
-                    <span class="input-group-addon">$</span>
-                    <input type="number" ignore-mouse-wheel
+                    <input type="text" ng-currency
                            class="form-control"
                            aria-label="Amount (to the nearest dollar)"
                            ng-model="vm.form.you.retirement"
                            min="0"
                            id="vmFormSingleRetirement">
-                    <span class="input-group-addon">.00</span>
                 </div>
             </div>
             <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
@@ -187,14 +171,12 @@
                         <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointYouMonthlySS">
                             Your monthly Social Security Income</label>
                         <div class="input-group col-sm-4">
-                            <span class="input-group-addon">$</span>
-                            <input type="number" ignore-mouse-wheel
+                            <input type="text" ng-currency
                                    class="form-control"
                                    aria-label="Amount (to the nearest dollar)"
                                    ng-model="vm.form.you.monthlySS"
                                    min="0"
                                    id="vmFormJointYouMonthlySS">
-                            <span class="input-group-addon">.00</span>
                         </div>
                     </div>
                 </div>
@@ -203,14 +185,12 @@
                         Your annual retirement income from annuity, pension, IRA,
                         etc.</label>
                     <div class="input-group col-sm-4">
-                        <span class="input-group-addon">$</span>
-                        <input type="number" ignore-mouse-wheel
+                        <input type="text" ng-currency
                                class="form-control"
                                aria-label="Amount (to the nearest dollar)"
                                ng-model="vm.form.you.retirement"
                                min="0"
                                id="vmFormJointYouRetirement">
-                        <span class="input-group-addon">.00</span>
                     </div>
                 </div>
                 <div>
@@ -252,14 +232,12 @@
                         <label class="col-sm-6 col-sm-offset-1 control-label" for="vmFormJointSpouseMonthlySS">
                             Your spouse's monthly Social Security Income</label>
                         <div class="input-group col-sm-4">
-                            <span class="input-group-addon">$</span>
-                            <input type="number" ignore-mouse-wheel
+                            <input type="text" ng-currency
                                    class="form-control"
                                    aria-label="Amount (to the nearest dollar)"
                                    ng-model="vm.form.spouse.monthlySS"
                                    min="0"
                                    id="vmFormJointSpouseMonthlySS">
-                            <span class="input-group-addon">.00</span>
                         </div>
                     </div>
                 </div>
@@ -268,14 +246,12 @@
                         Your spouse's annual retirement income from annuity, pension, IRA,
                         etc.</label>
                     <div class="input-group col-sm-4">
-                        <span class="input-group-addon">$</span>
-                        <input type="number" ignore-mouse-wheel
+                        <input type="text" ng-currency
                                class="form-control"
                                aria-label="Amount (to the nearest dollar)"
                                ng-model="vm.form.spouse.retirement"
                                min="0"
                                id="vmFormJointSpouseRetirement">
-                        <span class="input-group-addon">.00</span>
                     </div>
                 </div>
                 <div class="form-group" ng-show="vm.form.spouse.receiveSS">
@@ -303,7 +279,7 @@
     <div class="col-sm-6 resultside">
         <div>
             <div class="form-group results-margin">
-                <label class="col-sm-7 control-label">Current health care cost</label>
+                <label class="col-sm-7 control-label">Current health care cost when all of deductible is spent</label>
                 <div class="col-sm-4">
                     <p class="form-control-static">${{vm.result1}}</p>
                 </div>
@@ -322,49 +298,8 @@
             </div>
             <h4>Important disclaimers</h4>
             <p>This is the savings when copays are waived for financial hardship. There may be small copays that make this savings smaller.</p>
-            <p>This is only an estimate. Itemized tax returns are complex, and you should consult with your tax advisor.</p>
-            <!--<div class="form-group results-margin">-->
-                <!--<label class="col-sm-6 col-sm-offset-1 control-label">Joint amount you (c): </label>-->
-                <!--<div class="col-sm-4">-->
-                    <!--<p class="form-control-static">${{vm.resultJointYou}}</p>-->
-                    <!--<p class="form-control-static" ng-if="!vm.form.you.age">Under 55</p>-->
-                    <!--<p class="form-control-static" ng-if="vm.form.you.age === 'under65'">Over 55, under 65</p>-->
-                    <!--<p class="form-control-static" ng-if="vm.form.you.age === 'over65'">Over 65</p>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="form-group results-margin">-->
-                <!--<label class="col-sm-6 col-sm-offset-1 control-label">Joint amount spouse (d): </label>-->
-                <!--<div class="col-sm-4">-->
-                    <!--<p class="form-control-static">${{vm.resultJointSpouse}}</p>-->
-                    <!--<p class="form-control-static" ng-if="!vm.form.spouse.age">Under 55</p>-->
-                    <!--<p class="form-control-static" ng-if="vm.form.spouse.age === 'under65'">Over 55, under 65</p>-->
-                    <!--<p class="form-control-static" ng-if="vm.form.spouse.age === 'over65'">Over 65</p>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="form-group results-margin">-->
-                <!--<label class="col-sm-6 col-sm-offset-1 control-label">Result of joint calculation<br> (a * 0.0333) + (0.10 * (b - c - d)): </label>-->
-                <!--<div class="col-sm-4">-->
-                    <!--<p class="form-control-static">${{vm.resultJointFinal}}</p>-->
-                    <!--<p class="form-control-static">a: {{vm.form.income}}</p>-->
-                    <!--<p class="form-control-static">b: {{vm.form.gross}}</p>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="form-group results-margin">-->
-                <!--<label class="col-sm-6 col-sm-offset-1 control-label">You: (12 * a) - a/(c + a) * 12000 + b</label>-->
-                <!--<div class="col-sm-4">-->
-                    <!--<p class="form-control-static">A (you): {{vm.form.you.monthlySS}}</p>-->
-                    <!--<p class="form-control-static">B (you): {{vm.form.you.retirement}}</p>-->
-                    <!--<p class="form-control-static">C (spouse): {{vm.form.spouse.monthlySS}}</p>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="form-group results-margin">-->
-                <!--<label class="col-sm-6 col-sm-offset-1 control-label">Spouse: (12 * a) - a/(c + a) * 12000 + b</label>-->
-                <!--<div class="col-sm-4">-->
-                    <!--<p class="form-control-static">A (you): {{vm.form.spouse.monthlySS}}</p>-->
-                    <!--<p class="form-control-static">B (you): {{vm.form.spouse.retirement}}</p>-->
-                    <!--<p class="form-control-static">C (spouse): {{vm.form.you.monthlySS}}</p>-->
-                <!--</div>-->
-            <!--</div>-->
+            <p>While ColoradoCare is comprehensive, there may be some unusual medical expenses that are not covered.</p>
+            <p>The Premium Tax is likely to be deductible from income taxes; however, itemized tax returns are complex, and you should consult with your tax advisor about this estimate and income tax deductions.</p>
         </div>
         <!--<button class="btn btn-default" ng-click="vm.clear()">Back</button>-->
     </div>
