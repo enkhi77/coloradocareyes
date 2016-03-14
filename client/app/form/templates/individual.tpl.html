@@ -2,7 +2,7 @@
 <h2>Individual and/or Family Form</h2>
 <h4 class="subheading">Worksheet for comparing your current health care coverage to ColoradoCare</h4>
 
-<form class="form-horizontal">
+<form class="form-horizontal" prevent-enter-submit>
     <div class="col-sm-8 calcside">
         <div>
             <p class="sectionheading"><b>Your current health care plan</b></p>
@@ -270,8 +270,8 @@
                 </div>
             </div>
             <div class="col-xs-6 col-xs-offset-6 centered">
+                <button class="btn btn-default" ng-click="vm.calculate($event)">Calculate</button>
                 <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
-                <button class="btn btn-default" ng-click="vm.calculate()">Calculate</button>
             </div>
         </div>
     </div>

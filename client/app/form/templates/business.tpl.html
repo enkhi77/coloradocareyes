@@ -1,7 +1,7 @@
 <!--Complex version -->
 <h2>Business Form</h2>
 
-<form class="form-horizontal">
+<form class="form-horizontal" ng-submit="vm.calculate()">
     <div class="col-sm-6 calcside">
         <div class="form-group">
             <label class="col-sm-7 control-label" for="vmFormPremium">Employer’s annual medical benefits expense</label>
@@ -49,8 +49,8 @@
             </div>
         </div>
         <div class="col-sm-6 col-sm-offset-6 centered">
-            <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
             <button class="btn btn-default" ng-click="vm.calculate()">Calculate</button>
+            <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
         </div>
     </div>
 
