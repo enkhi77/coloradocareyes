@@ -68,6 +68,7 @@
             vm.result1 = null;
             vm.result2 = null;
             vm.result3 = null;
+            vm.difference = null;
             vm.resultFiling = null;
         }
         setIndividualForm();

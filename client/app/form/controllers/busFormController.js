@@ -15,6 +15,9 @@
                 admin: null,
                 payroll: null
             };
+            vm.healthexpense = null;
+            vm.ccexpense = null;
+            vm.difference = null;
         }
         setBusinessForm();
 
