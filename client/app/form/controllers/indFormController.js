@@ -151,6 +151,9 @@
             vm.resultsShown = true;
             var sum1 = baseCalculation();
             vm.result1 = sum1.toFixed(2);
+            if(!vm.result1){
+                vm.result1 = 'There has been an error calculating the result.  Please notify the webmaster';
+            }
 
             var sum2 = 0;
             if (!vm.other && !vm.social) {
@@ -172,9 +175,15 @@
                 }
                 vm.result2 = sum2.toFixed(2);
             }
+            if(!vm.result2){
+                vm.result2 = 'There has been an error calculating the result.  Please notify the webmaster';
+            }
 
             var sum3 = vm.result1 - vm.result2;
             vm.difference = sum3.toFixed(2);
+            if(!vm.difference){
+                vm.difference = 'There has been an error calculating the result.  Please notify the webmaster';
+            }
         };
 
         vm.clear = function clear() {
