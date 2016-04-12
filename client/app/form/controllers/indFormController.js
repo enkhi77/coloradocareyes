@@ -152,7 +152,7 @@
             var sum1 = baseCalculation();
             vm.result1 = sum1.toFixed(2);
 
-            var sum2 = null;
+            var sum2 = 0;
             if (!vm.other && !vm.social) {
                 sum2 = vm.form.income * 0.0333;
                 vm.result2 = sum2.toFixed(2);
