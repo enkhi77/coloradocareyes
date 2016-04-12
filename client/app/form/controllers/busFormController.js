@@ -10,14 +10,14 @@
 
         function setBusinessForm() {
             vm.form = {
-                premium: null,
-                worker: null,
-                admin: null,
-                payroll: null
+                premium: 0,
+                worker: 0,
+                admin: 0,
+                payroll: 0
             };
-            vm.healthexpense = null;
-            vm.ccexpense = null;
-            vm.difference = null;
+            vm.healthexpense = 0;
+            vm.ccexpense = 0;
+            vm.difference = 0;
         }
         setBusinessForm();
 

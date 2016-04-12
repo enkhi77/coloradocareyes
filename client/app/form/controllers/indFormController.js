@@ -11,65 +11,65 @@
         function setIndividualForm() {
             vm.resultsShown = null;
             vm.form = {
-                premium: null,
-                deductible: null,
-                copay: null,
-                expenses: null,
-                income: null,
-                SS: null,
-                gross: null,
+                premium: 0,
+                deductible: 0,
+                copay: 0,
+                expenses: 0,
+                income: 0,
+                SS: 0,
+                gross: 0,
                 you: {
-                    receiveSS: null,
-                    monthlySS: null,
-                    retirement: null,
+                    receiveSS: 0,
+                    monthlySS: 0,
+                    retirement: 0,
                     age: null
                 },
                 spouse: {
-                    receiveSS: null,
-                    monthlySS: null,
-                    retirement: null,
+                    receiveSS: 0,
+                    monthlySS: 0,
+                    retirement: 0,
                     age: null
                 }
             };
-            vm.other = null;
-            vm.social = null;
-            vm.medicaid = null;
-            vm.medicare = null;
-            vm.filing = null;
+            vm.other = 0;
+            vm.social = 0;
+            vm.medicaid = 0;
+            vm.medicare = 0;
+            vm.filing = 0;
             vm.results = {
                 you: {
-                    annualSS: null,
-                    applicableSS: null,
-                    applicableRet: null,
-                    postApplicableRet: null,
-                    SSRetirementIncome: null,
-                    calcRetirement: null,
-                    healthcareCost: null,
-                    CCCost: null,
-                    savings: null
+                    annualSS: 0,
+                    applicableSS: 0,
+                    applicableRet: 0,
+                    postApplicableRet: 0,
+                    SSRetirementIncome: 0,
+                    calcRetirement: 0,
+                    healthcareCost: 0,
+                    CCCost: 0,
+                    savings: 0
                 },
                 spouse: {
-                    annualSS: null,
-                    applicableSS: null,
-                    applicableRet: null,
-                    postApplicableRet: null,
-                    SSRetirementIncome: null,
-                    calcRetirement: null,
-                    healthcareCost: null,
-                    CCCost: null,
-                    savings: null
+                    annualSS: 0,
+                    applicableSS: 0,
+                    applicableRet: 0,
+                    postApplicableRet: 0,
+                    SSRetirementIncome: 0,
+                    calcRetirement: 0,
+                    healthcareCost: 0,
+                    CCCost: 0,
+                    savings: 0
                 },
                 joint: {
-                    applicableSS: null,
-                    SSRetirementIncome: null
+                    applicableSS: 0,
+                    SSRetirementIncome: 0
                 }
 
             };
-            vm.result1 = null;
-            vm.result2 = null;
-            vm.result3 = null;
-            vm.difference = null;
-            vm.resultFiling = null;
+            vm.result1 = 0;
+            vm.result2 = 0;
+            vm.result3 = 0;
+            vm.difference = 0;
+            vm.resultFiling = 0;
         }
         setIndividualForm();
 
