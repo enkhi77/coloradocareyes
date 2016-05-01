@@ -1,12 +1,13 @@
-<div class="col-sm-12">
-    <div class="col-sm-12">
+<div class="container-fluid">
+    <div class="row">
         <h2>Business Form</h2>
     </div>
-    <div class="col-sm-12">
-        <form class="form-horizontal" ng-submit="vm.calculate()">
-            <div class="col-sm-6 calcside">
+    <div class="row">
+        <div class="col-sm-6 calcside">
+            <form ng-submit="vm.calculate()">
                 <div class="form-group">
-                    <label class="col-sm-7 control-label" for="vmFormPremium">Employer’s annual medical benefits expense</label>
+                    <label class="col-sm-7 control-label" for="vmFormPremium">Employer’s annual medical benefits
+                        expense</label>
                     <div class="input-group col-sm-4">
                         <input type="text" ng-currency
                                class="form-control"
@@ -17,7 +18,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-7 control-label" for="vmFormWorker">Annual workers’ compensation insurance</label>
+                    <label class="col-sm-7 control-label" for="vmFormWorker">Annual workers’ compensation
+                        insurance</label>
                     <div class="input-group col-sm-4">
                         <input type="text" ng-currency
                                class="form-control"
@@ -28,7 +30,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-7 control-label" for="vmFormAdmin">Estimate annual expense for administering employee health care plans
+                    <label class="col-sm-7 control-label" for="vmFormAdmin">Estimate annual expense for administering
+                        employee health care plans
                         and the medical part of the workers’ compensation system</label>
                     <div class="input-group col-sm-4">
                         <input type="text" ng-currency
@@ -40,7 +43,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-7 control-label" for="vmFormPayroll">Total annual payroll for employees subject to Colorado income tax witholding</label>
+                    <label class="col-sm-7 control-label" for="vmFormPayroll">Total annual payroll for employees subject
+                        to Colorado income tax witholding</label>
                     <div class="input-group col-sm-4">
                         <input type="text" ng-currency
                                class="form-control"
@@ -54,31 +58,33 @@
                     <button class="btn btn-default" ng-click="vm.calculate()">Calculate</button>
                     <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
                 </div>
+            </form>
+        </div>
+
+        <div class="col-sm-6 resultside">
+            <div class="form-group results-margin">
+                <label class="col-sm-7 control-label">Current health coverage expense</label>
+                <div class="input-group col-sm-4">
+                    <p class="form-control-static pull-right">${{vm.healthexpense}}</p>
+                </div>
             </div>
 
-            <div class="col-sm-6 resultside">
-                <div class="form-group results-margin">
-                    <label class="col-sm-7 control-label">Current health coverage expense</label>
-                    <div class="input-group col-sm-4">
-                        <p class="form-control-static pull-right">${{vm.healthexpense}}</p>
-                    </div>
+            <div class="form-group results-margin">
+                <label class="col-sm-7 control-label">ColoradoCare health coverage expense</label>
+                <div class="input-group col-sm-4">
+                    <p class="form-control-static pull-right">${{vm.ccexpense}}</p>
                 </div>
-
-                <div class="form-group results-margin">
-                    <label class="col-sm-7 control-label">ColoradoCare health coverage expense</label>
-                    <div class="input-group col-sm-4">
-                        <p class="form-control-static pull-right">${{vm.ccexpense}}</p>
-                    </div>
-                </div>
-
-                <div class="form-group results-margin" id="businessResult">
-                    <label class="col-sm-7 control-label">Annual Employer Savings by ColoradoCare vs. Current</label>
-                    <div class="input-group col-sm-4">
-                        <p class="form-control-static pull-right">${{vm.difference}}</p>
-                    </div>
-                </div>
-                <p>Some employers may also pay part or all of the employee's 3.33% share due to a union contract or other agreement between employer and employee.</p>
             </div>
-        </form>
+
+            <div class="form-group results-margin" id="businessResult">
+                <label class="col-sm-7 control-label">Annual Employer Savings by ColoradoCare vs. Current</label>
+                <div class="input-group col-sm-4">
+                    <p class="form-control-static pull-right">${{vm.difference}}</p>
+                </div>
+            </div>
+            <p>Some employers may also pay part or all of the employee's 3.33% share due to a union contract or other
+                agreement between employer and employee.</p>
+        </div>
+
     </div>
 </div>
