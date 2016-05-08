@@ -71,6 +71,7 @@
             vm.difference = 0;
             vm.resultFiling = 0;
         }
+
         setIndividualForm();
 
         var baseCalculation = function baseCalculation() {
@@ -87,7 +88,7 @@
             console.log('Check a', a);
             console.log('check b', b);
             console.log('check c', c);
-            return (12 * a) - a/(c + a) * 12000 + b;
+            return (12 * a) - a / (c + a) * 12000 + b;
         };
 
         var singleCalculation = function singleCalculation() {
@@ -111,7 +112,7 @@
             var jointDeductionFinalSpouse = jointDeduction(vm.form.spouse.monthlySS, vm.form.spouse.retirement, vm.form.you.monthlySS);
             console.log('jointDeductionFinalYou', jointDeductionFinalYou);
             console.log('jointDeductionFinalSpouse', jointDeductionFinalSpouse);
-            if(vm.other && vm.social && !vm.form.you.age){
+            if (vm.other && vm.social && !vm.form.you.age) {
                 jointDeductionFinalYou = 0;
                 vm.resultJointYou = jointDeductionFinalYou;
             }
@@ -126,7 +127,7 @@
                 vm.resultJointYou = jointDeductionFinalYou;
             }
 
-            if(vm.other && vm.social && !vm.form.spouse.age){
+            if (vm.other && vm.social && !vm.form.spouse.age) {
                 jointDeductionFinalSpouse = 0;
                 vm.resultJointSpouse = jointDeductionFinalSpouse;
             }
@@ -151,7 +152,7 @@
             vm.resultsShown = true;
             var sum1 = baseCalculation();
             vm.result1 = sum1.toFixed(2);
-            if(!vm.result1){
+            if (!vm.result1) {
                 vm.result1 = 'There has been an error calculating the result.  Please notify the webmaster';
             }
 
@@ -166,22 +167,40 @@
             }
             else if (vm.other && vm.social && vm.filing === 'single') {
                 sum2 = singleCalculation();
-                vm.result2 = sum2.toFixed(2);
+                if (sum2 > 35000) {
+                    sum2 = 35000.00;
+                    vm.result2 = sum2.toFixed(2);
+                }
+                else if (sum2 < 0) {
+                    sum2 = 0;
+                    vm.result2 = sum2.toFixed(2);
+                }
+                else {
+                    vm.result2 = sum2.toFixed(2);
+                }
             }
             else if (vm.other && vm.social && vm.filing === 'joint') {
                 sum2 = jointCalculation();
-                if(sum2 < 0){
+                if (sum2 < 0) {
                     sum2 = 0;
+                    vm.result2 = sum2.toFixed(2);
                 }
-                vm.result2 = sum2.toFixed(2);
+                else if (sum2 > 45000) {
+                    sum2 = 45000;
+                    vm.result2 = sum2.toFixed(2);
+                }
+                else {
+                    vm.result2 = sum2.toFixed(2);
+                }
+
             }
-            if(!vm.result2){
+            if (!vm.result2) {
                 vm.result2 = 'There has been an error calculating the result.  Please notify the webmaster';
             }
 
             var sum3 = vm.result1 - vm.result2;
             vm.difference = sum3.toFixed(2);
-            if(!vm.difference){
+            if (!vm.difference) {
                 vm.difference = 'There has been an error calculating the result.  Please notify the webmaster';
             }
         };
