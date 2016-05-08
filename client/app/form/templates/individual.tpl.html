@@ -85,7 +85,10 @@
                         <div class="col-sm-6">
                             <input type="text" ng-currency class="form-control"
                                    aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.form.gross" min="0" id="vmGross">
+                                   ng-model="vm.form.gross" min="0" id="vmGross"
+                                   uib-tooltip="Social Security recipients who are not taking income information for this calculator from a Form 1040 should subtract from your Social Security income either $9,000 for individual filers or $12,000 for joint filers"
+                                   tooltip-trigger="focus"
+                                   tooltip-placement="bottom">
                         </div>
                     </div>
                 </div>
