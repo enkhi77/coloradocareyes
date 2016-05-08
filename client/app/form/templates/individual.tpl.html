@@ -77,12 +77,10 @@
                 <!-- setup for other income -->
                 <div class="checkbox">
                     <label for="vmOther">
-                        <input type="checkbox" ng-model="vm.other" id="vmOther"> If you have significant income besides
-                        payroll, check here</label>
+                        <input type="checkbox" ng-model="vm.other" id="vmOther"> If you have significant income besides payroll and itemize your taxes, check here</label>
                 </div>
                 <div class="form-group" ng-show="vm.other">
-                    <label class="control-label" for="vmGross">Non-payroll income (Income reported on IRS form 1040
-                        lines 8a – 21)</label>
+                    <label class="control-label" for="vmGross">Non-payroll income (Income reported on IRS form 1040 lines 8a – 21)</label>
                     <div class="row">
                         <div class="col-sm-6">
                             <input type="text" ng-currency class="form-control"
@@ -103,12 +101,12 @@
                 <div class="radio" ng-show="vm.social">
                     <strong>Check one box:</strong><br>
                     <label for="vmFilingSingle">
-                        <input type="radio" ng-model="vm.filing" value="single" id="vmFilingSingle"> Single
+                        <input type="radio" ng-model="vm.filing" value="single" id="vmFilingSingle"> File taxes individually
                     </label>
                 </div>
                 <div class="radio" ng-show="vm.social">
                     <label for="vmFilingJoint">
-                        <input type="radio" ng-model="vm.filing" value="joint" id="vmFilingJoint"> Joint
+                        <input type="radio" ng-model="vm.filing" value="joint" id="vmFilingJoint"> File taxes jointly
                     </label>
                 </div>
 
