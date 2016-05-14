@@ -99,18 +99,26 @@
                     individualDeductionFinal = 20000;
                 }
                 if(vm.form.gross > 350000 - vm.form.income){
-                    vm.form.gross =  350000 - vm.form.income;
+                    vm.form.adjgross =  350000 - vm.form.income;
+                    console.log('max non-payroll income', vm.form.adjgross);
                 }
-                return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - individualDeductionFinal));
+                else{
+                    vm.form.adjgross = vm.form.gross
+                }
+                return (vm.form.income * 0.0333) + (0.10 * (vm.form.adjgross - individualDeductionFinal));
             }
             else if (vm.other && vm.social && vm.form.you.age === 'over65') {
                 if (individualDeductionFinal > 24000) {
                     individualDeductionFinal = 24000;
                 }
                 if(vm.form.gross > 350000 - vm.form.income){
-                    vm.form.gross =  350000 - vm.form.income;
+                    vm.form.adjgross =  350000 - vm.form.income;
+                    console.log('max non-payroll income', vm.form.adjgross);
                 }
-                return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - individualDeductionFinal));
+                else{
+                    vm.form.adjgross = vm.form.gross
+                }
+                return (vm.form.income * 0.0333) + (0.10 * (vm.form.adjgross - individualDeductionFinal));
             }
         };
         var jointCalculation = function jointCalculation() {
@@ -150,10 +158,14 @@
             //console.log('Check you final', jointDeductionFinalYou);
             //console.log('Check spouse final', jointDeductionFinalSpouse);
             if(vm.form.gross > 450000 - vm.form.income){
-                vm.form.gross = 450000 - vm.form.income;
+                vm.form.adjgross = 450000 - vm.form.income;
+                console.log('max non-payroll income', vm.form.adjgross);
             }
-            vm.resultJointFinal = (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse));
-            return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse));
+            else {
+                vm.form.adjgross = vm.form.gross;
+            }
+            vm.resultJointFinal = (vm.form.income * 0.0333) + (0.10 * (vm.form.adjgross - jointDeductionFinalYou - jointDeductionFinalSpouse));
+            return (vm.form.income * 0.0333) + (0.10 * (vm.form.adjgross - jointDeductionFinalYou - jointDeductionFinalSpouse));
         };
 
         vm.calculate = function calculate() {
@@ -172,10 +184,13 @@
             }
             else if (vm.other && !vm.social) {
                 if(vm.form.gross > 350000 - vm.form.income){
-                    vm.form.gross = 350000 - vm.form.income;
-                    console.log('max non-payroll income', vm.form.gross);
+                    vm.form.adjgross = 350000 - vm.form.income;
+                    console.log('max non-payroll income', vm.form.adjgross);
                 }
-                sum2 = (vm.form.income * 0.0333) + (0.10 * vm.form.gross);
+                else{
+                    vm.form.adjgross = vm.form.gross;
+                }
+                sum2 = (vm.form.income * 0.0333) + (0.10 * vm.form.adjgross);
                 vm.result2 = sum2.toFixed(2);
             }
             else if (vm.other && vm.social && vm.filing === 'single') {
