@@ -94,18 +94,21 @@
         var singleCalculation = function singleCalculation() {
             var individualDeductionFinal = indDeduction(vm.form.you.monthlySS, vm.form.you.retirement);
             console.log('individualDeductionFinal', individualDeductionFinal);
-            if(vm.form.gross > 350000 - vm.form.income){
-                vm.form.gross =  350000 - vm.form.income;
-            }
             if (vm.other && vm.social && vm.form.you.age === 'under65') {
                 if (individualDeductionFinal > 20000) {
                     individualDeductionFinal = 20000;
+                }
+                if(vm.form.gross > 350000 - vm.form.income){
+                    vm.form.gross =  350000 - vm.form.income;
                 }
                 return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - individualDeductionFinal));
             }
             else if (vm.other && vm.social && vm.form.you.age === 'over65') {
                 if (individualDeductionFinal > 24000) {
                     individualDeductionFinal = 24000;
+                }
+                if(vm.form.gross > 350000 - vm.form.income){
+                    vm.form.gross =  350000 - vm.form.income;
                 }
                 return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - individualDeductionFinal));
             }
