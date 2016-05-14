@@ -23,6 +23,7 @@ body {
 @media (min-width: 768px){
     .calcside {
         position: absolute;
+        margin: 0 15px;
         top: 120px;
         bottom: 0;
         left: 0;
@@ -31,6 +32,7 @@ body {
 
     .resultside {
         position: absolute;
+        margin: 0 15px;
         top: 120px;
         bottom: 0;
         right: 0;

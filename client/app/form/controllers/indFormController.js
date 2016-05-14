@@ -115,9 +115,6 @@
             var jointDeductionFinalSpouse = jointDeduction(vm.form.spouse.monthlySS, vm.form.spouse.retirement, vm.form.you.monthlySS);
             console.log('jointDeductionFinalYou', jointDeductionFinalYou);
             console.log('jointDeductionFinalSpouse', jointDeductionFinalSpouse);
-            if(vm.form.gross > 450000 - vm.form.income){
-                vm.form.gross = 450000 - vm.form.income;
-            }
             if (vm.other && vm.social && !vm.form.you.age) {
                 jointDeductionFinalYou = 0;
                 vm.resultJointYou = jointDeductionFinalYou;
@@ -149,6 +146,9 @@
             }
             //console.log('Check you final', jointDeductionFinalYou);
             //console.log('Check spouse final', jointDeductionFinalSpouse);
+            if(vm.form.gross > 450000 - vm.form.income){
+                vm.form.gross = 450000 - vm.form.income;
+            }
             vm.resultJointFinal = (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse));
             return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse));
         };
