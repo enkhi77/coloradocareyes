@@ -108,7 +108,11 @@
                 if (individualDeductionFinal > 24000) {
                     individualDeductionFinal = 24000;
                 }
-                return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - individualDeductionFinal));
+                var deductionFinal = vm.form.gross - individualDeductionFinal;
+                if(deductionFinal > 350000 - vm.form.income){
+                    deductionFinal = 350000 - vm.form.income;
+                }
+                return (vm.form.income * 0.0333) + (deductionFinal * 0.10);
             }
         };
         var jointCalculation = function jointCalculation() {
