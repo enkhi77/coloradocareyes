@@ -151,12 +151,10 @@
             if(deductionFinal > 450000 - vm.form.income){
                 deductionFinal = 450000 - vm.form.income;
             }
-            vm.resultJointFinal = (vm.form.income * 0.0333) + (0.10 * deductionFinal);
             return (vm.form.income * 0.0333) + (0.10 * deductionFinal);
         };
 
         vm.calculate = function calculate() {
-            console.log('Running individual calculation');
             vm.resultsShown = true;
             var sum1 = baseCalculation();
             vm.result1 = sum1.toFixed(2);
@@ -170,7 +168,14 @@
                 vm.result2 = sum2.toFixed(2);
             }
             else if (vm.other && !vm.social) {
-                sum2 = (vm.form.income * 0.0333) + (0.10 * vm.form.gross);
+                var adjgross = 0;
+                if(vm.form.gross > 350000) {
+                    adjgross = 350000
+                }
+                else {
+                    adjgross = vm.form.gross
+                }
+                sum2 = (vm.form.income * 0.0333) + (0.10 * adjgross);
                 vm.result2 = sum2.toFixed(2);
             }
             else if (vm.other && vm.social && vm.filing === 'single') {
