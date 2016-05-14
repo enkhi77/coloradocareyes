@@ -169,11 +169,11 @@
             }
             else if (vm.other && !vm.social) {
                 var adjgross = 0;
-                if(vm.form.gross > 350000) {
-                    adjgross = 350000
+                if(vm.form.gross > 350000 - vm.form.income) {
+                    adjgross = 350000 - vm.form.income;
                 }
                 else {
-                    adjgross = vm.form.gross
+                    adjgross = vm.form.gross;
                 }
                 sum2 = (vm.form.income * 0.0333) + (0.10 * adjgross);
                 vm.result2 = sum2.toFixed(2);
