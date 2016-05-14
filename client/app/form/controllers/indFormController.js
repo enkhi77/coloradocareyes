@@ -94,17 +94,34 @@
         var singleCalculation = function singleCalculation() {
             var individualDeductionFinal = indDeduction(vm.form.you.monthlySS, vm.form.you.retirement);
             console.log('individualDeductionFinal', individualDeductionFinal);
-            if (vm.other && vm.social && vm.form.you.age === 'under65') {
-                if (individualDeductionFinal > 20000) {
-                    individualDeductionFinal = 20000;
+            if(vm.form.gross > 350000 - vm.form.income){
+                vm.form.gross =  350000 - vm.form.income;
+                if (vm.other && vm.social && vm.form.you.age === 'under65') {
+                    if (individualDeductionFinal > 20000) {
+                        individualDeductionFinal = 20000;
+                    }
+                    return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - individualDeductionFinal));
                 }
-                return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - individualDeductionFinal));
+                else if (vm.other && vm.social && vm.form.you.age === 'over65') {
+                    if (individualDeductionFinal > 24000) {
+                        individualDeductionFinal = 24000;
+                    }
+                    return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - individualDeductionFinal));
+                }
             }
-            else if (vm.other && vm.social && vm.form.you.age === 'over65') {
-                if (individualDeductionFinal > 24000) {
-                    individualDeductionFinal = 24000;
+            else {
+                if (vm.other && vm.social && vm.form.you.age === 'under65') {
+                    if (individualDeductionFinal > 20000) {
+                        individualDeductionFinal = 20000;
+                    }
+                    return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - individualDeductionFinal));
                 }
-                return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - individualDeductionFinal));
+                else if (vm.other && vm.social && vm.form.you.age === 'over65') {
+                    if (individualDeductionFinal > 24000) {
+                        individualDeductionFinal = 24000;
+                    }
+                    return (vm.form.income * 0.0333) + (0.10 * (vm.form.gross - individualDeductionFinal));
+                }
             }
         };
         var jointCalculation = function jointCalculation() {
@@ -167,32 +184,17 @@
             }
             else if (vm.other && vm.social && vm.filing === 'single') {
                 sum2 = singleCalculation();
-                if (sum2 > 35000) {
-                    sum2 = 35000.00;
-                    vm.result2 = sum2.toFixed(2);
-                }
-                else if (sum2 < 0) {
+                if (sum2 < 0) {
                     sum2 = 0;
-                    vm.result2 = sum2.toFixed(2);
                 }
-                else {
-                    vm.result2 = sum2.toFixed(2);
-                }
+                vm.result2 = sum2.toFixed(2);
             }
             else if (vm.other && vm.social && vm.filing === 'joint') {
                 sum2 = jointCalculation();
                 if (sum2 < 0) {
                     sum2 = 0;
-                    vm.result2 = sum2.toFixed(2);
                 }
-                else if (sum2 > 45000) {
-                    sum2 = 45000;
-                    vm.result2 = sum2.toFixed(2);
-                }
-                else {
-                    vm.result2 = sum2.toFixed(2);
-                }
-
+                vm.result2 = sum2.toFixed(2);
             }
             if (!vm.result2) {
                 vm.result2 = 'There has been an error calculating the result.  Please notify the webmaster';
