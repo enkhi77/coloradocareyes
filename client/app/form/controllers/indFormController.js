@@ -170,6 +170,7 @@
             else if (vm.other && !vm.social) {
                 if(vm.form.gross > 350000 - vm.form.income){
                     vm.form.gross = 350000 - vm.form.income;
+                    console.log('max non-payroll income', vm.form.gross);
                 }
                 sum2 = (vm.form.income * 0.0333) + (0.10 * vm.form.gross);
                 vm.result2 = sum2.toFixed(2);
