@@ -123,7 +123,12 @@
                 var deductionFinal = vm.form.gross - individualDeductionFinal;
                 console.log('checking deductionFinal', deductionFinal);
                 if(deductionFinal > 350000 - vm.form.income){
-                    deductionFinal = deductionFinal - vm.form.income;
+                    if(deductionFinal - vm.form.income > 350000 - vm.form.income){
+                        deductionFinal = 350000 - vm.form.income;
+                    }
+                    else {
+                        deductionFinal = deductionFinal - vm.form.income;
+                    }
                     console.log('setting deductionFinal to max', deductionFinal);
                 }
                 return (vm.form.income * 0.0333) + (deductionFinal * 0.10);
