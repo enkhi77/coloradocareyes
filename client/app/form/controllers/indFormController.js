@@ -5,7 +5,7 @@
         .controller('indFormController', indFormController);
 
     function indFormController() {
-        console.log('load indFormController');
+        // console.log('load indFormController');
         var vm = this;
 
         function setIndividualForm() {
@@ -76,7 +76,7 @@
 
         var baseCalculation = function baseCalculation() {
             var results = vm.form.premium * 12 + vm.form.deductible + vm.form.copay + vm.form.expenses;
-            console.log('baseCalculation return', results);
+            // console.log('baseCalculation return', results);
             return results;
         };
 
@@ -88,9 +88,9 @@
         };
 
         var jointDeduction = function jointDeduction(a, b, c) {
-            console.log('Check a', a);
-            console.log('check b', b);
-            console.log('check c', c);
+            // console.log('Check a', a);
+            // console.log('check b', b);
+            // console.log('check c', c);
             return (12 * a) - a / (c + a) * 12000 + b;
         };
 
@@ -103,9 +103,14 @@
                     console.log('setting individualDeductionFinal to max', individualDeductionFinal);
                 }
                 var deductionFinal = vm.form.gross - individualDeductionFinal;
-                console.log('checking deductionFinal', deductionFinal);
+                // console.log('checking deductionFinal', deductionFinal);
                 if(deductionFinal > 350000 - vm.form.income){
-                    deductionFinal = deductionFinal - vm.form.income;
+                    if(deductionFinal - vm.form.income > 350000 - vm.form.income){
+                        deductionFinal = 350000 - vm.form.income;
+                    }
+                    else {
+                        deductionFinal = deductionFinal - vm.form.income;
+                    }
                     console.log('setting deductionFinal to max', deductionFinal);
                 }
                 return (vm.form.income * 0.0333) + (deductionFinal * 0.10);
@@ -127,8 +132,8 @@
         var jointCalculation = function jointCalculation() {
             var jointDeductionFinalYou = jointDeduction(vm.form.you.monthlySS, vm.form.you.retirement, vm.form.spouse.monthlySS);
             var jointDeductionFinalSpouse = jointDeduction(vm.form.spouse.monthlySS, vm.form.spouse.retirement, vm.form.you.monthlySS);
-            console.log('jointDeductionFinalYou', jointDeductionFinalYou);
-            console.log('jointDeductionFinalSpouse', jointDeductionFinalSpouse);
+            // console.log('jointDeductionFinalYou', jointDeductionFinalYou);
+            // console.log('jointDeductionFinalSpouse', jointDeductionFinalSpouse);
             if (vm.other && vm.social && !vm.form.you.age) {
                 jointDeductionFinalYou = 0;
                 vm.resultJointYou = jointDeductionFinalYou;
@@ -162,7 +167,12 @@
             //console.log('Check spouse final', jointDeductionFinalSpouse);
             var deductionFinal = vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse;
             if(deductionFinal > 450000 - vm.form.income){
-                deductionFinal = deductionFinal - vm.form.income;
+                if(deductionFinal - vm.form.income < 450000 - vm.form.income){
+
+                }
+                else {
+                    deductionFinal = deductionFinal - vm.form.income;
+                }
             }
             return (vm.form.income * 0.0333) + (0.10 * deductionFinal);
         };
@@ -183,7 +193,12 @@
             else if (vm.other && !vm.social) {
                 var adjgross = 0;
                 if(vm.form.gross > 350000 - vm.form.income) {
-                    adjgross = vm.form.gross - vm.form.income;
+                    if(vm.form.gross - vm.form.income > 350000 - vm.form.income){
+                        adjgross = 350000 - vm.form.income;
+                    }
+                    else {
+                        adjgross = vm.form.gross - vm.form.income;
+                    }
                 }
                 else {
                     adjgross = vm.form.gross;
