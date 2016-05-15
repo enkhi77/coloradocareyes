@@ -172,12 +172,13 @@
             //console.log('Check spouse final', jointDeductionFinalSpouse);
             var deductionFinal = vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse;
             if(deductionFinal > 450000 - vm.form.income){
-                if(deductionFinal - vm.form.income < 450000 - vm.form.income){
-
+                if(deductionFinal - vm.form.income > 350000 - vm.form.income){
+                    deductionFinal = 350000 - vm.form.income;
                 }
                 else {
                     deductionFinal = deductionFinal - vm.form.income;
                 }
+                console.log('setting deductionFinal to max', deductionFinal);
             }
             return (vm.form.income * 0.0333) + (0.10 * deductionFinal);
         };
