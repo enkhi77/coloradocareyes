@@ -76,7 +76,7 @@
 
         var baseCalculation = function baseCalculation() {
             var results = vm.form.premium * 12 + vm.form.deductible + vm.form.copay + vm.form.expenses;
-            // console.log('baseCalculation return', results);
+            console.log('baseCalculation return', results);
             return results;
         };
 
@@ -103,7 +103,7 @@
                     console.log('setting individualDeductionFinal to max', individualDeductionFinal);
                 }
                 var deductionFinal = vm.form.gross - individualDeductionFinal;
-                // console.log('checking deductionFinal', deductionFinal);
+                console.log('checking deductionFinal', deductionFinal);
                 if(deductionFinal > 350000 - vm.form.income){
                     if(deductionFinal - vm.form.income > 350000 - vm.form.income){
                         deductionFinal = 350000 - vm.form.income;
@@ -137,43 +137,37 @@
         var jointCalculation = function jointCalculation() {
             var jointDeductionFinalYou = jointDeduction(vm.form.you.monthlySS, vm.form.you.retirement, vm.form.spouse.monthlySS);
             var jointDeductionFinalSpouse = jointDeduction(vm.form.spouse.monthlySS, vm.form.spouse.retirement, vm.form.you.monthlySS);
-            // console.log('jointDeductionFinalYou', jointDeductionFinalYou);
-            // console.log('jointDeductionFinalSpouse', jointDeductionFinalSpouse);
+            console.log('jointDeductionFinalYou', jointDeductionFinalYou);
+            console.log('jointDeductionFinalSpouse', jointDeductionFinalSpouse);
             if (vm.other && vm.social && !vm.form.you.age) {
                 jointDeductionFinalYou = 0;
-                vm.resultJointYou = jointDeductionFinalYou;
             }
             else if (vm.other && vm.social && vm.form.you.age === 'under65' && jointDeductionFinalYou > 20000) {
                 jointDeductionFinalYou = 20000;
-                //console.log('over 20000 for you', jointDeductionFinalYou);
-                vm.resultJointYou = jointDeductionFinalYou;
+                console.log('over 20000 for you', jointDeductionFinalYou);
             }
             else if (vm.other && vm.social && vm.form.you.age === 'over65' && jointDeductionFinalYou > 24000) {
                 jointDeductionFinalYou = 24000;
-                //console.log('over 24000 for you', jointDeductionFinalYou);
-                vm.resultJointYou = jointDeductionFinalYou;
+                console.log('over 24000 for you', jointDeductionFinalYou);
             }
 
             if (vm.other && vm.social && !vm.form.spouse.age) {
                 jointDeductionFinalSpouse = 0;
-                vm.resultJointSpouse = jointDeductionFinalSpouse;
             }
             else if (vm.other && vm.social && vm.form.spouse.age === 'under65' && jointDeductionFinalSpouse > 20000) {
                 jointDeductionFinalSpouse = 20000;
-                //console.log('over 20000 for spouse', jointDeductionFinalSpouse);
-                vm.resultJointSpouse = jointDeductionFinalSpouse;
+                console.log('over 20000 for spouse', jointDeductionFinalSpouse);
             }
             else if (vm.other && vm.social && vm.form.spouse.age === 'over65' && jointDeductionFinalSpouse > 24000) {
                 jointDeductionFinalSpouse = 24000;
-                //console.log('over 24000 for spouse', jointDeductionFinalSpouse);
-                vm.resultJointSpouse = jointDeductionFinalSpouse;
+                console.log('over 24000 for spouse', jointDeductionFinalSpouse);
             }
-            //console.log('Check you final', jointDeductionFinalYou);
-            //console.log('Check spouse final', jointDeductionFinalSpouse);
+            console.log('Check you final', jointDeductionFinalYou);
+            console.log('Check spouse final', jointDeductionFinalSpouse);
             var deductionFinal = vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse;
             if(deductionFinal > 450000 - vm.form.income){
-                if(deductionFinal - vm.form.income > 350000 - vm.form.income){
-                    deductionFinal = 350000 - vm.form.income;
+                if(deductionFinal - vm.form.income > 450000 - vm.form.income){
+                    deductionFinal = 450000 - vm.form.income;
                 }
                 else {
                     deductionFinal = deductionFinal - vm.form.income;
