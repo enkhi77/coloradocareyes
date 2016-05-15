@@ -81,6 +81,9 @@
         };
 
         var indDeduction = function indDeduction(a, b) {
+            console.log('indDeduction a', 12 * a);
+            console.log('indDeduction b', b);
+            console.log('calculated amount', (12 * a) - 9000 + b);
             return (12 * a) - 9000 + b;
         };
 
@@ -97,20 +100,26 @@
             if (vm.other && vm.social && vm.form.you.age === 'under65') {
                 if (individualDeductionFinal > 20000) {
                     individualDeductionFinal = 20000;
+                    console.log('setting individualDeductionFinal to max', individualDeductionFinal);
                 }
                 var deductionFinal = vm.form.gross - individualDeductionFinal;
+                console.log('checking deductionFinal', deductionFinal);
                 if(deductionFinal > 350000 - vm.form.income){
-                    deductionFinal = 350000 - vm.form.income;
+                    deductionFinal = deductionFinal - vm.form.income;
+                    console.log('setting deductionFinal to max', deductionFinal);
                 }
                 return (vm.form.income * 0.0333) + (deductionFinal * 0.10);
             }
             else if (vm.other && vm.social && vm.form.you.age === 'over65') {
                 if (individualDeductionFinal > 24000) {
                     individualDeductionFinal = 24000;
+                    console.log('setting individualDeductionFinal to max', individualDeductionFinal);
                 }
                 var deductionFinal = vm.form.gross - individualDeductionFinal;
+                console.log('checking deductionFinal', deductionFinal);
                 if(deductionFinal > 350000 - vm.form.income){
-                    deductionFinal = 350000 - vm.form.income;
+                    deductionFinal = deductionFinal - vm.form.income;
+                    console.log('setting deductionFinal to max', deductionFinal);
                 }
                 return (vm.form.income * 0.0333) + (deductionFinal * 0.10);
             }
@@ -153,7 +162,7 @@
             //console.log('Check spouse final', jointDeductionFinalSpouse);
             var deductionFinal = vm.form.gross - jointDeductionFinalYou - jointDeductionFinalSpouse;
             if(deductionFinal > 450000 - vm.form.income){
-                deductionFinal = 450000 - vm.form.income;
+                deductionFinal = deductionFinal - vm.form.income;
             }
             return (vm.form.income * 0.0333) + (0.10 * deductionFinal);
         };
@@ -174,7 +183,7 @@
             else if (vm.other && !vm.social) {
                 var adjgross = 0;
                 if(vm.form.gross > 350000 - vm.form.income) {
-                    adjgross = 350000 - vm.form.income;
+                    adjgross = vm.form.gross - vm.form.income;
                 }
                 else {
                     adjgross = vm.form.gross;
