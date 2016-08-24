@@ -1,0 +1,28 @@
+<div class="form-group">
+    <label class="control-label" for="vmFormPremium">Your share of monthly health care premium</label>
+    <input type="text" ng-currency class="form-control"
+           aria-label="Amount (to the nearest dollar)" ng-model="vm.form.premium"
+           min="0" id="vmFormPremium">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="vmFormDeductible">Annual deductible</label>
+    <input type="text" ng-currency class="form-control"
+           aria-label="Amount (to the nearest dollar)"
+           ng-model="vm.form.deductible" min="0" id="vmFormDeductible">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="vmFormCopay">Estimated annual co-payments</label>
+    <input type="text" ng-currency class="form-control"
+           aria-label="Amount (to the nearest dollar)"
+           ng-model="vm.form.copay" min="0" id="vmFormCopay">
+</div>
+
+<div class="form-group">
+    <label class="control-label" for="vmFormExpenses">Expenses for health care services not covered by
+        your plan</label>
+    <input type="text" ng-currency class="form-control"
+           aria-label="Amount (to the nearest dollar)"
+           ng-model="vm.form.expenses" min="0" id="vmFormExpenses">
+</div>
