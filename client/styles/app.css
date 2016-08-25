@@ -2,21 +2,6 @@ body {
     background-color: white;
 }
 
-/*h4.subheading {*/
-    /*text-align: center;*/
-/*}*/
-
-/*p.sectionheading {*/
-    /*text-align: center;*/
-/*}*/
-
-label.col-sm-6.control-label {
-    text-align: left; !important
-}
-label.col-sm-7.control-label {
-    text-align: left; !important
-}
-
 .results-margin {
     margin-right: 50px !important;
 }
@@ -35,6 +20,37 @@ label.col-sm-7.control-label {
     font-weight: bolder;
 }
 
+@media (min-width: 768px){
+    .calcside {
+        position: absolute;
+        top: 120px;
+        bottom: 0;
+        left: 0;
+        overflow-y: scroll;
+    }
+
+    .resultside {
+        position: absolute;
+        top: 120px;
+        bottom: 0;
+        right: 0;
+        overflow-y: scroll;
+    }
+}
+
 .centered {
     text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=checkbox] {
+    -ms-transform: scale(1.2); /* IE */
+    -moz-transform: scale(1.5); /* FF */
+    -webkit-transform: scale(1.5); /* Safari and Chrome */
+    -o-transform: scale(1.2); /* Opera */
 }

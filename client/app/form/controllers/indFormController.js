@@ -5,238 +5,241 @@
         .controller('indFormController', indFormController);
 
     function indFormController() {
-        console.log('load indFormController');
         var vm = this;
+        vm.set1 = null;
+        vm.set2 = null;
+        vm.set3a = null;
+        vm.set3b = null;
+        vm.set4a = null;
+        vm.set4b = null;
+        vm.set5 = null;
+        vm.indivContrib = null;
+        vm.coCare = null;
+        vm.diff = null;
+        vm.form = {
+            premium: 0,
+            deductible: 0,
+            copay: 0,
+            expenses: 0,
+            filing: null,
+            irsSum: 0,
+            irs20b: 0,
+            irsRetirement: 0,
+            spouseA: {
+                age: null,
+                monthlySS: 0,
+                ssShare: null,
+                exemption: null
+            },
+            spouseB: {
+                age: null,
+                monthlySS: 0,
+                ssShare: null,
+                exemption: null
+            }
+        };
 
-        function setIndividualForm(){
-            vm.resultsShown = null;
-            vm.form = {
-                premium: null,
-                deductible: null,
-                copay: null,
-                expenses: null,
-                income: null,
-                SS: null,
-                gross: null,
-                you:{
-                    receiveSS: null,
-                    monthlySS: null,
-                    retirement: null,
-                    age1: null,
-                    age2: null
-                },
-                spouse: {
-                    receiveSS: null,
-                    monthlySS: null,
-                    retirement: null,
-                    age1: null,
-                    age2: null
-                }
-            };
-            vm.other = null;
-            vm.social = null;
-            vm.medicaid = null;
-            vm.medicare = null;
-            vm.filing = null;
-            vm.results = {
-                you: {
-                    annualSS: null,
-                    applicableSS: null,
-                    applicableRet: null,
-                    postApplicableRet: null,
-                    SSRetirementIncome: null,
-                    calcRetirement: null,
-                    healthcareCost: null,
-                    CCCost: null,
-                    savings: null
-                },
-                spouse: {
-                    annualSS: null,
-                    applicableSS: null,
-                    applicableRet: null,
-                    postApplicableRet: null,
-                    SSRetirementIncome: null,
-                    calcRetirement: null,
-                    healthcareCost: null,
-                    CCCost: null,
-                    savings: null
-                },
-                joint: {
-                    applicableSS: null,
-                    SSRetirementIncome: null
-                }
+        vm.move = move;
+        vm.startOver = startOver;
 
-            };
-            vm.result1 = null;
-            vm.result2 = null;
-            vm.result3 = null;
-            vm.resultFiling = null;
+        activate();
+
+        function activate() {
+            vm.set1 = true;
+            console.log('init indFormController vm.set1', vm.set1);
         }
-        setIndividualForm();
 
-        var baseCalculation = function baseCalculation(){
-            var results = vm.form.premium * 12 + vm.form.deductible + vm.form.copay + vm.form.expenses;
-            console.log('baseCalculation return', results);
-            return results;
-        };
-        var singleCalculation = function singleCalculation(){
-            vm.results.you.annualSS = vm.form.you.monthlySS * 12;
-            console.log('singleCalculation annualSS', vm.results.you.annualSS);
-            vm.results.you.applicableSS = vm.results.you.annualSS - 9000;
-            if(vm.results.you.applicableSS < 0){
-                vm.results.you.applicableSS = 0;
+        function move(set){
+            switch(set){
+                case 'set1':
+                    vm.set1 = true;
+                    vm.set2 = null;
+                    vm.set3a = null;
+                    vm.set3b = null;
+                    vm.set4a = null;
+                    vm.set4b = null;
+                    vm.set5 = null;
+                    break;
+                case 'set2':
+                    vm.set1 = null;
+                    vm.set2 = true;
+                    vm.set3a = null;
+                    vm.set3b = null;
+                    vm.set4a = null;
+                    vm.set4b = null;
+                    vm.set5 = null;
+                    break;
+                case 'set3a':
+                    vm.set1 = null;
+                    vm.set2 = null;
+                    vm.set3a = true;
+                    vm.set3b = null;
+                    vm.set4a = null;
+                    vm.set4b = null;
+                    vm.set5 = null;
+                    break;
+                case 'set3b':
+                    vm.set1 = null;
+                    vm.set2 = null;
+                    vm.set3a = null;
+                    vm.set3b = true;
+                    vm.set4a = null;
+                    vm.set4b = null;
+                    vm.set5 = null;
+                    break;
+                case 'set4a':
+                    vm.set1 = null;
+                    vm.set2 = null;
+                    vm.set3a = null;
+                    vm.set3b = null;
+                    vm.set4a = true;
+                    vm.set4b = null;
+                    vm.set5 = null;
+                    break;
+                case 'set4b':
+                    vm.set1 = null;
+                    vm.set2 = null;
+                    vm.set3a = null;
+                    vm.set3b = null;
+                    vm.set4a = null;
+                    vm.set4b = true;
+                    vm.set5 = null;
+                    break;
+                case 'set5':
+                    vm.set1 = null;
+                    vm.set2 = null;
+                    vm.set3a = null;
+                    vm.set3b = null;
+                    vm.set4a = null;
+                    vm.set4b = null;
+                    vm.set5 = true;
+                    calc();
+                    break;
             }
-            console.log('singleCalculation applicableSS', vm.results.you.applicableSS);
-            if(vm.form.you.age1){
-                vm.results.you.applicableRet = vm.results.you.applicableSS + vm.form.you.retirement - 20000;
-                if(vm.results.you.applicableRet < 0){
-                    vm.results.you.applicableRet = 0;
+        }
+
+        function startOver() {
+            vm.form = {
+                premium: 0,
+                deductible: 0,
+                copay: 0,
+                expenses: 0,
+                filing: null,
+                irsSum: 0,
+                irs20b: 0,
+                irsRetirement: 0,
+                spouseA: {
+                    age: null,
+                    monthlySS: 0,
+                    ssShare: null,
+                    exemption: null
+                },
+                spouseB: {
+                    age: null,
+                    monthlySS: 0,
+                    ssShare: null,
+                    exemption: null
                 }
-                console.log('singleCalculation over 55 applicableRet', vm.results.you.applicableRet);
-            }
-            else{
-                vm.results.you.applicableRet = vm.results.you.applicableSS + vm.form.you.retirement;
-                console.log('singleCalculation under 55 applicableRet', vm.results.you.applicableRet);
-                return vm.results.you.applicableRet;
-            }
-            if(vm.form.you.age2){
-                console.log('age check over 65');
-                vm.results.you.postApplicableRet = vm.results.you.applicableRet - 4000;
-                if(vm.results.you.postApplicableRet < 0){
-                    vm.results.you.postApplicableRet = 0;
-                }
-                vm.results.you.SSRetirementIncome = vm.results.you.applicableSS + vm.results.you.postApplicableRet;
-                vm.results.you.calcRetirement = vm.results.you.SSRetirementIncome;
-                console.log('over 65 returning', vm.results.you.calcRetirement);
-                return vm.results.you.calcRetirement;
-            }
-            else{
-                console.log('age check not over 65');
-                vm.results.you.calcRetirement = vm.results.you.applicableRet + vm.results.you.applicableSS;
-                console.log('over 55 under 65 returning', vm.results.you.calcRetirement);
-                return vm.results.you.calcRetirement;
-            }
-        };
-        var jointCalculation = function jointCalculation(){
-            if(vm.form.you.social){
-                vm.results.you.annualSS = vm.form.you.monthlySS * 12;
-            }
-            else{
-                vm.results.you.annualSS = 0;
-            }
+            };
+            move('set1');
+        }
+        
+        function ssRatioCalc(){
+            vm.form.spouseA.ssShare = (vm.form.spouseA.monthlySS /
+                (vm.form.spouseA.monthlySS + vm.form.spouseB.monthlySS)) * vm.form.irs20b;
+            vm.form.spouseB.ssShare = (vm.form.spouseB.monthlySS /
+                (vm.form.spouseA.monthlySS + vm.form.spouseB.monthlySS)) * vm.form.irs20b;
+        }
 
-            if(vm.form.spouse.social){
-                vm.results.spouse.annualSS = vm.form.spouse.monthlySS * 12;
-            }
-            else{
-                vm.results.spouse.annualSS = 0;
-            }
+        function jointCalc(){
+            console.log('jointCalc vm.form', vm.form);
+            var taxIncome = vm.form.irsSum - (vm.form.spouseA.exemption + vm.form.spouseB.exemption);
+            vm.coCare = taxIncome * 0.1;
+            vm.diff = vm.indivContrib - vm.coCare;
+        }
 
-            vm.results.you.applicableSS = vm.results.you.annualSS - 12000;
-            vm.results.spouse.applicableSS = vm.results.spouse.annualSS - 12000;
-            vm.results.joint.applicableSS = (vm.results.you.annualSS + vm.results.spouse.annualSS) - 12000;
-
-            if(vm.results.joint.applicableSS < 0){
-                vm.results.joint.applicableSS = 0;
+        function calc() {
+            vm.indivContrib = vm.form.premium * 12 + vm.form.deductible + vm.form.copay + vm.form.expenses;
+            switch(vm.form.filing){
+                case 'single':
+                    switch(vm.form.spouseA.age){
+                        case 'under':
+                            vm.coCare = 0.1 * vm.form.irsSum;
+                            vm.diff = vm.indivContrib - vm.coCare;
+                            break;
+                        case 'between':
+                            var sum = vm.form.irs20b + vm.form.irsRetirement;
+                            if(sum > 20000){
+                                vm.coCare = 0.1 * (vm.form.irsSum - 20000);
+                            }
+                            else {
+                                vm.coCare = 0.1 * (vm.form.irsSum - sum);
+                            }
+                            vm.diff = vm.indivContrib - vm.coCare;
+                            break;
+                        case 'over':
+                            var sum = vm.form.irs20b + vm.form.irsRetirement;
+                            if(sum > 24000){
+                                vm.coCare = 0.1 * (vm.form.irsSum - 24000);
+                            }
+                            else{
+                                vm.coCare = 0.1 * (vm.form.irsSum - sum);
+                            }
+                            vm.diff = vm.indivContrib - vm.coCare;
+                            break;
+                    }
+                    break;
+                case 'joint':
+                    ssRatioCalc();
+                    switch(vm.form.spouseA.age){
+                        case 'under':
+                            vm.form.spouseA.exemption = 0;
+                            break;
+                        case 'between':
+                            var sum = vm.form.irsRetirement + vm.form.spouseA.ssShare;
+                            if(sum > 20000){
+                                vm.form.spouseA.exemption = 20000;
+                            }
+                            else{
+                                vm.form.spouseA.exemption = sum;
+                            }
+                            break;
+                        case 'over':
+                            var sum = vm.form.irsRetirement + vm.form.spouseA.ssShare;
+                            if(sum > 24000){
+                                vm.form.spouseA.exemption = 24000;
+                            }
+                            else{
+                                vm.form.spouseA.exemption = sum;
+                            }
+                            break;
+                    }
+                    switch(vm.form.spouseB.age){
+                        case 'under':
+                            vm.form.spouseB.exemption = 0;
+                            break;
+                        case 'between':
+                            var sum = vm.form.irsRetirement + vm.form.spouseB.ssShare;
+                            if(sum > 20000){
+                                vm.form.spouseB.exemption = 20000;
+                            }
+                            else{
+                                vm.form.spouseB.exemption = sum;
+                            }
+                            break;
+                        case 'over':
+                            var sum = vm.form.irsRetirement + vm.form.spouseB.ssShare;
+                            if(sum > 24000){
+                                vm.form.spouseB.exemption = 24000;
+                            }
+                            else{
+                                vm.form.spouseB.exemption = sum;
+                            }
+                            break;
+                    }
+                    jointCalc();
+                    break;
             }
-
-            if(vm.form.you.age1){
-                vm.results.you.applicableRet =
-                    vm.results.you.applicableRet -
-                    (12000 *
-                        (
-                            (vm.results.you.annualSS/(vm.results.you.annualSS + vm.results.spouse.annualSS + 1)) +
-                        vm.form.you.retirement) -
-                    20000);
-                if(vm.results.you.applicableRet <0){
-                    vm.results.you.applicableRet = 0;
-                }
-                if(!vm.form.spouse.age2){
-                    vm.results.you.SSRetirementIncome = vm.form.you.applicableRet;
-                }
-            }
-            else{
-                vm.results.you.applicableRet = vm.form.you.retirement;
-                vm.results.you.SSRetirementIncome = vm.results.you.applicableRet;
-            }
-
-            if(vm.form.you.age2){
-                vm.results.you.postApplicableRet = vm.results.you.applicableRet - 4000;
-                if(vm.results.you.postApplicableRet < 0){
-                    vm.results.you.postApplicableRet = 0;
-                }
-                vm.results.you.SSRetirementIncome = vm.results.joint.applicableSS + vm.results.you.postApplicableRet;
-            }
-            else{
-                vm.results.you.SSRetirementIncome = vm.results.you.applicableSS + vm.results.you.applicableRet;
-            }
-
-            if(vm.form.spouse.age1){
-                vm.results.spouse.applicableRet =
-                    vm.results.spouse.applicableRet -
-                    (12000 *
-                        (
-                            (vm.results.spouse.annualSS/(vm.results.you.annualSS + vm.results.spouse.annualSS + 1)) +
-                        vm.form.spouse.retirement) -
-                    20000);
-                if(vm.results.spouse.applicableRet < 0){
-                    vm.results.spouse.applicableRet = 0;
-                }
-                if(!vm.form.spouse.age2){
-                    vm.results.spouse.SSRetirementIncome = vm.form.spouse.applicableRet;
-                }
-            }
-            else{
-                vm.results.spouse.applicableRet = vm.form.spouse.retirement;
-                vm.results.spouse.SSRetirementIncome = vm.results.spouse.applicableRet;
-            }
-
-            if(vm.form.spouse.age2){
-                vm.results.spouse.postApplicableRet = vm.results.spouse.applicableRet - 4000;
-                if(vm.results.spouse.postApplicableRet < 0){
-                    vm.results.spouse.postApplicableRet = 0;
-                }
-                vm.results.spouse.SSRetirementIncome = vm.results.joint.applicableSS + vm.results.spouse.postApplicableRet;
-            }
-            else{
-                vm.results.spouse.SSRetirementIncome = vm.results.spouse.applicableSS + vm.results.spouse.applicableRet;
-            }
-
-            vm.results.joint.SSRetirementIncome = vm.results.you.SSRetirementIncome + vm.results.spouse.SSRetirementIncome;
-            console.log('jointCalculation final result', vm.results.joint.SSRetirementIncome);
-            return vm.results.joint.SSRetirementIncome;
-        };
-
-
-        vm.calculate = function calculate() {
-            console.log('Running individual calculation');
-            vm.resultsShown = true;
-            var sum1 = baseCalculation();
-            vm.result1 = sum1.toFixed(2);
-
-            var sum2 = null;
-            if(vm.other && !vm.social){
-                sum2 = (vm.form.income * 0.0333) + (0.10 * vm.form.gross);
-                console.log('vm.other && !vm.social baseCalculation', sum1);
-                vm.result2 = sum2.toFixed(2);
-            }
-            else if(vm.other && vm.social && vm.filing === 'single'){
-                sum2 = (vm.form.income * 0.0333) + (0.10 * vm.form.gross) + singleCalculation();
-                console.log('vm.other && vm.social &&vm.filing single baseCalculation', sum1);
-                vm.result2 = sum2.toFixed(2);
-            }
-            else if(vm.other && vm.social && vm.filing === 'joint'){
-                sum2 = (vm.form.income * 0.0333) + (0.10 * vm.form.gross) + jointCalculation();
-                console.log('vm.other && vm.social &&vm.filing joint baseCalculation', sum1);
-                vm.result2 = sum2.toFixed(2);
-            }
-
-            var sum3 = vm.result1 - vm.result2;
-            vm.difference = sum3.toFixed(2);
-        };
-
-        vm.clear = function clear() {
-            setIndividualForm();
-        };
+        }
     }
 })();
