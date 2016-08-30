@@ -21,10 +21,12 @@
                     <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
                 </div>
             </div>
+
+            <!-- SETUP FILING -->
             <div ng-if="vm.set3">
                 <ng-include src="'app/form/templates/set3.tpl.html'"></ng-include>
                 <div>
-                    <button class="btn btn-default" ng-click="vm.move('set2)">Back</button>
+                    <button class="btn btn-default" ng-click="vm.move('set2')">Back</button>
                     <button class="btn btn-default" ng-if="vm.form.filing === 'single'"
                             ng-click="vm.move('set4a')">Next</button>
                     <button class="btn btn-default" ng-if="vm.form.filing === 'joint'"
