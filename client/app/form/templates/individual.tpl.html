@@ -22,9 +22,9 @@
                 </div>
             </div>
             <div ng-if="vm.set3">
-                <ng-include src="'app/form/templates/set2.tpl.html'"></ng-include>
+                <ng-include src="'app/form/templates/set3.tpl.html'"></ng-include>
                 <div>
-                    <button class="btn btn-default" ng-click="vm.move('set1')">Back</button>
+                    <button class="btn btn-default" ng-click="vm.move('set2)">Back</button>
                     <button class="btn btn-default" ng-if="vm.form.filing === 'single'"
                             ng-click="vm.move('set4a')">Next</button>
                     <button class="btn btn-default" ng-if="vm.form.filing === 'joint'"
@@ -35,9 +35,9 @@
 
             <!-- SINGLE FILING SECTIONS -->
             <div ng-if="vm.set4a">
-                <ng-include src="'app/form/templates/set3a.tpl.html'"></ng-include>
+                <ng-include src="'app/form/templates/set4a.tpl.html'"></ng-include>
                 <div>
-                    <button class="btn btn-default" ng-click="vm.move('set2')">Back</button>
+                    <button class="btn btn-default" ng-click="vm.move('set3')">Back</button>
                     <button class="btn btn-default" ng-if="vm.form.spouseA.age"
                             ng-click="vm.move('set5a')">Next</button>
                     <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
@@ -45,7 +45,7 @@
             </div>
 
             <div ng-if="vm.set5a">
-                <ng-include src="'app/form/templates/set4a.tpl.html'"></ng-include>
+                <ng-include src="'app/form/templates/set5a.tpl.html'"></ng-include>
                 <div>
                     <button class="btn btn-default" ng-click="vm.move('set4a')">Back</button>
                     <button class="btn btn-default" ng-click="vm.move('set6')">Next</button>
@@ -55,7 +55,7 @@
 
             <!-- JOINT FILING SECTIONS -->
             <div ng-if="vm.set4b">
-                <ng-include src="'app/form/templates/set3b.tpl.html'"></ng-include>
+                <ng-include src="'app/form/templates/set4b.tpl.html'"></ng-include>
                 <div>
                     <button class="btn btn-default" ng-click="vm.move('set3')">Back</button>
                     <button class="btn btn-default" ng-if="vm.form.spouseA.age && vm.form.spouseB.age"
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div ng-if="vm.set5b">
-                <ng-include src="'app/form/templates/set4b.tpl.html'"></ng-include>
+                <ng-include src="'app/form/templates/set5b.tpl.html'"></ng-include>
                 <div>
                     <button class="btn btn-default" ng-click="vm.move('set4b')">Back</button>
                     <button class="btn btn-default" ng-click="vm.move('set6')">Next</button>
@@ -74,7 +74,7 @@
 
             <!-- TOTAL SECTION -->
             <div ng-if="vm.set6">
-                <ng-include src="'app/form/templates/set5.tpl.html'"></ng-include>
+                <ng-include src="'app/form/templates/set6.tpl.html'"></ng-include>
                 <div>
                     <button class="btn btn-default"
                             ng-if="vm.form.filing === 'single'"
