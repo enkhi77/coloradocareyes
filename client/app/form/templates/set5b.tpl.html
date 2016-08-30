@@ -26,54 +26,58 @@
 </div>
 
 <!-- SPOUSEA -->
-<h5>For You:</h5>
+<div ng-if="vm.form.spouseA.age !== 'under' || vm.form.spouseB.age !== 'under'">
+    <h5>For You:</h5>
 
-<div class="form-group">
-    <label class="control-label"
-           for="vm.form.spouseA.monthlySS">
-        Monthly Social Security Income
-    </label>
-    <input type="text" ng-currency
-           class="form-control"
-           aria-label="Amount (to the nearest dollar)"
-           ng-model="vm.form.spouseA.monthlySS"
-           uib-tooltip="Put the full amount of your monthly Social Security check here."
-           min="0" id="vm.form.spouseA.monthlySS">
-</div>
-<div class="form-group">
-    <label class="control-label"
-           for="vm.form.spouseA.irsRetirement">
-        Sum of IRS Form 1040 lines 15b and 16b
-    </label>
-    <input type="text" ng-currency
-           class="form-control"
-           aria-label="Amount (to the nearest dollar)"
-           ng-model="vm.form.irsRetirement"
-           min="0" id="vm.form.irsRetirement">
+    <div class="form-group">
+        <label class="control-label"
+               for="vm.form.spouseA.monthlySS">
+            Monthly Social Security Income
+        </label>
+        <input type="text" ng-currency
+               class="form-control"
+               aria-label="Amount (to the nearest dollar)"
+               ng-model="vm.form.spouseA.monthlySS"
+               uib-tooltip="Put the full amount of your monthly Social Security check here."
+               min="0" id="vm.form.spouseA.monthlySS">
+    </div>
+    <div class="form-group">
+        <label class="control-label"
+               for="vm.form.spouseA.irsRetirement">
+            Total of your portion of IRS Form 1040 lines 15b and 16b (Retirement Income)
+        </label>
+        <input type="text" ng-currency
+               class="form-control"
+               aria-label="Amount (to the nearest dollar)"
+               ng-model="vm.form.spouseA.irsRetirement"
+               min="0" id="vm.form.irsRetirement">
+    </div>
 </div>
 
 <!-- SPOUSEB -->
-<h5>For Your Spouse:</h5>
-<div class="form-group">
-    <label class="control-label"
-           for="vm.form.spouseB.monthlySS">
-        Monthly Social Security Income
-    </label>
-    <input type="text" ng-currency
-           class="form-control"
-           aria-label="Amount (to the nearest dollar)"
-           ng-model="vm.form.spouseB.monthlySS"
-           uib-tooltip="Put the full amount of your monthly Social Security check here."
-           min="0" id="vm.form.spouseB.monthlySS">
-</div>
-<div class="form-group">
-    <label class="control-label"
-           for="vm.form.spouseB.irsRetirement">
-        Sum of IRS Form 1040 lines 15b and 16b
-    </label>
-    <input type="text" ng-currency
-           class="form-control"
-           aria-label="Amount (to the nearest dollar)"
-           ng-model="vm.form.irsRetirement"
-           min="0" id="vm.form.irsRetirement">
+<div ng-if="vm.form.spouseA.age !== 'under' || vm.form.spouseB.age !== 'under'">
+    <h5>For Your Spouse:</h5>
+    <div class="form-group">
+        <label class="control-label"
+               for="vm.form.spouseB.monthlySS">
+            Monthly Social Security Income
+        </label>
+        <input type="text" ng-currency
+               class="form-control"
+               aria-label="Amount (to the nearest dollar)"
+               ng-model="vm.form.spouseB.monthlySS"
+               uib-tooltip="Put the full amount of your monthly Social Security check here."
+               min="0" id="vm.form.spouseB.monthlySS">
+    </div>
+    <div class="form-group">
+        <label class="control-label"
+               for="vm.form.spouseB.irsRetirement">
+            Total spouse portion of IRS Form 1040 lines 15b and 16b (Retirement Income)
+        </label>
+        <input type="text" ng-currency
+               class="form-control"
+               aria-label="Amount (to the nearest dollar)"
+               ng-model="vm.form.spouseB.irsRetirement"
+               min="0" id="vm.form.irsRetirement">
+    </div>
 </div>

@@ -1,9 +1,7 @@
 (function () {
     'use strict';
-    angular
-        .module('app.form')
+    angular.module('app.form')
         .controller('indFormController', indFormController);
-
     function indFormController() {
         var vm = this;
         vm.set1 = null;
@@ -185,7 +183,7 @@
                 case 'single':
                     switch(vm.form.spouseA.age){
                         case 'under':
-                            vm.coCare = (0.1 * vm.form.irsSum) + (vm.form.w2 * 0.0333);
+                            vm.coCare = Number((0.1 * vm.form.irsSum) + (vm.form.w2 * 0.0333)).toFixed(2);
                             vm.diff = vm.indivContrib - vm.coCare;
                             break;
                         case 'between':
@@ -211,54 +209,60 @@
                     }
                     break;
                 case 'joint':
-                    ssRatioCalc();
-                    switch(vm.form.spouseA.age){
-                        case 'under':
-                            vm.form.spouseA.exemption = 0;
-                            break;
-                        case 'between':
-                            var sum = vm.form.spouseA.irsRetirement + vm.form.spouseA.ssShare;
-                            if(sum > 20000){
-                                vm.form.spouseA.exemption = 20000;
-                            }
-                            else{
-                                vm.form.spouseA.exemption = sum;
-                            }
-                            break;
-                        case 'over':
-                            var sum = vm.form.spouseA.irsRetirement + vm.form.spouseA.ssShare;
-                            if(sum > 24000){
-                                vm.form.spouseA.exemption = 24000;
-                            }
-                            else{
-                                vm.form.spouseA.exemption = sum;
-                            }
-                            break;
+                    if(vm.form.spouseA.age === 'under' && vm.form.spouseB.age === 'under'){
+                        vm.coCare = Number((0.1 * vm.form.irsSum) + (vm.form.w2 * 0.0333)).toFixed(2);
+                        vm.diff = vm.indivContrib - vm.coCare;
                     }
-                    switch(vm.form.spouseB.age){
-                        case 'under':
-                            vm.form.spouseB.exemption = 0;
-                            break;
-                        case 'between':
-                            var sum = vm.form.spouseB.irsRetirement + vm.form.spouseB.ssShare;
-                            if(sum > 20000){
-                                vm.form.spouseB.exemption = 20000;
-                            }
-                            else{
-                                vm.form.spouseB.exemption = sum;
-                            }
-                            break;
-                        case 'over':
-                            var sum = vm.form.spouseB.irsRetirement + vm.form.spouseB.ssShare;
-                            if(sum > 24000){
-                                vm.form.spouseB.exemption = 24000;
-                            }
-                            else{
-                                vm.form.spouseB.exemption = sum;
-                            }
-                            break;
+                    else{
+                        ssRatioCalc();
+                        switch(vm.form.spouseA.age){
+                            case 'under':
+                                vm.form.spouseA.exemption = 0;
+                                break;
+                            case 'between':
+                                var sum = vm.form.spouseA.irsRetirement + vm.form.spouseA.ssShare;
+                                if(sum > 20000){
+                                    vm.form.spouseA.exemption = 20000;
+                                }
+                                else{
+                                    vm.form.spouseA.exemption = sum;
+                                }
+                                break;
+                            case 'over':
+                                var sum = vm.form.spouseA.irsRetirement + vm.form.spouseA.ssShare;
+                                if(sum > 24000){
+                                    vm.form.spouseA.exemption = 24000;
+                                }
+                                else{
+                                    vm.form.spouseA.exemption = sum;
+                                }
+                                break;
+                        }
+                        switch(vm.form.spouseB.age){
+                            case 'under':
+                                vm.form.spouseB.exemption = 0;
+                                break;
+                            case 'between':
+                                var sum = vm.form.spouseB.irsRetirement + vm.form.spouseB.ssShare;
+                                if(sum > 20000){
+                                    vm.form.spouseB.exemption = 20000;
+                                }
+                                else{
+                                    vm.form.spouseB.exemption = sum;
+                                }
+                                break;
+                            case 'over':
+                                var sum = vm.form.spouseB.irsRetirement + vm.form.spouseB.ssShare;
+                                if(sum > 24000){
+                                    vm.form.spouseB.exemption = 24000;
+                                }
+                                else{
+                                    vm.form.spouseB.exemption = sum;
+                                }
+                                break;
+                        }
+                        jointCalc();
                     }
-                    jointCalc();
                     break;
                 default:
                     vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
