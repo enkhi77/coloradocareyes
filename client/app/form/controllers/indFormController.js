@@ -189,7 +189,7 @@
                             vm.diff = vm.indivContrib - vm.coCare;
                             break;
                         case 'between':
-                            var sum = vm.form.irs20b + vm.form.irsRetirement;
+                            var sum = vm.form.irs20b + vm.form.spouseA.irsRetirement;
                             if(sum > 20000){
                                 vm.coCare = Number((0.1 * (vm.form.irsSum - 20000)) + (vm.form.w2 * 0.0333)).toFixed(2);
                             }
@@ -199,7 +199,7 @@
                             vm.diff = vm.indivContrib - vm.coCare;
                             break;
                         case 'over':
-                            var sum = vm.form.irs20b + vm.form.irsRetirement;
+                            var sum = vm.form.irs20b + vm.form.spouseA.irsRetirement;
                             if(sum > 24000){
                                 vm.coCare = Number((0.1 * (vm.form.irsSum - 24000)) + (vm.form.w2 * 0.0333)).toFixed(2);
                             }
