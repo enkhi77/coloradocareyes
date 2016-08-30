@@ -4,3 +4,26 @@
            aria-label="Amount (to the nearest dollar)" ng-model="vm.form.w2"
            min="0" id="vmFormW2">
 </div>
+<div>
+    <label>Do you have any significant income other than your W2?</label>
+</div>
+<div class="form-group">
+    <div class="radio">
+        <label for="vm.form.otherY">
+            <input type="radio"
+                   aria-label="File Single"
+                   ng-model="vm.form.otherIncome"
+                   value="yes"
+                   id="vm.form.otherY"> Yes
+        </label>
+    </div>
+    <div class="radio">
+        <label for="vm.form.otherN">
+            <input type="radio"
+                   aria-label="File Join"
+                   ng-model="vm.form.otherIncome"
+                   value="no"
+                   id="vm.form.otherN"> No
+        </label>
+    </div>
+</div>

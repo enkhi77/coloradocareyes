@@ -23,6 +23,7 @@
             copay: 0,
             expenses: 0,
             w2: 0,
+            otherIncome: null,
             filing: null,
             irsSum: 0,
             irs20b: 0,
