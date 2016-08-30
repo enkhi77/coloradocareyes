@@ -259,6 +259,9 @@
                     }
                     jointCalc();
                     break;
+                default:
+                    vm.coCare = vm.form.w2 * 0.0333;
+                    vm.diff = vm.indivContrib - vm.coCare;
             }
         }
     }
