@@ -174,8 +174,8 @@
         function jointCalc(){
             console.log('jointCalc vm.form', vm.form);
             var taxIncome = vm.form.irsSum - (vm.form.spouseA.exemption + vm.form.spouseB.exemption);
-            vm.coCare = (taxIncome * 0.1) + (vm.form.w2 * 0.0333);
-            vm.diff = vm.indivContrib - vm.coCare;
+            vm.coCare = Number((taxIncome * 0.1) + (vm.form.w2 * 0.0333)).toFixed(2);
+            vm.diff = (vm.indivContrib - vm.coCare).toFixed(2);
         }
 
         function calc() {
@@ -190,20 +190,20 @@
                         case 'between':
                             var sum = vm.form.irs20b + vm.form.irsRetirement;
                             if(sum > 20000){
-                                vm.coCare = (0.1 * (vm.form.irsSum - 20000)) + (vm.form.w2 * 0.0333);
+                                vm.coCare = Number((0.1 * (vm.form.irsSum - 20000)) + (vm.form.w2 * 0.0333)).toFixed(2);
                             }
                             else {
-                                vm.coCare = (0.1 * (vm.form.irsSum - sum)) + (vm.form.w2 * 0.0333);
+                                vm.coCare = Number((0.1 * (vm.form.irsSum - sum)) + (vm.form.w2 * 0.0333)).toFixed(2);
                             }
                             vm.diff = vm.indivContrib - vm.coCare;
                             break;
                         case 'over':
                             var sum = vm.form.irs20b + vm.form.irsRetirement;
                             if(sum > 24000){
-                                vm.coCare = (0.1 * (vm.form.irsSum - 24000)) + (vm.form.w2 * 0.0333);
+                                vm.coCare = Number((0.1 * (vm.form.irsSum - 24000)) + (vm.form.w2 * 0.0333)).toFixed(2);
                             }
                             else{
-                                vm.coCare = (0.1 * (vm.form.irsSum - sum)) + (vm.form.w2 * 0.0333);
+                                vm.coCare = Number((0.1 * (vm.form.irsSum - sum)) + (vm.form.w2 * 0.0333)).toFixed(2);
                             }
                             vm.diff = vm.indivContrib - vm.coCare;
                             break;
@@ -260,8 +260,8 @@
                     jointCalc();
                     break;
                 default:
-                    vm.coCare = vm.form.w2 * 0.0333;
-                    vm.diff = vm.indivContrib - vm.coCare;
+                    vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
+                    vm.diff = (vm.indivContrib - vm.coCare).toFixed(2);
             }
         }
     }
