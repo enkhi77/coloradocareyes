@@ -27,16 +27,17 @@
             filing: null,
             irsSum: 0,
             irs20b: 0,
-            irsRetirement: 0,
             spouseA: {
                 age: null,
                 monthlySS: 0,
+                irsRetirement: 0,
                 ssShare: null,
                 exemption: null
             },
             spouseB: {
                 age: null,
                 monthlySS: 0,
+                irsRetirement: 0,
                 ssShare: null,
                 exemption: null
             }
@@ -216,7 +217,7 @@
                             vm.form.spouseA.exemption = 0;
                             break;
                         case 'between':
-                            var sum = vm.form.irsRetirement + vm.form.spouseA.ssShare;
+                            var sum = vm.form.spouseA.irsRetirement + vm.form.spouseA.ssShare;
                             if(sum > 20000){
                                 vm.form.spouseA.exemption = 20000;
                             }
@@ -225,7 +226,7 @@
                             }
                             break;
                         case 'over':
-                            var sum = vm.form.irsRetirement + vm.form.spouseA.ssShare;
+                            var sum = vm.form.spouseA.irsRetirement + vm.form.spouseA.ssShare;
                             if(sum > 24000){
                                 vm.form.spouseA.exemption = 24000;
                             }
@@ -239,7 +240,7 @@
                             vm.form.spouseB.exemption = 0;
                             break;
                         case 'between':
-                            var sum = vm.form.irsRetirement + vm.form.spouseB.ssShare;
+                            var sum = vm.form.spouseB.irsRetirement + vm.form.spouseB.ssShare;
                             if(sum > 20000){
                                 vm.form.spouseB.exemption = 20000;
                             }
@@ -248,7 +249,7 @@
                             }
                             break;
                         case 'over':
-                            var sum = vm.form.irsRetirement + vm.form.spouseB.ssShare;
+                            var sum = vm.form.spouseB.irsRetirement + vm.form.spouseB.ssShare;
                             if(sum > 24000){
                                 vm.form.spouseB.exemption = 24000;
                             }
