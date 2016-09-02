@@ -15,7 +15,7 @@
     <div class="row results-margin" id="individualResult">
         <label class="col-sm-7 control-label">Annual Amount Saved</label>
         <div class="col-sm-4">
-            <p class="form-control-static pull-right">${{vm.diff}}</p>
+            <p class="form-control-static pull-right">${{vm.diff | nanFilter:vm.diff}}</p>
         </div>
     </div>
     <div class="row">
