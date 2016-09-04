@@ -174,8 +174,13 @@
         function jointCalc(){
             console.log('jointCalc vm.form', vm.form);
             var taxIncome = vm.form.irsSum - (vm.form.spouseA.exemption + vm.form.spouseB.exemption);
-            vm.coCare = Number((taxIncome * 0.1) + (vm.form.w2 * 0.0333)).toFixed(2);
-            vm.diff = (vm.indivContrib - vm.coCare).toFixed();
+            if(taxIncome > 0){
+                vm.coCare = Number((taxIncome * 0.1) + (vm.form.w2 * 0.0333)).toFixed(2);
+            }
+            else {
+                vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
+            }
+            vm.diff = (vm.indivContrib - vm.coCare).toFixed(2);
         }
 
         function calc() {
@@ -189,21 +194,43 @@
                             break;
                         case 'between':
                             var sum = vm.form.irs20b + vm.form.spouseA.irsRetirement;
+                            console.log('between sum', sum);
                             if(sum > 20000){
-                                vm.coCare = Number((vm.form.w2 * 0.0333) + ((vm.form.irsSum - 20000) * 0.1)).toFixed(0);
+                                if(vm.form.irsSum - 20000 > 0){
+                                    vm.coCare = Number((vm.form.w2 * 0.0333) + ((vm.form.irsSum - 20000) * 0.1)).toFixed(2);
+                                }
+                                else {
+                                    vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(0);
+                                }
                             }
                             else {
-                                vm.coCare = Number((vm.form.w2 * 0.0333) + ((vm.form.irsSum - sum)* 0.1)).toFixed(0);
+                                if(vm.form.irsSum - sum > 0){
+                                    vm.coCare = Number((vm.form.w2 * 0.0333) + ((vm.form.irsSum - sum)* 0.1)).toFixed(2);
+                                }
+                                else {
+                                    vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
+                                }
                             }
                             vm.diff = vm.indivContrib - vm.coCare;
                             break;
                         case 'over':
                             var sum = vm.form.irs20b + vm.form.spouseA.irsRetirement;
+                            console.log('over sum', sum);
                             if(sum > 24000){
-                                vm.coCare = Number((0.1 * (vm.form.irsSum - 24000)) + (vm.form.w2 * 0.0333)).toFixed(2);
+                                if(vm.form.irsSum - 24000 > 0){
+                                    vm.coCare = Number((0.1 * (vm.form.irsSum - 24000)) + (vm.form.w2 * 0.0333)).toFixed(2);
+                                }
+                                else {
+                                    vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
+                                }
                             }
                             else{
-                                vm.coCare = Number((0.1 * (vm.form.irsSum - sum)) + (vm.form.w2 * 0.0333)).toFixed(2);
+                                if(vm.form.irsSum - sum > 0){
+                                    vm.coCare = Number((0.1 * (vm.form.irsSum - sum)) + (vm.form.w2 * 0.0333)).toFixed(2);
+                                }
+                                else {
+                                    vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
+                                }
                             }
                             vm.diff = vm.indivContrib - vm.coCare;
                             break;
@@ -221,7 +248,8 @@
                                 vm.form.spouseA.exemption = 0;
                                 break;
                             case 'between':
-                                var sum = vm.form.spouseA.irsRetirement + vm.form.spouseA.ssShare;
+                                var sum = vm.form.irs20b * vm.form.spouseA.ssShare;
+                                console.log('over sum', sum);
                                 if(sum > 20000){
                                     vm.form.spouseA.exemption = 20000;
                                 }
@@ -230,7 +258,8 @@
                                 }
                                 break;
                             case 'over':
-                                var sum = vm.form.spouseA.irsRetirement + vm.form.spouseA.ssShare;
+                                var sum = vm.form.irs20b * vm.form.spouseA.ssShare;
+                                console.log('over sum', sum);
                                 if(sum > 24000){
                                     vm.form.spouseA.exemption = 24000;
                                 }
@@ -244,7 +273,8 @@
                                 vm.form.spouseB.exemption = 0;
                                 break;
                             case 'between':
-                                var sum = vm.form.spouseB.irsRetirement + vm.form.spouseB.ssShare;
+                                var sum = vm.form.irs20b * vm.form.spouseB.ssShare;
+                                console.log('between sum', sum);
                                 if(sum > 20000){
                                     vm.form.spouseB.exemption = 20000;
                                 }
@@ -253,7 +283,8 @@
                                 }
                                 break;
                             case 'over':
-                                var sum = vm.form.spouseB.irsRetirement + vm.form.spouseB.ssShare;
+                                var sum = vm.form.irs20b * vm.form.spouseB.ssShare;
+                                console.log('over sum', sum);
                                 if(sum > 24000){
                                     vm.form.spouseB.exemption = 24000;
                                 }
@@ -266,8 +297,8 @@
                     }
                     break;
                 default:
-                    vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(0);
-                    vm.diff = (vm.indivContrib - vm.coCare).toFixed(0);
+                    vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
+                    vm.diff = (vm.indivContrib - vm.coCare).toFixed(2);
             }
         }
     }
