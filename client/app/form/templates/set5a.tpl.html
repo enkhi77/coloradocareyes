@@ -1,0 +1,36 @@
+<div class="form-group">
+    <label class="control-label"
+           for="vm.form.irsSum">
+        Sum of IRS Form 1040 lines 8 to 21
+    </label>
+    <input type="text" ng-currency
+           class="form-control"
+           aria-label="Amount (to the nearest dollar)"
+           ng-model="vm.form.irsSum"
+           min="0" id="vm.form.irsSum">
+</div>
+<div ng-if="vm.form.spouseA.age !== 'under'">
+    <div class="form-group">
+        <label class="control-label"
+               for="vm.form.irs20b">
+            IRS Form 1040 line 20b
+        </label>
+        <input type="text" ng-currency
+               class="form-control"
+               aria-label="Amount (to the nearest dollar)"
+               ng-model="vm.form.irs20b"
+               uib-tooltip="Do not enter all of your Social Security. The IRS Form 1040 exempts a large portion of Social Security, and the portion is different for each person. Line 20b is the amount after exemption."
+               min="0" id="vm.form.irs20b">
+    </div>
+    <div class="form-group">
+        <label class="control-label"
+               for="vm.form.irsRetirement">
+            Sum of IRS Form 1040 lines 15b and 16b
+        </label>
+        <input type="text" ng-currency
+               class="form-control"
+               aria-label="Amount (to the nearest dollar)"
+               ng-model="vm.form.spouseA.irsRetirement"
+               min="0" id="vm.form.irsRetirement">
+    </div>
+</div>

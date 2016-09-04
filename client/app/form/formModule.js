@@ -1,2 +1,3 @@
-angular
-    .module('app.form', ['ui.bootstrap', 'ng-currency']);
+(function(){
+    angular.module('app.form', ['ui.bootstrap', 'ng-currency']);
+})();

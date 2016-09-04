@@ -1,310 +1,98 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
         <h2>Individual and/or Family Form</h2>
     </div>
-    <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
         <h4>Worksheet for comparing your current health care coverage to ColoradoCare</h4>
     </div>
-    <div class="row">
-        <div class="col-sm-5 calcside">
-            <form>
-                <div class="row">
-                    <h4>Your current health care plan</h4>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="vmFormPremium">Your share of monthly health care premium</label>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input type="text" ng-currency class="form-control"
-                                   aria-label="Amount (to the nearest dollar)" ng-model="vm.form.premium"
-                                   min="0" id="vmFormPremium">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="vmFormDeductible">Annual deductible</label>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input type="text" ng-currency class="form-control"
-                                   aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.form.deductible" min="0" id="vmFormDeductible">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="vmFormCopay">Estimated annual co-payments</label>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input type="text" ng-currency class="form-control"
-                                   aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.form.copay" min="0" id="vmFormCopay">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="vmFormExpenses">Expenses for health care services not covered by
-                        your plan</label>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input type="text" ng-currency class="form-control"
-                                   aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.form.expenses" min="0" id="vmFormExpenses">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <h4>ColoradoCare</h4>
-                    <small>No deductibles, limited copays, and comprehensive coverage mean that Premium Tax is the only
-                        major expense.</small>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="vmFormIncome">Your annual payroll (W-2) income</label>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input type="text" ng-currency class="form-control"
-                                   aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.form.income" min="0" id="vmFormIncome">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- setup for other income -->
-                <div class="checkbox">
-                    <label for="vmOther">
-                        <input type="checkbox" ng-model="vm.other" id="vmOther"> If you have significant income besides payroll and itemize your taxes, check here</label>
-                </div>
-                <div class="form-group" ng-show="vm.other">
-                    <label class="control-label" for="vmGross">Non-payroll income (Income reported on IRS form 1040 lines 8a – 21)</label>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input type="text" ng-currency class="form-control"
-                                   aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.form.gross" min="0" id="vmGross"
-                                   uib-tooltip="Social Security recipients who are not taking income information for this calculator from a Form 1040 should subtract from your Social Security income either $9,000 for individual filers or $12,000 for joint filers"
-                                   tooltip-trigger="focus"
-                                   tooltip-placement="bottom">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- checkbox for social security income -->
-                <div class="checkbox" ng-show="vm.other">
-                    <label for="vmSocial">
-                        <input type="checkbox" ng-model="vm.social" id="vmSocial"> If you have Social Security and/or
-                        retirement income, check here</label>
-                </div>
-
-                <!-- radio for joint or single filing -->
-                <div class="radio" ng-show="vm.social">
-                    <strong>Check one box:</strong><br>
-                    <label for="vmFilingSingle">
-                        <input type="radio" ng-model="vm.filing" value="single" id="vmFilingSingle"> File taxes individually
-                    </label>
-                </div>
-                <div class="radio" ng-show="vm.social">
-                    <label for="vmFilingJoint">
-                        <input type="radio" ng-model="vm.filing" value="joint" id="vmFilingJoint"> File taxes jointly
-                    </label>
-                </div>
-
-                <!-- for single filing -->
-                <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
-                    <label for="vmFormSingleMonthlySS">Your Monthly Social Security Income</label>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input type="text" ng-currency class="form-control"
-                                   aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.form.you.monthlySS" min="0" id="vmFormSingleMonthlySS">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
-                    <label class="control-label" for="vmFormSingleRetirement">Annual retirement income from annuity,
-                        pension, IRA, etc.</label>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input type="text" ng-currency class="form-control"
-                                   aria-label="Amount (to the nearest dollar)"
-                                   ng-model="vm.form.you.retirement" min="0" id="vmFormSingleRetirement">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group" ng-show="vm.other && vm.filing === 'single'">
-                    <strong>Age:</strong>
-                    <div class="radio">
-                        <label for="vmFilingSingle">
-                            <input type="radio" ng-model="vm.form.you.age"
-                                   value="under65" id="vmFilingSingle"> Between 55 and 65
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label for="vmFilingJoint">
-                            <input type="radio" ng-model="vm.form.you.age" value="over65" id="vmFilingJoint"> Over 65
-                        </label>
-                    </div>
-                </div>
-
-                <!-- for joint filing -->
-                <div ng-show="vm.other && vm.filing === 'joint'">
-                    <!-- questions for you -->
-                    <div class="row">
-                        <h4>For you</h4>
-                    </div>
-                    <div class="checkbox">
-                        <label for="vmFormJointYouReceiveSS">
-                            <input type="checkbox" ng-model="vm.form.you.receiveSS"
-                                   id="vmFormJointYouReceiveSS"> If you receive Social Security check here
-                        </label>
-                    </div>
-                    <div ng-if="vm.form.you.receiveSS">
-                        <div class="form-group">
-                            <label class="control-label" for="vmFormJointYouMonthlySS">
-                                Your monthly Social Security Income</label>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <input type="text" ng-currency class="form-control"
-                                           aria-label="Amount (to the nearest dollar)"
-                                           ng-model="vm.form.you.monthlySS" min="0" id="vmFormJointYouMonthlySS">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label"
-                               for="vmFormJointYouRetirement">Your annual retirement income from annuity, pension, IRA,
-                            etc.
-                        </label>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <input type="text" ng-currency
-                                       class="form-control"
-                                       aria-label="Amount (to the nearest dollar)"
-                                       ng-model="vm.form.you.retirement"
-                                       min="0"
-                                       id="vmFormJointYouRetirement">
-                            </div>
-                        </div>
-                    </div>
-                    <div ng-show="vm.form.you.receiveSS">
-                        <div class="radio">
-                            <strong>Age:</strong><br>
-                            <label for="vmFormJointYourAgeUnder65">
-                                <input type="radio" ng-model="vm.form.you.age"
-                                       value="under65" id="vmFormJointYourAgeUnder65"> Between 55 and 65
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label class="checkbox-inline" for="vmFormJointYourAgeOver65">
-                                <input type="radio" ng-model="vm.form.you.age"
-                                       value="over65" id="vmFormJointYourAgeOver65"> Over 65
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- questions for spouse -->
-                    <div class="row">
-                        <h4>For your spouse</h4>
-                    </div>
-
-                    <div class="checkbox">
-                        <label for="vmFormJointSpouseReceiveSS">
-                            <input type="checkbox" ng-model="vm.form.spouse.receiveSS"
-                                   id="vmFormJointSpouseReceiveSS"> Does your spouse receive Social Security
-                        </label>
-                    </div>
-                    <div ng-show="vm.form.spouse.receiveSS">
-                        <div class="form-group">
-                            <label class="control-label" for="vmFormJointSpouseMonthlySS">
-                                Your spouse's monthly Social Security Income</label>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <input type="text" ng-currency class="form-control"
-                                           aria-label="Amount (to the nearest dollar)"
-                                           ng-model="vm.form.spouse.monthlySS" min="0" id="vmFormJointSpouseMonthlySS">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="vmFormJointSpouseRetirement">
-                            Your spouse's annual retirement income from annuity, pension, IRA, etc.</label>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <input type="text" ng-currency class="form-control"
-                                       aria-label="Amount (to the nearest dollar)"
-                                       ng-model="vm.form.spouse.retirement" min="0" id="vmFormJointSpouseRetirement">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div ng-show="vm.form.spouse.receiveSS">
-                        <div class="radio">
-                            <strong>Age:</strong><br>
-                            <label for="vmFormJointSpouseAgeUnder65">
-                                <input type="radio" ng-model="vm.form.spouse.age" value="under65"
-                                       id="vmFormJointSpouseAge"> Between 55 and 65
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label for="vmFormJointSpouseAgeOver65">
-                                <input type="radio" ng-model="vm.form.spouse.age" value="over65"
-                                       id="vmFormJointSpouseAge"> Over 65
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row centered">
-                    <button class="btn btn-default" ng-click="vm.calculate($event)">Calculate</button>
-                    <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
-                </div>
-            </form>
-        </div>
-
-        <!-- Result Side -->
-        <div class="col-sm-7 resultside">
-            <div class="row results-margin">
-                <label class="col-sm-7 control-label">Current health care cost when all of deductible is
-                    spent</label>
-                <div class="col-sm-4">
-                    <p class="form-control-static pull-right">${{vm.result1}}</p>
+    <div class="col-sm-8 col-sm-offset-2">
+        <form class="form">
+            <div ng-if="vm.set1">
+                <ng-include src="'app/form/templates/set1.tpl.html'"></ng-include>
+                <div>
+                    <button class="btn btn-default" ng-click="vm.move('set2')">Next</button>
                 </div>
             </div>
-            <div class="row results-margin">
-                <label class="col-sm-7 control-label">ColoradoCare cost</label>
-                <div class="col-sm-4">
-                    <p class="form-control-static pull-right">${{vm.result2}}</p>
+            <div ng-if="vm.set2">
+                <ng-include src="'app/form/templates/set2.tpl.html'"></ng-include>
+                <div>
+                    <button class="btn btn-default" ng-click="vm.move('set1')">Back</button>
+                    <button class="btn btn-default" ng-if="vm.form.otherIncome === 'yes'"
+                            ng-click="vm.move('set3')">Next</button>
+                    <button class="btn btn-default" ng-if="vm.form.otherIncome === 'no'"
+                            ng-click="vm.move('set6')">Next</button>
+                    <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
                 </div>
             </div>
-            <div class="row results-margin" id="individualResult">
-                <label class="col-sm-7 control-label">Annual Amount Saved</label>
-                <div class="col-sm-4">
-                    <p class="form-control-static pull-right">${{vm.difference}}</p>
+
+            <!-- SETUP FILING -->
+            <div ng-if="vm.set3">
+                <ng-include src="'app/form/templates/set3.tpl.html'"></ng-include>
+                <div>
+                    <button class="btn btn-default" ng-click="vm.move('set2')">Back</button>
+                    <button class="btn btn-default" ng-if="vm.form.filing === 'single'"
+                            ng-click="vm.move('set4a')">Next</button>
+                    <button class="btn btn-default" ng-if="vm.form.filing === 'joint'"
+                            ng-click="vm.move('set4b')">Next</button>
+                    <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
                 </div>
             </div>
-            <div class="row">
-                <small>(Negative amount saved indicates an increase in annual cost)</small>
+
+            <!-- SINGLE FILING SECTIONS -->
+            <div ng-if="vm.set4a">
+                <ng-include src="'app/form/templates/set4a.tpl.html'"></ng-include>
+                <div>
+                    <button class="btn btn-default" ng-click="vm.move('set3')">Back</button>
+                    <button class="btn btn-default" ng-if="vm.form.spouseA.age"
+                            ng-click="vm.move('set5a')">Next</button>
+                    <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
+                </div>
             </div>
-            <div class="row">
-                <h4>Important disclaimers</h4>
+
+            <div ng-if="vm.set5a">
+                <ng-include src="'app/form/templates/set5a.tpl.html'"></ng-include>
+                <div>
+                    <button class="btn btn-default" ng-click="vm.move('set4a')">Back</button>
+                    <button class="btn btn-default" ng-click="vm.move('set6')">Next</button>
+                    <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
+                </div>
             </div>
-            <div class="row">
-                <p>This is the savings when copays are waived for financial hardship. There may be small copays that
-                    make this savings smaller.</p>
-                <p>ColoradoCare benefits are equal to or better than the comprehensive benefits in the best plan on
-                    the exchange and Medicaid. However, some unusual medical expenses or treatments may not be
-                    covered even by comprehensive insurance plans or ColoradoCare.</p>
-                <p>The Premium Tax is likely to be deductible from income taxes; however, itemized tax returns are
-                    complex, and you should consult with your tax advisor about this estimate and income tax
-                    deductions.</p>
+
+            <!-- JOINT FILING SECTIONS -->
+            <div ng-if="vm.set4b">
+                <ng-include src="'app/form/templates/set4b.tpl.html'"></ng-include>
+                <div>
+                    <button class="btn btn-default" ng-click="vm.move('set3')">Back</button>
+                    <button class="btn btn-default" ng-if="vm.form.spouseA.age && vm.form.spouseB.age"
+                            ng-click="vm.move('set5b')">Next</button>
+                    <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
+                </div>
             </div>
-        </div>
+            <div ng-if="vm.set5b">
+                <ng-include src="'app/form/templates/set5b.tpl.html'"></ng-include>
+                <div>
+                    <button class="btn btn-default" ng-click="vm.move('set4b')">Back</button>
+                    <button class="btn btn-default" ng-click="vm.move('set6')">Next</button>
+                    <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
+                </div>
+            </div>
+
+            <!-- TOTAL SECTION -->
+            <div ng-if="vm.set6">
+                <ng-include src="'app/form/templates/set6.tpl.html'"></ng-include>
+                <div>
+                    <button class="btn btn-default"
+                            ng-if="vm.form.filing === 'single'"
+                            ng-click="vm.move('set4a')">Back
+                    </button>
+                    <button class="btn btn-default"
+                            ng-if="vm.form.filing === 'joint'"
+                            ng-click="vm.move('set4b')">Back
+                    </button>
+                    <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
+                    <!--<button class="btn btn-default" ng-click="vm.move('set5b')">Next</button>-->
+                </div>
+            </div>
+        </form>
     </div>
 </div>

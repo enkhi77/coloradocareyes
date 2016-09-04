@@ -1,0 +1,40 @@
+<div>
+    <div class="row results-margin">
+        <label class="col-sm-7 control-label">Current health care cost when all of deductible is
+            spent</label>
+        <div class="col-sm-4">
+            <p class="form-control-static pull-right">${{vm.indivContrib}}</p>
+        </div>
+    </div>
+    <div class="row results-margin">
+        <label class="col-sm-7 control-label">ColoradoCare cost</label>
+        <div class="col-sm-4">
+            <p class="form-control-static pull-right">${{vm.coCare}}</p>
+        </div>
+    </div>
+    <div class="row results-margin" id="individualResult">
+        <label class="col-sm-7 control-label">Annual Amount Saved</label>
+        <div class="col-sm-4">
+            <p class="form-control-static pull-right">${{vm.diff}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <p class="bold">(Negative amount saved indicates an increase in annual cost)</p>
+    </div>
+    <div class="row">
+        <h4>Important disclaimers</h4>
+    </div>
+    <div class="row">
+        <p>This is the savings when copays are waived for financial hardship. There may be small copays that
+            make this savings smaller.</p>
+        <p>ColoradoCare benefits are equal to or better than the comprehensive benefits in the best plan on
+            the exchange and Medicaid. However, some unusual medical expenses or treatments may not be
+            covered even by comprehensive insurance plans or ColoradoCare.</p>
+        <p>The Premium Tax is likely to be deductible from income taxes; however, itemized tax returns are
+            complex, and you should consult with your tax advisor about this estimate and income tax
+            deductions.</p>
+    </div>
+    <div class="row">
+        <h2>For the explanation of Premium Taxes and hard copy the worksheet, click <a href="http://www.coloradocare.org/wp-content/uploads/2016/07/CCY-Individual-tax-and-worksheet-v2.8-7.11.16.pdf">here.</a></h2>
+    </div>
+</div>
