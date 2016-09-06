@@ -4,56 +4,53 @@
     </div>
     <div class="row">
         <div class="col-sm-6 calcside">
-            <form ng-submit="vm.calculate()">
+            <form class="form" ng-submit="vm.calculate()">
                 <div class="form-group">
-                    <label class="col-sm-7 control-label" for="vmFormPremium">Employer’s annual medical benefits
+                    <label class="control-label" for="vmFormPremium">Employer’s annual medical benefits
                         expense</label>
-                    <div class="input-group col-sm-4">
-                        <input type="text" ng-currency
-                               class="form-control"
-                               aria-label="Amount (to the nearest dollar)"
-                               ng-model="vm.form.premium"
-                               min="0"
-                               id="vmFormPremium">
-                    </div>
+                    <input type="text" ng-currency
+                           class="form-control"
+                           aria-label="Amount (to the nearest dollar)"
+                           ng-model="vm.form.premium"
+                           min="0"
+                           id="vmFormPremium">
                 </div>
+
+
                 <div class="form-group">
-                    <label class="col-sm-7 control-label" for="vmFormWorker">Annual workers’ compensation
+                    <label class="control-label" for="vmFormWorker">Annual workers’ compensation
                         insurance</label>
-                    <div class="input-group col-sm-4">
-                        <input type="text" ng-currency
-                               class="form-control"
-                               aria-label="Amount (to the nearest dollar)"
-                               ng-model="vm.form.worker"
-                               min="0"
-                               id="vmFormWorker">
-                    </div>
+                    <input type="text" ng-currency
+                           class="form-control"
+                           aria-label="Amount (to the nearest dollar)"
+                           ng-model="vm.form.worker"
+                           min="0"
+                           id="vmFormWorker">
                 </div>
+
                 <div class="form-group">
-                    <label class="col-sm-7 control-label" for="vmFormAdmin">Estimate annual expense for administering
+                    <label class="control-label" for="vmFormAdmin">Estimate annual expense for administering
                         employee health care plans
                         and the medical part of the workers’ compensation system</label>
-                    <div class="input-group col-sm-4">
-                        <input type="text" ng-currency
-                               class="form-control"
-                               aria-label="Amount (to the nearest dollar)"
-                               ng-model="vm.form.admin"
-                               min="0"
-                               id="vmFormAdmin">
-                    </div>
+                    <input type="text" ng-currency
+                           class="form-control vertical-center"
+                           aria-label="Amount (to the nearest dollar)"
+                           ng-model="vm.form.admin"
+                           min="0"
+                           id="vmFormAdmin">
                 </div>
+
                 <div class="form-group">
-                    <label class="col-sm-7 control-label" for="vmFormPayroll">Total annual payroll for employees subject
+                    <label class="control-label" for="vmFormPayroll">Total annual payroll for employees subject
                         to Colorado income tax witholding</label>
-                    <div class="input-group col-sm-4">
-                        <input type="text" ng-currency
-                               class="form-control"
-                               aria-label="Amount (to the nearest dollar)"
-                               ng-model="vm.form.payroll"
-                               min=0
-                               id="vmFormPayroll">
-                    </div>
+                    <input type="text" ng-currency
+                           class="form-control"
+                           aria-label="Amount (to the nearest dollar)"
+                           ng-model="vm.form.payroll"
+                           min=0
+                           id="vmFormPayroll">
                 </div>
+
                 <div class="col-sm-6 col-sm-offset-6 centered">
                     <button class="btn btn-default" ng-click="vm.calculate()">Calculate</button>
                     <button class="btn btn-default" ng-click="vm.clear()">Clear</button>
