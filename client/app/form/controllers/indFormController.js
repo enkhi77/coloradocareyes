@@ -48,7 +48,6 @@
 
         function activate() {
             vm.set1 = true;
-            console.log('init indFormController vm.set1', vm.set1);
         }
 
         function move(set){
@@ -167,12 +166,17 @@
         }
         
         function ssRatioCalc(){
-            vm.form.spouseA.ssShare = (12 * vm.form.spouseA.monthlySS)/ vm.form.irs20b;
-            vm.form.spouseB.ssShare = (12 * vm.form.spouseB.monthlySS)/ vm.form.irs20b;
+            if(vm.form.irs20b === 0){
+                vm.form.spouseA.ssShare = 0;
+                vm.form.spouseB.ssShare = 0;
+            }
+            else {
+                vm.form.spouseA.ssShare = (12 * vm.form.spouseA.monthlySS)/ vm.form.irs20b;
+                vm.form.spouseB.ssShare = (12 * vm.form.spouseB.monthlySS)/ vm.form.irs20b;
+            }
         }
 
         function jointCalc(){
-            console.log('jointCalc vm.form', vm.form);
             var taxIncome = vm.form.irsSum - (vm.form.spouseA.exemption + vm.form.spouseB.exemption);
             if(taxIncome > 0){
                 vm.coCare = Number((taxIncome * 0.1) + (vm.form.w2 * 0.0333)).toFixed(2);
@@ -194,7 +198,6 @@
                             break;
                         case 'between':
                             var sum = vm.form.irs20b + vm.form.spouseA.irsRetirement;
-                            console.log('between sum', sum);
                             if(sum > 20000){
                                 if(vm.form.irsSum - 20000 > 0){
                                     vm.coCare = Number((vm.form.w2 * 0.0333) + ((vm.form.irsSum - 20000) * 0.1)).toFixed(2);
@@ -215,7 +218,6 @@
                             break;
                         case 'over':
                             var sum = vm.form.irs20b + vm.form.spouseA.irsRetirement;
-                            console.log('over sum', sum);
                             if(sum > 24000){
                                 if(vm.form.irsSum - 24000 > 0){
                                     vm.coCare = Number((0.1 * (vm.form.irsSum - 24000)) + (vm.form.w2 * 0.0333)).toFixed(2);
@@ -249,7 +251,6 @@
                                 break;
                             case 'between':
                                 var sum = vm.form.irs20b * vm.form.spouseA.ssShare + vm.form.spouseA.irsRetirement;
-                                console.log('over sum', sum);
                                 if(sum > 20000){
                                     vm.form.spouseA.exemption = 20000;
                                 }
@@ -259,7 +260,6 @@
                                 break;
                             case 'over':
                                 var sum = vm.form.irs20b * vm.form.spouseA.ssShare + vm.form.spouseA.irsRetirement;
-                                console.log('over sum', sum);
                                 if(sum > 24000){
                                     vm.form.spouseA.exemption = 24000;
                                 }
@@ -274,7 +274,6 @@
                                 break;
                             case 'between':
                                 var sum = vm.form.irs20b * vm.form.spouseB.ssShare + vm.form.spouseB.irsRetirement;
-                                console.log('between sum', sum);
                                 if(sum > 20000){
                                     vm.form.spouseB.exemption = 20000;
                                 }
@@ -284,7 +283,6 @@
                                 break;
                             case 'over':
                                 var sum = vm.form.irs20b * vm.form.spouseB.ssShare + vm.form.spouseB.irsRetirement;
-                                console.log('over sum', sum);
                                 if(sum > 24000){
                                     vm.form.spouseB.exemption = 24000;
                                 }
