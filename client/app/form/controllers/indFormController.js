@@ -173,12 +173,12 @@
                 case 'single':
                     console.log('single sumCheck', vm.form.irs20b + vm.form.spouseA.irsRetirement > vm.form.irsSum);
                     if(vm.form.irs20b + vm.form.spouseA.irsRetirement > vm.form.irsSum){
-                        vm.sumCheckResult = true;
+                        return true;
                     }
                     break;
                 case 'joint':
                     if(vm.form.irs20b + vm.form.spouseA.irsRetirement + vm.form.spouseB.irsRetirement > vm.form.irsSum){
-                        vm.sumCheckResult = true;
+                        return true;
                     }
                     break;
             }
@@ -206,6 +206,7 @@
             switch(vm.form.filing){
                 case 'single':
                     if(vm.form.w2 > 350000){
+                        console.log('single w2 limit');
                         vm.form.w2 = 350000;
                     }
                     switch(vm.form.spouseA.age){
@@ -259,6 +260,7 @@
                     break;
                 case 'joint':
                     if(vm.form.w2 > 450000){
+                        console.log('joint w2 limit');
                         vm.form.w2 = 450000;
                     }
                     if(vm.form.spouseA.age === 'under' && vm.form.spouseB.age === 'under'){
