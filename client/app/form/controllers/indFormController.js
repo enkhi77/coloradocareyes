@@ -15,6 +15,7 @@
         vm.indivContrib = null;
         vm.coCare = null;
         vm.diff = null;
+        vm.sumCheckResult = null;
         vm.form = {
             premium: 0,
             deductible: 0,
@@ -41,6 +42,7 @@
             }
         };
 
+        vm.sumCheck = sumCheck;
         vm.move = move;
         vm.startOver = startOver;
 
@@ -166,6 +168,22 @@
             move('set1');
         }
         
+        function sumCheck() {
+            switch(vm.form.filing){
+                case 'single':
+                    console.log('single sumCheck', vm.form.irs20b + vm.form.spouseA.irsRetirement > vm.form.irsSum);
+                    if(vm.form.irs20b + vm.form.spouseA.irsRetirement > vm.form.irsSum){
+                        vm.sumCheckResult = true;
+                    }
+                    break;
+                case 'joint':
+                    if(vm.form.irs20b + vm.form.spouseA.irsRetirement + vm.form.spouseB.irsRetirement > vm.form.irsSum){
+                        vm.sumCheckResult = true;
+                    }
+                    break;
+            }
+        }
+        
         function ssRatioCalc(){
             vm.form.spouseA.ssShare = (12 * vm.form.spouseA.monthlySS)/ vm.form.irs20b;
             vm.form.spouseB.ssShare = (12 * vm.form.spouseB.monthlySS)/ vm.form.irs20b;
@@ -187,6 +205,9 @@
             vm.indivContrib = (vm.form.premium * 12) + vm.form.deductible + vm.form.copay + vm.form.expenses;
             switch(vm.form.filing){
                 case 'single':
+                    if(vm.form.w2 > 350000){
+                        vm.form.w2 = 350000;
+                    }
                     switch(vm.form.spouseA.age){
                         case 'under':
                             vm.coCare = Number((vm.form.w2 * 0.0333) + (vm.form.irsSum) * 0.1).toFixed(2);
@@ -237,6 +258,9 @@
                     }
                     break;
                 case 'joint':
+                    if(vm.form.w2 > 450000){
+                        vm.form.w2 = 450000;
+                    }
                     if(vm.form.spouseA.age === 'under' && vm.form.spouseB.age === 'under'){
                         vm.coCare = Number((0.1 * vm.form.irsSum) + (vm.form.w2 * 0.0333)).toFixed();
                         vm.diff = vm.indivContrib - vm.coCare;
