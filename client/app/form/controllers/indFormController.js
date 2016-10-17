@@ -277,14 +277,14 @@
                 incomeTaxCap -= incomeRetirement;
             }
     
-            var w2Tax = w2 * (CCW2PercentTax - vm.form.workPercentageSubsidy/100);
+            var w2Tax = w2 * (CCW2PercentTax);
             var nonw2Tax = nonw2 * CCPercentTax;
             var incomeRetirementTax = incomeRetirement * CCPercentTax;
     
-            var coloradoCareTax = w2Tax + nonw2Tax + incomeRetirementTax;
+            vm.coCare = w2Tax + nonw2Tax + incomeRetirementTax;
             
             vm.indivContrib = (vm.form.premium * 12) + vm.form.deductible + vm.form.copay + vm.form.expenses;
-            
+            vm.diff = vm.indivContrib - vm.coCare;
             // cost of the current insurance
             // currentCost = currentAnnualPremiums + currentMedicalPolicyCharges + currentExtra;
             // currentRealCost = results.currentCost - results.hsaTaxSavings;
