@@ -202,6 +202,16 @@
         }
 
 /*
+ 
+ 	$scope.CCPercentTax = 0.1;
+	$scope.CCW2PercentTax = 0.0333;
+  $scope.IncomeTaxCapSingle = 350000;
+  $scope.IncomeTaxCapFamily = 450000;
+
+  $scope.incomeRetirementExemption55Plus = 20000;
+  $scope.incomeRetirementExemption65Plus = 4000;
+ 
+ 
   function analysis(formData) {
     console.log(formData.w2, formData.nonw2, formData.line20b, formData.age1.value, formData.workPercentageSubsidy, formData.workMoneySubsidy);
   	let w2 = formData.w2;
