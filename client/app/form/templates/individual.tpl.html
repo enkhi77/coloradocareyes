@@ -50,10 +50,13 @@
             </div>
 
             <div ng-if="vm.set5a">
+                <div uib-alert ng-if="vm.sumCheck()" style="background-color:#fa39c3;color:white">
+                    Lines 15b + 16b + 20b cannot be more than the sum of 8 to 21
+                </div>
                 <ng-include src="'app/form/templates/set5a.tpl.html'"></ng-include>
                 <div>
                     <button class="btn btn-default" ng-click="vm.move('set4a')">Back</button>
-                    <button class="btn btn-default" ng-click="vm.move('set6')">Next</button>
+                    <button class="btn btn-default" ng-click="vm.move('set6')" ng-disabled="vm.sumCheck()">Next</button>
                     <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
                 </div>
             </div>
@@ -69,10 +72,13 @@
                 </div>
             </div>
             <div ng-if="vm.set5b">
+                <div uib-alert ng-if="vm.sumCheck()" style="background-color:#fa39c3;color:white">
+                    Lines 15b and 16b + spouse's lines 15b and 16b + line 20b cannot be more than sum of 8 to 21
+                </div>
                 <ng-include src="'app/form/templates/set5b.tpl.html'"></ng-include>
                 <div>
                     <button class="btn btn-default" ng-click="vm.move('set4b')">Back</button>
-                    <button class="btn btn-default" ng-click="vm.move('set6')">Next</button>
+                    <button class="btn btn-default" ng-click="vm.move('set6')" ng-disabled="vm.sumCheck()">Next</button>
                     <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
                 </div>
             </div>
