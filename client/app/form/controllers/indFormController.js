@@ -202,7 +202,56 @@
         }
 
 /*
-     results.incomeTaxCap = incomeTaxCap;
+  function analysis(formData) {
+    console.log(formData.w2, formData.nonw2, formData.line20b, formData.age1.value, formData.workPercentageSubsidy, formData.workMoneySubsidy);
+  	let w2 = formData.w2;
+  	let nonw2 = formData.nonw2;
+    let exemptionRetirement = 0;
+    let incomeRetirement = formData.line15b + formData.line16b + formData.line20b;
+    let results = {};
+    let federalIncomeAGI = w2+nonw2+incomeRetirement;
+    let statePercentageTax = 0.05;
+    let stateName = "Colorado";
+
+    switch (formData.age1.value) {
+  	case "65+":
+  		exemptionRetirement +=   $scope.incomeRetirementExemption65Plus;
+    case "55-64":
+    	exemptionRetirement +=   $scope.incomeRetirementExemption55Plus;
+      break;
+    }
+
+    let incomeTaxCap = 0;
+    if (formData.selectedHousehold.value == 1) {
+    	incomeTaxCap = $scope.IncomeTaxCapSingle;
+    } else {
+    	incomeTaxCap = $scope.IncomeTaxCapFamily;
+      switch (formData.age2.value) {
+    	case "65+":
+    		exemptionRetirement +=   $scope.incomeRetirementExemption65Plus;
+      case "55-64":
+      	exemptionRetirement +=   $scope.incomeRetirementExemption55Plus;
+        break;
+      }
+    }
+
+    results.exemptionRetirement = exemptionRetirement;
+    results.incomeRetirement = incomeRetirement;
+
+    // adjust line retirement income lines 15b, 16b, and 20b with exemptions
+  	if (incomeRetirement > exemptionRetirement) {
+  		incomeRetirement -= exemptionRetirement;
+  		exemptionRetirement = 0;
+  	} else if (incomeRetirement > 0) {
+  		exemptionRetirement -= incomeRetirement;
+  		incomeRetirement = 0;
+  	}
+    results.exemptionRetirementLeftOver = exemptionRetirement;
+    results.incomeRetirementAfterExemptions = incomeRetirement;
+    results.w2 = w2;
+    results.nonw2 = nonw2;
+    
+    results.incomeTaxCap = incomeTaxCap;
     // TAX CAP
   	// first tax on the w2 income - tax this first for individual as employer has already paid on this one
   	if (w2 >= incomeTaxCap) {
@@ -232,6 +281,35 @@
     let w2Tax = w2 * ($scope.CCW2PercentTax - formData.workPercentageSubsidy/100);
     let nonw2Tax = nonw2 * $scope.CCPercentTax;
     let incomeRetirementTax = incomeRetirement * $scope.CCPercentTax;
+
+  	
+    results.incomeRetirementTaxableAfterExemptionAndCap = incomeRetirement;
+    results.incomeRetirementTax = incomeRetirementTax;
+    results.incomeTaxCapLeftOver = incomeTaxCap;
+    results.nonw2Taxable = nonw2;
+    results.nonw2Tax = +nonw2Tax.toFixed(2);
+    results.w2Taxable = w2;
+    results.w2Tax = w2Tax;
+     
+    let coloradoCareTax = w2Tax + nonw2Tax + incomeRetirementTax;
+    results.coloradoCareTax = coloradoCareTax;
+    
+   
+  	 results.currentAnnualPremiums = currentAnnualPremiums;
+  	 results.currentMedicalPolicyChargesTotal = currentMedicalPolicyCharges;
+
+  	 results.currentExtra = currentExtra;
+  	 results.hsaContributions = hsaContributions;
+  	 results.hsaTaxSavings = hsaContributions * (statePercentageTax + federalTaxRate/100);
+  	 
+     // cost of the current insurance 
+  	 results.currentCost = currentAnnualPremiums + currentMedicalPolicyCharges + currentExtra;
+  	 results.currentRealCost = results.currentCost - results.hsaTaxSavings;
+
+     results.savingsColoradoCare = results.currentRealCost - results.coloradoCareRealCost;
+     console.log(results.currentRealCost,results.coloradoCareRealCost);
+     return results;
+   }
  
  */        
         
