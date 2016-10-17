@@ -185,13 +185,10 @@
         }
         
         function calc() {
-            vm.indivContrib = (vm.form.premium * 12) + vm.form.deductible + vm.form.copay + vm.form.expenses;
-    
             var CCPercentTax = 0.1;
             var CCW2PercentTax = 0.0333;
             var IncomeTaxCapSingle = 350000;
             var IncomeTaxCapFamily = 450000;
-    
             var incomeRetirementExemption55Plus = 20000;
             var incomeRetirementExemption65Plus = 4000;
     
