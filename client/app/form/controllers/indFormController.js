@@ -184,18 +184,6 @@
             }
         }
         
-        function jointCalc() {
-            console.log('jointCalc vm.form', vm.form);
-            var taxIncome = vm.form.irsSum - (vm.form.spouseA.exemption + vm.form.spouseB.exemption);
-            if (taxIncome > 0) {
-                vm.coCare = Number((taxIncome * 0.1) + (vm.form.w2 * 0.0333)).toFixed(2);
-            }
-            else {
-                vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
-            }
-            vm.diff = (vm.indivContrib - vm.coCare).toFixed(2);
-        }
-        
         function calc() {
             vm.indivContrib = (vm.form.premium * 12) + vm.form.deductible + vm.form.copay + vm.form.expenses;
     
