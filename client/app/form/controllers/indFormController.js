@@ -201,6 +201,41 @@
             vm.diff = (vm.indivContrib - vm.coCare).toFixed(2);
         }
 
+/*
+     results.incomeTaxCap = incomeTaxCap;
+    // TAX CAP
+  	// first tax on the w2 income - tax this first for individual as employer has already paid on this one
+  	if (w2 >= incomeTaxCap) {
+  		w2 = incomeTaxCap;
+  		incomeTaxCap = 0;
+  	} else if (w2 > 0) {
+  		incomeTaxCap -= w2;
+  	}
+
+  	// second apply the remaining cap to nonw2 income - paying full tax, so after w2 tax this last
+  	if (nonw2 >= incomeTaxCap) {
+  		nonw2 = incomeTaxCap;
+  		incomeTaxCap = 0;
+  	} else if (nonw2 > 0) {
+  		incomeTaxCap -= nonw2;
+  	}
+
+
+  	// third apply the remaining cap to after exemptionRetirement income - paying full tax, so after w2 tax this last
+  	if (incomeRetirement >= incomeTaxCap) {
+  		incomeRetirement = incomeTaxCap;
+  		incomeTaxCap = 0;
+  	} else if (incomeRetirement > 0) {
+  		incomeTaxCap -= incomeRetirement;
+  	}
+  	
+    let w2Tax = w2 * ($scope.CCW2PercentTax - formData.workPercentageSubsidy/100);
+    let nonw2Tax = nonw2 * $scope.CCPercentTax;
+    let incomeRetirementTax = incomeRetirement * $scope.CCPercentTax;
+ 
+ */        
+        
+        
         function calc() {
             vm.indivContrib = (vm.form.premium * 12) + vm.form.deductible + vm.form.copay + vm.form.expenses;
             switch(vm.form.filing){
