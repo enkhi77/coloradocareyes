@@ -17,10 +17,8 @@
                 <ng-include src="'app/form/templates/set2.tpl.html'"></ng-include>
                 <div>
                     <button class="btn btn-default" ng-click="vm.move('set1')">Back</button>
-                    <button class="btn btn-default" ng-if="vm.form.otherIncome === 'yes'"
+                    <button class="btn btn-default" ng-if="vm.form.otherIncome"
                             ng-click="vm.move('set3')">Next</button>
-                    <button class="btn btn-default" ng-if="vm.form.otherIncome === 'no'"
-                            ng-click="vm.move('set6')">Next</button>
                     <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
                 </div>
             </div>
@@ -30,10 +28,12 @@
                 <ng-include src="'app/form/templates/set3.tpl.html'"></ng-include>
                 <div>
                     <button class="btn btn-default" ng-click="vm.move('set2')">Back</button>
-                    <button class="btn btn-default" ng-if="vm.form.filing === 'single'"
+                    <button class="btn btn-default" ng-if="vm.form.filing === 'single' && vm.form.otherIncome === 'yes'"
                             ng-click="vm.move('set4a')">Next</button>
-                    <button class="btn btn-default" ng-if="vm.form.filing === 'joint'"
+                    <button class="btn btn-default" ng-if="vm.form.filing === 'joint' && vm.form.otherIncome === 'yes'"
                             ng-click="vm.move('set4b')">Next</button>
+                    <button class="btn btn-default" ng-if="vm.form.otherIncome === 'no'"
+                            ng-click="vm.move('set6')">Next</button>
                     <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
                 </div>
             </div>
