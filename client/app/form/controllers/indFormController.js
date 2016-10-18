@@ -226,118 +226,60 @@
         //     }
         //     vm.diff = (vm.indivContrib - vm.coCare).toFixed(2);
         // }
-        
-        // function calc() {
-        //     vm.indivContrib = (vm.form.premium * 12) + vm.form.deductible + vm.form.copay + vm.form.expenses;
-        //     switch (vm.form.filing) {
-        //         case 'single':
-        //             switch (vm.form.spouseA.age) {
-        //                 case 'under':
-        //                     vm.coCare = Number((vm.form.w2 * 0.0333) + (vm.form.irsSum) * 0.1).toFixed(2);
-        //                     vm.diff = vm.indivContrib - vm.coCare;
-        //                     break;
-        //                 case 'between':
-        //                     var sum = vm.form.irs20b + vm.form.spouseA.irsRetirement;
-        //                     if (sum > 20000) {
-        //                         if (vm.form.irsSum - 20000 > 0) {
-        //                             vm.coCare = Number((vm.form.w2 * 0.0333) + ((vm.form.irsSum - 20000) * 0.1)).toFixed(2);
-        //                         }
-        //                         else {
-        //                             vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(0);
-        //                         }
-        //                     }
-        //                     else {
-        //                         if (vm.form.irsSum - sum > 0) {
-        //                             vm.coCare = Number((vm.form.w2 * 0.0333) + ((vm.form.irsSum - sum) * 0.1)).toFixed(2);
-        //                         }
-        //                         else {
-        //                             vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
-        //                         }
-        //                     }
-        //                     vm.diff = vm.indivContrib - vm.coCare;
-        //                     break;
-        //                 case 'over':
-        //                     var sum = vm.form.irs20b + vm.form.spouseA.irs15b16b;
-        //                     if (sum > 24000) {
-        //                         if (vm.form.irsSum - 24000 > 0) {
-        //                             vm.coCare = Number((0.1 * (vm.form.irsSum - 24000)) + (vm.form.w2 * 0.0333)).toFixed(2);
-        //                         }
-        //                         else {
-        //                             vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
-        //                         }
-        //                     }
-        //                     else {
-        //                         if (vm.form.irsSum - sum > 0) {
-        //                             vm.coCare = Number((0.1 * (vm.form.irsSum - sum)) + (vm.form.w2 * 0.0333)).toFixed(2);
-        //                         }
-        //                         else {
-        //                             vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
-        //                         }
-        //                     }
-        //                     vm.diff = vm.indivContrib - vm.coCare;
-        //                     break;
-        //             }
+    
+        // if (vm.form.spouseA.age === 'under' && vm.form.spouseB.age === 'under') {
+        //     vm.coCare = Number((0.1 * vm.form.irsSum) + (vm.form.w2 * 0.0333)).toFixed();
+        //     vm.diff = vm.indivContrib - vm.coCare;
+        // }
+        // else {
+        //     ssRatioCalc();
+        //     switch (vm.form.spouseA.age) {
+        //         case 'under':
+        //             vm.form.spouseA.exemption = 0;
         //             break;
-        //         case 'joint':
-        //             if (vm.form.spouseA.age === 'under' && vm.form.spouseB.age === 'under') {
-        //                 vm.coCare = Number((0.1 * vm.form.irsSum) + (vm.form.w2 * 0.0333)).toFixed();
-        //                 vm.diff = vm.indivContrib - vm.coCare;
+        //         case 'between':
+        //             var sum = vm.form.irs20b * vm.form.spouseA.ssShare + vm.form.spouseA.irs15b16b;
+        //             if (sum > 20000) {
+        //                 vm.form.spouseA.exemption = 20000;
         //             }
         //             else {
-        //                 ssRatioCalc();
-        //                 switch (vm.form.spouseA.age) {
-        //                     case 'under':
-        //                         vm.form.spouseA.exemption = 0;
-        //                         break;
-        //                     case 'between':
-        //                         var sum = vm.form.irs20b * vm.form.spouseA.ssShare + vm.form.spouseA.irs15b16b;
-        //                         if (sum > 20000) {
-        //                             vm.form.spouseA.exemption = 20000;
-        //                         }
-        //                         else {
-        //                             vm.form.spouseA.exemption = sum;
-        //                         }
-        //                         break;
-        //                     case 'over':
-        //                         var sum = vm.form.irs20b * vm.form.spouseA.ssShare + vm.form.spouseA.irs15b16b;
-        //                         if (sum > 24000) {
-        //                             vm.form.spouseA.exemption = 24000;
-        //                         }
-        //                         else {
-        //                             vm.form.spouseA.exemption = sum;
-        //                         }
-        //                         break;
-        //                 }
-        //                 switch (vm.form.spouseB.age) {
-        //                     case 'under':
-        //                         vm.form.spouseB.exemption = 0;
-        //                         break;
-        //                     case 'between':
-        //                         var sum = vm.form.irs20b * vm.form.spouseB.ssShare + vm.form.spouseB.irs15b16b;
-        //                         if (sum > 20000) {
-        //                             vm.form.spouseB.exemption = 20000;
-        //                         }
-        //                         else {
-        //                             vm.form.spouseB.exemption = sum;
-        //                         }
-        //                         break;
-        //                     case 'over':
-        //                         var sum = vm.form.irs20b * vm.form.spouseB.ssShare + vm.form.spouseB.irs15b16b;
-        //                         if (sum > 24000) {
-        //                             vm.form.spouseB.exemption = 24000;
-        //                         }
-        //                         else {
-        //                             vm.form.spouseB.exemption = sum;
-        //                         }
-        //                         break;
-        //                 }
-        //                 jointCalc();
+        //                 vm.form.spouseA.exemption = sum;
         //             }
         //             break;
-        //         default:
-        //             vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
-        //             vm.diff = (vm.indivContrib - vm.coCare).toFixed(2);
+        //         case 'over':
+        //             var sum = vm.form.irs20b * vm.form.spouseA.ssShare + vm.form.spouseA.irs15b16b;
+        //             if (sum > 24000) {
+        //                 vm.form.spouseA.exemption = 24000;
+        //             }
+        //             else {
+        //                 vm.form.spouseA.exemption = sum;
+        //             }
+        //             break;
         //     }
+        //     switch (vm.form.spouseB.age) {
+        //         case 'under':
+        //             vm.form.spouseB.exemption = 0;
+        //             break;
+        //         case 'between':
+        //             var sum = vm.form.irs20b * vm.form.spouseB.ssShare + vm.form.spouseB.irs15b16b;
+        //             if (sum > 20000) {
+        //                 vm.form.spouseB.exemption = 20000;
+        //             }
+        //             else {
+        //                 vm.form.spouseB.exemption = sum;
+        //             }
+        //             break;
+        //         case 'over':
+        //             var sum = vm.form.irs20b * vm.form.spouseB.ssShare + vm.form.spouseB.irs15b16b;
+        //             if (sum > 24000) {
+        //                 vm.form.spouseB.exemption = 24000;
+        //             }
+        //             else {
+        //                 vm.form.spouseB.exemption = sum;
+        //             }
+        //             break;
+        //     }
+        //     jointCalc();
         // }
         
         function calc() {
@@ -428,7 +370,6 @@
             var incomeRetirementTax = incomeRetirement * CCPercentTax;
             
             vm.coCare = w2Tax + nonw2Tax + incomeRetirementTax;
-            
             vm.indivContrib = (vm.form.premium * 12) + vm.form.deductible + vm.form.copay + vm.form.expenses;
             vm.diff = vm.indivContrib - vm.coCare;
             
