@@ -1,8 +1,13 @@
 <div class="form-group">
     <label class="control-label" for="vmFormW2">Your Annual W2 Income</label>
-    <input type="text" ng-currency class="form-control"
-           aria-label="Amount (to the nearest dollar)" ng-model="vm.form.w2"
-           min="0" id="vmFormW2">
+    <input type="text"
+           ng-currency
+           class="form-control"
+           aria-label="Amount (to the nearest dollar)"
+           ng-model="vm.form.w2"
+           ng-click="vm.onTextClick($event)"
+           ng-change="vm.w2Check()"
+           id="vmFormW2">
 </div>
 <div>
     <label class="required-text">Do you have any significant income other than your W2? (answer is required)</label>

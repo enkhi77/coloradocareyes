@@ -16,6 +16,7 @@
         vm.coCare = null;
         vm.diff = null;
         vm.sumCheckResult = null;
+        vm.w2Error = null;
         vm.form = {
             premium: 0,
             deductible: 0,
@@ -43,6 +44,8 @@
         };
         
         vm.sumCheck = sumCheck;
+        vm.onTextClick = onTextClick;
+        vm.w2Check = w2Check;
         vm.move = move;
         vm.startOver = startOver;
         
@@ -168,6 +171,10 @@
             move('set1');
         }
         
+        function onTextClick(event){
+            event.target.select();
+        }
+        
         function sumCheck() {
             switch (vm.form.filing) {
                 case 'single':
@@ -182,6 +189,19 @@
                         return true;
                     }
                     break;
+            }
+        }
+        
+        function w2Check() {
+            console.log('w2Check', vm.form.w2);
+            if(vm.form.w2 <0){
+                vm.w2Error = true;
+            }
+            else if(!vm.form.w2){
+                vm.form.w2 = 0;
+            }
+            else if(vm.form.w2 >0){
+                vm.w2Error = false;
             }
         }
         

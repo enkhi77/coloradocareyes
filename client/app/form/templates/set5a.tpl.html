@@ -7,6 +7,7 @@
            class="form-control"
            aria-label="Amount (to the nearest dollar)"
            ng-model="vm.form.irsSum"
+           ng-click="vm.onTextClick($event)"
            min="0" id="vm.form.irsSum">
 </div>
 <div ng-if="vm.form.spouseA.age !== 'under'">
@@ -19,6 +20,7 @@
                class="form-control"
                aria-label="Amount (to the nearest dollar)"
                ng-model="vm.form.irs20b"
+               ng-click="vm.onTextClick($event)"
                uib-tooltip="Do not enter all of your Social Security. The IRS Form 1040 exempts a large portion of Social Security, and the portion is different for each person. Line 20b is the amount after exemption."
                min="0" id="vm.form.irs20b">
     </div>
@@ -29,6 +31,7 @@
         </label> (federally taxable portion of retirement income)
         <input type="text" ng-currency
                class="form-control"
+               ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                ng-model="vm.form.spouseA.irs15b16b"
                min="0" id="vm.form.irs15b16b">

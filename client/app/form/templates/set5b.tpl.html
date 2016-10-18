@@ -8,6 +8,7 @@
            class="form-control"
            aria-label="Amount (to the nearest dollar)"
            ng-model="vm.form.irsSum"
+           ng-click="vm.onTextClick($event)"
            min="0" id="vm.form.irsSum">
 </div>
 <div ng-if="vm.form.spouseA.age !== 'under' || vm.form.spouseB.age !== 'under'">
@@ -18,6 +19,7 @@
         </label> (federally taxable portion of Social Security)
         <input type="text" ng-currency
                class="form-control"
+               ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                ng-model="vm.form.irs20b"
                uib-tooltip="Do not enter all of your Social Security. The IRS Form 1040 exempts a large portion of Social Security, and the portion is different for each person. Line 20b is the amount after exemption."
@@ -36,6 +38,7 @@
         </label> (actual amount on checks)
         <input type="text" ng-currency
                class="form-control"
+               ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                ng-model="vm.form.spouseA.monthlySS"
                uib-tooltip="Put the full amount of your monthly Social Security check here."
@@ -48,6 +51,7 @@
         </label> (federally taxable retirement income)
         <input type="text" ng-currency
                class="form-control"
+               ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                ng-model="vm.form.spouseA.irs15b16b"
                min="0" id="vm.form.spouseA.irs15b16b">
@@ -64,6 +68,7 @@
         </label> (actual amount on checks)
         <input type="text" ng-currency
                class="form-control"
+               ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                id="vm.form.spouseB.monthlySS"
                ng-model="vm.form.spouseB.monthlySS"
@@ -77,6 +82,7 @@
         </label> (federally taxable retirement income)
         <input type="text" ng-currency
                class="form-control"
+               ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                id="vm.form.spouseB.irs15b16b"
                ng-model="vm.form.spouseB.irs15b16b"

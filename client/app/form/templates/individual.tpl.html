@@ -14,11 +14,19 @@
                 </div>
             </div>
             <div ng-if="vm.set2">
+                <div uib-alert ng-if="vm.w2Error" style="background-color:#fa39c3;color:white">
+                    W2 Income cannot be a negative number.
+                </div>
                 <ng-include src="'app/form/templates/set2.tpl.html'"></ng-include>
                 <div>
-                    <button class="btn btn-default" ng-click="vm.move('set1')">Back</button>
-                    <button class="btn btn-default" ng-if="vm.form.otherIncome"
-                            ng-click="vm.move('set3')">Next</button>
+                    <button class="btn btn-default"
+                            ng-click="vm.move('set1')">Back
+                    </button>
+                    <button class="btn btn-default"
+                            ng-if="vm.form.otherIncome"
+                            ng-disabled="vm.w2Error"
+                            ng-click="vm.move('set3')">Next
+                    </button>
                     <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
                 </div>
             </div>
