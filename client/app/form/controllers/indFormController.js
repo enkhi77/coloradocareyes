@@ -185,27 +185,27 @@
             }
         }
         
-        function ssRatioCalc() {
-            if (vm.form.irs20b === 0) {
-                vm.form.spouseA.ssShare = 0;
-                vm.form.spouseB.ssShare = 0;
-            }
-            else {
-                vm.form.spouseA.ssShare = (12 * vm.form.spouseA.monthlySS) / vm.form.irs20b;
-                vm.form.spouseB.ssShare = (12 * vm.form.spouseB.monthlySS) / vm.form.irs20b;
-            }
-        }
-        
-        function jointCalc() {
-            var taxIncome = vm.form.irsSum - (vm.form.spouseA.exemption + vm.form.spouseB.exemption);
-            if (taxIncome > 0) {
-                vm.coCare = Number((taxIncome * 0.1) + (vm.form.w2 * 0.0333)).toFixed(2);
-            }
-            else {
-                vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
-            }
-            vm.diff = (vm.indivContrib - vm.coCare).toFixed(2);
-        }
+        // function ssRatioCalc() {
+        //     if (vm.form.irs20b === 0) {
+        //         vm.form.spouseA.ssShare = 0;
+        //         vm.form.spouseB.ssShare = 0;
+        //     }
+        //     else {
+        //         vm.form.spouseA.ssShare = (12 * vm.form.spouseA.monthlySS) / vm.form.irs20b;
+        //         vm.form.spouseB.ssShare = (12 * vm.form.spouseB.monthlySS) / vm.form.irs20b;
+        //     }
+        // }
+        //
+        // function jointCalc() {
+        //     var taxIncome = vm.form.irsSum - (vm.form.spouseA.exemption + vm.form.spouseB.exemption);
+        //     if (taxIncome > 0) {
+        //         vm.coCare = Number((taxIncome * 0.1) + (vm.form.w2 * 0.0333)).toFixed(2);
+        //     }
+        //     else {
+        //         vm.coCare = Number(vm.form.w2 * 0.0333).toFixed(2);
+        //     }
+        //     vm.diff = (vm.indivContrib - vm.coCare).toFixed(2);
+        // }
         
         // function calc() {
         //     vm.indivContrib = (vm.form.premium * 12) + vm.form.deductible + vm.form.copay + vm.form.expenses;
