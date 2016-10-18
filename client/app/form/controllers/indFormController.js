@@ -201,7 +201,7 @@
             else if(vm.form.filing === 'joint'){
                 incomeRetirement = vm.form.spouseA.irs15b16b + vm.form.spouseB.irs15b16b + vm.form.irs20b;
             }
-            var nonw2 = vm.form.irs20b - incomeRetirement;
+            var nonw2 = vm.form.irsSum - incomeRetirement;
             var exemptionRetirement = 0;
     
             switch (vm.form.spouseA.age) {
