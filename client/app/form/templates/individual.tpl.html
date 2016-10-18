@@ -92,11 +92,11 @@
                             ng-click="vm.move('set4')">Back
                     </button>
                     <button class="btn btn-default"
-                            ng-if="vm.form.filing === 'single'"
+                            ng-if="vm.form.filing === 'single' && vm.form.otherIncome ==='yes'"
                             ng-click="vm.move('set5a')">Back
                     </button>
                     <button class="btn btn-default"
-                            ng-if="vm.form.filing === 'joint'"
+                            ng-if="vm.form.filing === 'joint' && vm.form.otherIncome ==='yes'"
                             ng-click="vm.move('set5b')">Back
                     </button>
                     <button class="btn btn-default" ng-click="vm.startOver()">Start Over</button>
