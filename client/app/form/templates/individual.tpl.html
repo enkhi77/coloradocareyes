@@ -88,6 +88,10 @@
                 <ng-include src="'app/form/templates/set6.tpl.html'"></ng-include>
                 <div>
                     <button class="btn btn-default"
+                            ng-if="vm.form.otherIncome === 'no'"
+                            ng-click="vm.move('set4')">Back
+                    </button>
+                    <button class="btn btn-default"
                             ng-if="vm.form.filing === 'single'"
                             ng-click="vm.move('set5a')">Back
                     </button>
