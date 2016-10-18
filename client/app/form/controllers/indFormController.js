@@ -169,6 +169,7 @@
         }
         
         function sumCheck() {
+            console.log('sumCheck vm.form.filing', vm.form.filing);
             switch (vm.form.filing) {
                 case 'single':
                     console.log('single sumCheck', vm.form.irs20b + vm.form.spouseA.irs15b16b > vm.form.irsSum);
@@ -177,6 +178,11 @@
                     }
                     break;
                 case 'joint':
+                    console.log('joint sumCheck', vm.form.irs20b + vm.form.spouseA.irs15b16b + vm.form.spouseB.irs15b16b > vm.form.irsSum);
+                    console.log('joint sumcheck vm.form.irs20b', vm.form.irs20b);
+                    console.log('joint sumcheck vm.form.spouseA.irs15b16b', vm.form.spouseA.irs15b16b);
+                    console.log('joint sumcheck vm.form.spouseB.irs15b16b', vm.form.spouseB.irs15b16b);
+                    console.log('joint sumCheck math', vm.form.irs20b + vm.form.spouseA.irs15b16b + vm.form.spouseB.irs15b16b);
                     if (vm.form.irs20b + vm.form.spouseA.irs15b16b + vm.form.spouseB.irs15b16b > vm.form.irsSum) {
                         return true;
                     }
@@ -191,8 +197,7 @@
             var IncomeTaxCapFamily = 450000;
             var incomeRetirementExemption55Plus = 20000;
             var incomeRetirementExemption65Plus = 4000;
-    
-            console.log(vm.form.w2, vm.form.nonw2, vm.form.irs20b, vm.form.spouseA.age);
+            
             var w2 = vm.form.w2;
             var incomeRetirement = null;
             if(vm.form.filing === 'single'){
@@ -262,6 +267,9 @@
                 incomeTaxCap -= incomeRetirement;
             }
     
+            console.log('w2', w2);
+            console.log('nonw2', nonw2);
+            console.log('incomeRetirement', incomeRetirement);
             var w2Tax = w2 * (CCW2PercentTax);
             var nonw2Tax = nonw2 * CCPercentTax;
             var incomeRetirementTax = incomeRetirement * CCPercentTax;
@@ -270,11 +278,6 @@
             
             vm.indivContrib = (vm.form.premium * 12) + vm.form.deductible + vm.form.copay + vm.form.expenses;
             vm.diff = vm.indivContrib - vm.coCare;
-            // cost of the current insurance
-            // currentCost = currentAnnualPremiums + currentMedicalPolicyCharges + currentExtra;
-            // currentRealCost = results.currentCost - results.hsaTaxSavings;
-            //
-            // savingsColoradoCare = currentRealCost - coloradoCareRealCost;
         }
     }
 })();
