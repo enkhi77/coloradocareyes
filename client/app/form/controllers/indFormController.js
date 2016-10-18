@@ -179,10 +179,6 @@
                     break;
                 case 'joint':
                     console.log('joint sumCheck', vm.form.irs20b + vm.form.spouseA.irs15b16b + vm.form.spouseB.irs15b16b > vm.form.irsSum);
-                    console.log('joint sumcheck vm.form.irs20b', vm.form.irs20b);
-                    console.log('joint sumcheck vm.form.spouseA.irs15b16b', vm.form.spouseA.irs15b16b);
-                    console.log('joint sumcheck vm.form.spouseB.irs15b16b', vm.form.spouseB.irs15b16b);
-                    console.log('joint sumCheck math', vm.form.irs20b + vm.form.spouseA.irs15b16b + vm.form.spouseB.irs15b16b);
                     if (vm.form.irs20b + vm.form.spouseA.irs15b16b + vm.form.spouseB.irs15b16b > vm.form.irsSum) {
                         return true;
                     }
