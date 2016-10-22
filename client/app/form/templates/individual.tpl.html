@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div ng-if="vm.set2">
-                <div uib-alert ng-if="vm.w2Error" style="background-color:#fa39c3;color:white">
+                <div uib-alert ng-if="vm.error['w2']" style="background-color:#fa39c3;color:white">
                     W2 Income cannot be a negative number.
                 </div>
                 <ng-include src="'app/form/templates/set2.tpl.html'"></ng-include>

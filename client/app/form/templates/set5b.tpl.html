@@ -8,6 +8,7 @@
            class="form-control"
            aria-label="Amount (to the nearest dollar)"
            ng-model="vm.form.irsSum"
+           ng-change="vm.nullCheck('irsSum')"
            ng-click="vm.onTextClick($event)"
            min="0" id="vm.form.irsSum">
 </div>
@@ -19,6 +20,7 @@
         </label> (federally taxable portion of Social Security)
         <input type="text" ng-currency
                class="form-control"
+               ng-change="vm.nullCheck('irs20b')"
                ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                ng-model="vm.form.irs20b"
@@ -38,6 +40,7 @@
         </label> (actual amount on checks)
         <input type="text" ng-currency
                class="form-control"
+               ng-change="vm.nullCheck('irsmonthly')"
                ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                ng-model="vm.form.spouseA.monthlySS"
@@ -51,6 +54,7 @@
         </label> (federally taxable retirement income)
         <input type="text" ng-currency
                class="form-control"
+               ng-change="vm.nullCheck('irs15b16b')"
                ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                ng-model="vm.form.spouseA.irs15b16b"
@@ -68,6 +72,7 @@
         </label> (actual amount on checks)
         <input type="text" ng-currency
                class="form-control"
+               ng-change="vm.nullCheck('joint-monthly')"
                ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                id="vm.form.spouseB.monthlySS"
@@ -82,6 +87,7 @@
         </label> (federally taxable retirement income)
         <input type="text" ng-currency
                class="form-control"
+               ng-change="vm.nullCheck('joint-irs15b16b')"
                ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                id="vm.form.spouseB.irs15b16b"
