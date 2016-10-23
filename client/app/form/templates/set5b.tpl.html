@@ -2,12 +2,14 @@
 <div class="form-group">
     <label class="control-label"
            for="vm.form.irsSum">
-        Sum of IRS Form 1040 lines 8 to 21 (Non payroll income before additional premium tax exemptions)
-    </label>
+        Sum of IRS Form 1040 lines 8 to 21
+    </label> (non payroll income before senior exemptions)
     <input type="text" ng-currency
            class="form-control"
            aria-label="Amount (to the nearest dollar)"
            ng-model="vm.form.irsSum"
+           ng-change="vm.nullCheck('irsSum')"
+           ng-click="vm.onTextClick($event)"
            min="0" id="vm.form.irsSum">
 </div>
 <div ng-if="vm.form.spouseA.age !== 'under' || vm.form.spouseB.age !== 'under'">
@@ -15,9 +17,11 @@
         <label class="control-label"
                for="vm.form.irs20b">
             IRS Form 1040 line 20b
-        </label>
+        </label> (federally taxable portion of Social Security)
         <input type="text" ng-currency
                class="form-control"
+               ng-change="vm.nullCheck('irs20b')"
+               ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                ng-model="vm.form.irs20b"
                uib-tooltip="Do not enter all of your Social Security. The IRS Form 1040 exempts a large portion of Social Security, and the portion is different for each person. Line 20b is the amount after exemption."
@@ -33,9 +37,11 @@
         <label class="control-label"
                for="vm.form.spouseA.monthlySS">
             Monthly Social Security Income
-        </label>
+        </label> (actual amount on checks)
         <input type="text" ng-currency
                class="form-control"
+               ng-change="vm.nullCheck('irsmonthly')"
+               ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                ng-model="vm.form.spouseA.monthlySS"
                uib-tooltip="Put the full amount of your monthly Social Security check here."
@@ -43,14 +49,16 @@
     </div>
     <div class="form-group">
         <label class="control-label"
-               for="vm.form.spouseA.irsRetirement">
-            Your portion of IRS Form 1040 lines 15b and 16b (retirement income)
-        </label>
+               for="vm.form.spouseA.irs15b16b">
+            Your portion of IRS Form 1040 lines 15b and 16b
+        </label> (federally taxable retirement income)
         <input type="text" ng-currency
                class="form-control"
+               ng-change="vm.nullCheck('irs15b16b')"
+               ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
-               ng-model="vm.form.spouseA.irsRetirement"
-               min="0" id="vm.form.spouseA.irsRetirement">
+               ng-model="vm.form.spouseA.irs15b16b"
+               min="0" id="vm.form.spouseA.irs15b16b">
     </div>
 </div>
 
@@ -61,9 +69,11 @@
         <label class="control-label"
                for="vm.form.spouseB.monthlySS">
             Monthly Social Security Income
-        </label>
+        </label> (actual amount on checks)
         <input type="text" ng-currency
                class="form-control"
+               ng-change="vm.nullCheck('joint-monthly')"
+               ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
                id="vm.form.spouseB.monthlySS"
                ng-model="vm.form.spouseB.monthlySS"
@@ -72,14 +82,16 @@
     </div>
     <div class="form-group">
         <label class="control-label"
-               for="vm.form.spouseB.irsRetirement">
-            Spouse's portion of IRS Form 1040 lines 15b and 16b (retirement income)
-        </label>
+               for="vm.form.spouseB.irs15b16b">
+            Spouse's portion of IRS Form 1040 lines 15b and 16b
+        </label> (federally taxable retirement income)
         <input type="text" ng-currency
                class="form-control"
+               ng-change="vm.nullCheck('joint-irs15b16b')"
+               ng-click="vm.onTextClick($event)"
                aria-label="Amount (to the nearest dollar)"
-               id="vm.form.spouseB.irsRetirement"
-               ng-model="vm.form.spouseB.irsRetirement"
+               id="vm.form.spouseB.irs15b16b"
+               ng-model="vm.form.spouseB.irs15b16b"
                min="0">
     </div>
 </div>

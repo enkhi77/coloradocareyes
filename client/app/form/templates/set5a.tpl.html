@@ -2,11 +2,13 @@
     <label class="control-label"
            for="vm.form.irsSum">
         Sum of IRS Form 1040 lines 8 to 21
-    </label>
+    </label> (non-payroll income before senior exemption)
     <input type="text" ng-currency
            class="form-control"
            aria-label="Amount (to the nearest dollar)"
            ng-model="vm.form.irsSum"
+           ng-change="vm.nullCheck('irsSum')"
+           ng-click="vm.onTextClick($event)"
            min="0" id="vm.form.irsSum">
 </div>
 <div ng-if="vm.form.spouseA.age !== 'under'">
@@ -14,23 +16,27 @@
         <label class="control-label"
                for="vm.form.irs20b">
             IRS Form 1040 line 20b
-        </label>
+        </label> (federally taxable portion of Social Security)
         <input type="text" ng-currency
                class="form-control"
                aria-label="Amount (to the nearest dollar)"
                ng-model="vm.form.irs20b"
+               ng-change="vm.nullCheck('irs20b')"
+               ng-click="vm.onTextClick($event)"
                uib-tooltip="Do not enter all of your Social Security. The IRS Form 1040 exempts a large portion of Social Security, and the portion is different for each person. Line 20b is the amount after exemption."
                min="0" id="vm.form.irs20b">
     </div>
     <div class="form-group">
         <label class="control-label"
-               for="vm.form.irsRetirement">
+               for="vm.form.irs15b16b">
             Sum of IRS Form 1040 lines 15b and 16b
-        </label>
+        </label> (federally taxable portion of retirement income)
         <input type="text" ng-currency
                class="form-control"
+               ng-click="vm.onTextClick($event)"
+               ng-change="vm.nullCheck('irs15b16b')"
                aria-label="Amount (to the nearest dollar)"
-               ng-model="vm.form.spouseA.irsRetirement"
-               min="0" id="vm.form.irsRetirement">
+               ng-model="vm.form.spouseA.irs15b16b"
+               min="0" id="vm.form.irs15b16b">
     </div>
 </div>
